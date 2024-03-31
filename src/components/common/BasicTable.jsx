@@ -19,13 +19,13 @@ const HeaderColumn = ({ header, actionCol = false }) => {
 };
 
 const Row = ({ row }) => {
-  console.log(Object.keys(row));
   return (
     <tr>
       {Object.keys(row).map((colName, idx) => {
         let col = row[colName];
         return (
           <td
+            key={'row-'+ colName}
             className={classNames(
               colName === "actions" ? "relative text-right sm:pr-6" : "",
               "whitespace-nowrap py-3 pl-4 pr-3 text-sm font-medium text-gray-600 sm:pl-6"
@@ -76,14 +76,14 @@ export default function BasicTable({ data }) {
       <table className="min-w-full divide-y divide-gray-300">
         <thead className="bg-gray-50">
           <tr>
-            {headers.map((header) => (
-              <HeaderColumn header={header} />
+            {headers.map((header, idx) => (
+              <HeaderColumn key={'header-'+idx} header={header} />
             ))}
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white font-medium">
-          {rows.map((row) => (
-            <Row row={row} />
+          {rows.map((row, idx) => (
+            <Row key={'row-'+idx} row={row} />
           ))}
         </tbody>
       </table>

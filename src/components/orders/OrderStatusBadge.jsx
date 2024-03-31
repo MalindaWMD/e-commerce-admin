@@ -27,9 +27,7 @@ const statuses = {
 
 export default function OrderStatusBadge({ status }) {
   let orderStatus = statuses[status];
-
-  console.log(orderStatus)
-
+  
   return (
     <span
       className={`inline-flex items-center gap-x-1.5 rounded-md bg-${
