@@ -11,14 +11,7 @@ const Header = () => {
           New product
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-        <a
-          href="/products"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-indigo-500"
-        >
-          Back to products list
-        </a>
-      </div>
+      <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4"></div>
     </PageHeader>
   );
 };

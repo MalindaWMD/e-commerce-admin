@@ -59,12 +59,12 @@ const Navigation = () => {
         isCurrentUrl(item.path)
           ? "bg-cyan-800 text-white"
           : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
-        "group flex items-center rounded-md px-2 py-2 text-base font-medium"
+        "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
       )}
       aria-current={item.current ? "page" : undefined}
     >
       <item.icon
-        className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
+        className="mr-4 h-5 w-5 flex-shrink-0 text-cyan-200"
         aria-hidden="true"
       />
       {item.display_name}
@@ -144,10 +144,10 @@ export default function Sidebar({ open, setOpen }) {
                         <a
                           key={item.name}
                           href={item.href}
-                          className="group flex items-center rounded-md px-2 py-2 text-base font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                          className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
                         >
                           <item.icon
-                            className="mr-4 h-6 w-6 text-cyan-200"
+                            className="mr-4 h-5 w-5 text-cyan-200"
                             aria-hidden="true"
                           />
                           {item.name}

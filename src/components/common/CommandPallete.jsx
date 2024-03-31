@@ -12,10 +12,10 @@ const suggestions = [
 ]
 const recent = [suggestions[0]]
 const quickActions = [
-  { name: 'Add new product...', icon: InboxIcon, shortcut: 'P', url: '#new-product' },
-  { name: 'Open inventory...', icon: InboxStackIcon, shortcut: 'I', url: '#inventory' },
-  { name: 'See orders...', icon: ArchiveBoxIcon, shortcut: 'O', url: '#orders' },
-  { name: 'See customers...', icon: UserIcon, shortcut: 'U', url: '#customers' },
+  { name: 'Add new product...', icon: InboxIcon, shortcut: 'P', url: '/products/add' },
+  { name: 'See products...', icon: ArchiveBoxIcon, shortcut: 'O', url: '/products' },
+  { name: 'See orders...', icon: InboxStackIcon, shortcut: 'O', url: '/orders' },
+  { name: 'See customers...', icon: UserIcon, shortcut: 'U', url: '/customers' },
 ]
 
 export default function CommandPallete({ open=false, setOpen }) {

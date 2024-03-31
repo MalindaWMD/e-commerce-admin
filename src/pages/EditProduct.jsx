@@ -2,7 +2,6 @@ import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
 import ProductForm from "../components/products/ProductForm";
 
-
 const Header = () => {
   return (
     <PageHeader>
@@ -13,10 +12,10 @@ const Header = () => {
       </div>
       <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
         <a
-          href="/products"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-indigo-500"
+          href={'/products/' + 101 + '/stocks'}
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-          Back to products list
+          Stocks
         </a>
       </div>
     </PageHeader>

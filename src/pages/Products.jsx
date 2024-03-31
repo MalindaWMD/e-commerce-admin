@@ -66,7 +66,7 @@ const columns = [
       return (
         <div>
           <a
-            href={`/products/stocks/${item.id}`}
+            href={'/products/' + item.id + '/stocks'}
             className="text-green-600 mr-3 font-medium hover:text-indigo-900"
           >
             Stocks

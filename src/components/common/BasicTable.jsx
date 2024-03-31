@@ -40,6 +40,10 @@ const Row = ({ row }) => {
 };
 
 const Footer = ({ footer }) => {
+  if( ! footer){
+    return null;
+  }
+
   return (
     <nav
       className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-gray-50 sm:px-6"
