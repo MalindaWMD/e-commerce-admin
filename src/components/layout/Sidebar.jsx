@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
+  ArchiveBoxIcon,
   ClockIcon,
   CogIcon,
   CreditCardIcon,
@@ -16,7 +17,7 @@ import { classNames } from "../../utils/css";
 
 const navigation = [
   { name: "Home", href: "#", icon: HomeIcon, current: true },
-  { name: "History", href: "#", icon: ClockIcon, current: false },
+  { name: "Products", href: "#", icon: ArchiveBoxIcon, current: false },
   { name: "Balances", href: "#", icon: ScaleIcon, current: false },
   { name: "Cards", href: "#", icon: CreditCardIcon, current: false },
   { name: "Recipients", href: "#", icon: UserGroupIcon, current: false },

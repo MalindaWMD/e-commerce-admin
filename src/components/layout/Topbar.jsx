@@ -15,7 +15,7 @@ export default function Topbar({ setSidebarOpen }) {
         <Bars3CenterLeftIcon className="h-6 w-6" aria-hidden="true" />
       </button>
       {/* Search bar */}
-      <div className="flex flex-1 justify-between px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
+      <div className="flex flex-1 justify-between lg:mx-auto lg:max-w-6xl">
         <div className="flex flex-1">
           <SearchBar />
         </div>

@@ -7,3 +7,20 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -moz-osx-font-smoothing: grayscale;
 }
+
+.rdt_Table{
+    @apply font-sans !important;
+}
+
+.rdt_TableHead .rdt_TableCol{
+    @apply bg-gray-50 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider !important;
+}
+/* 
+.rdt_Pagination select{
+    @apply h-10 shadow sm:max-w-xs sm:text-sm border-gray-300 rounded-md !important;
+} */
+/* 
+.rdt_Pagination button{
+    border: 1px solid !important;
+    @apply h-9 w-9 ml-2 relative inline-flex items-center p-1 border-gray-300 font-medium rounded-md text-xs text-gray-700 bg-white hover:bg-gray-50 !important;
+} */

@@ -16,7 +16,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="-ml-6 flex justify-start items-center">
+    <div className="-ml-3 flex justify-start items-center">
       <button 
         className="flex justify-start items-center px-3 py-2 rounded-md text-sm text-gray-400 focus-within:text-gray-600 hover:bg-gray-100"
         onClick={() => setOpenPallete( ! openPallete)}
@@ -26,8 +26,8 @@ export default function SearchBar() {
           Search anything...
         </span>
         <span className="ml-5">
-          <kbd className="font-sans border border-gray-300 rounded-sm px-0.5">⌘</kbd>
-          <kbd className="font-sans text-sm border border-gray-300 rounded-sm px-1.5 ml-1">.</kbd>
+          <kbd className="font-sans border border-gray-300 rounded-md px-0.5">⌘</kbd>
+          <kbd className="font-sans text-sm border border-gray-300 rounded-md px-1.5 ml-1">.</kbd>
         </span>
       </button>
      
