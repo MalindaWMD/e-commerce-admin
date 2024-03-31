@@ -14,7 +14,7 @@ export default function Layout({ children }) {
           <Topbar setSidebarOpen={setSidebarOpen} />
 
           <main className="flex-1 pb-8">
-            <div className="mt-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="mt-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-4">
             {children}
             </div>
           </main>

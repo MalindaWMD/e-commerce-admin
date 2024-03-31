@@ -1,18 +1,39 @@
+import { BanknotesIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import {
-  BanknotesIcon,
-  ChevronRightIcon
-} from "@heroicons/react/20/solid";
-import { ArchiveBoxIcon, ScaleIcon, UserIcon } from "@heroicons/react/24/outline";
-import { classNames } from "../utils/css";
+  ArchiveBoxIcon,
+  ScaleIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 import Layout from "../components/layout/Layout";
 import DashboardCard from "../components/DashboardCard";
+import BasicTable from "../components/common/BasicTable";
+import { recent_orders } from "../data/recent_orders";
+import OrderStatusBadge from "../components/orders/OrderStatusBadge";
+
 
 const cards = [
-  { name: "Account balance", action: "#", icon: ScaleIcon, amount: "$30,659.45" },
-  { name: "New registrations", action: "#", icon: UserIcon, amount: "143" },
-  { name: "Completed orders", action: "#", icon: ArchiveBoxIcon, amount: "26", subtitle: "Past week"},
+  {
+    name: "Account balance",
+    action: "#",
+    icon: ScaleIcon,
+    amount: "$30,659.45",
+  },
+  { 
+    name: "New registrations", 
+    action: "#", 
+    icon: UserIcon, 
+    amount: "143" 
+  },
+  {
+    name: "Completed orders",
+    action: "#",
+    icon: ArchiveBoxIcon,
+    amount: "26",
+    subtitle: "Past week",
+  },
   // More items...
 ];
+
 const transactions = [
   {
     id: 1,
@@ -26,26 +47,84 @@ const transactions = [
   },
   // More transactions...
 ];
-const statusStyles = {
-  success: "bg-green-100 text-green-800",
-  processing: "bg-yellow-100 text-yellow-800",
-  failed: "bg-gray-100 text-gray-800",
-};
+
+const recentOrdersTableData = {
+  footer: {
+    label: "Showing up to 5 resulsts",
+    action: {
+      label: "View all",
+      href: "#orders",
+    },
+  },
+  headers: ["ID", "Customer", "Date", "Total", "Status", ""],
+  rows: () => {
+    return recent_orders.map((order) => {
+      return {
+          ...order ,
+          ...{
+            total: '$' + order.total,
+            status: <OrderStatusBadge status={order.status} />,
+            actions: {
+              html: () => {
+                return (
+                  <a href="#orders" className="text-indigo-600 hover:text-indigo-900">
+                    Edit
+                  </a>
+                );
+              },
+            }
+          }
+        }
+    })
+  }
+}
+
+const productsOnReorderLevel = {
+  footer: {
+    label: "Showing up to 5 resulsts",
+    action: {
+      label: "View all",
+      href: "#products",
+    },
+  },
+  headers: ['Product', 'Level', 'QTY'],
+  rows: [
+    {
+      product: 'Antischimel chemie',
+      level: 2,
+      qty: 2
+    },
+    {
+      product: 'Dust pans small',
+      level: 8,
+      qty: 3
+    },
+    {
+      product: 'Dust brush small Heizkoperburste U form',
+      level: 4,
+      qty: 2
+    },
+    {
+      product: 'Hand brushe',
+      level: 10,
+      qty: 2
+    },
+  ]
+}
 
 export default function Home() {
   return (
     <Layout>
-      <h2 className="text-lg font-medium leading-6 text-gray-900">Overview</h2>
+      <h2 className="text-lg font-medium leading-6 text-gray-900">
+        Overview
+        <small className="text-xs ml-1 text-gray-500 italic">(Past week)</small>
+      </h2>
       <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {/* Card */}
         {cards.map((card) => (
-          <DashboardCard  key={card.name} card={card} />
+          <DashboardCard key={card.name} card={card} />
         ))}
       </div>
-
-      <h2 className="mt-8 text-lg font-medium leading-6 text-gray-900">
-        Recent activity
-      </h2>
 
       {/* Activity list (smallest breakpoint only) */}
       <div className="shadow sm:hidden">
@@ -109,111 +188,37 @@ export default function Home() {
         </nav>
       </div>
 
-      {/* Activity table (small breakpoint and up) */}
-      <div className="hidden sm:block">
-        <div className="mt-2 flex flex-col">
-          <div className="min-w-full overflow-hidden overflow-x-auto align-middle shadow sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead>
-                <tr>
-                  <th
-                    className="bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900"
-                    scope="col"
-                  >
-                    Transaction
-                  </th>
-                  <th
-                    className="bg-gray-50 px-6 py-3 text-right text-sm font-semibold text-gray-900"
-                    scope="col"
-                  >
-                    Amount
-                  </th>
-                  <th
-                    className="hidden bg-gray-50 px-6 py-3 text-left text-sm font-semibold text-gray-900 md:block"
-                    scope="col"
-                  >
-                    Status
-                  </th>
-                  <th
-                    className="bg-gray-50 px-6 py-3 text-right text-sm font-semibold text-gray-900"
-                    scope="col"
-                  >
-                    Date
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 bg-white">
-                {transactions.map((transaction) => (
-                  <tr key={transaction.id} className="bg-white">
-                    <td className="w-full max-w-0 whitespace-nowrap px-6 py-4 text-sm text-gray-900">
-                      <div className="flex">
-                        <a
-                          href={transaction.href}
-                          className="group inline-flex space-x-2 truncate text-sm"
-                        >
-                          <BanknotesIcon
-                            className="h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                            aria-hidden="true"
-                          />
-                          <p className="truncate text-gray-500 group-hover:text-gray-900">
-                            {transaction.name}
-                          </p>
-                        </a>
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm text-gray-500">
-                      <span className="font-medium text-gray-900">
-                        {transaction.amount}
-                      </span>
-                      {transaction.currency}
-                    </td>
-                    <td className="hidden whitespace-nowrap px-6 py-4 text-sm text-gray-500 md:block">
-                      <span
-                        className={classNames(
-                          statusStyles[transaction.status],
-                          "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize"
-                        )}
-                      >
-                        {transaction.status}
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm text-gray-500">
-                      <time dateTime={transaction.datetime}>
-                        {transaction.date}
-                      </time>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {/* Pagination */}
-            <nav
-              className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
-              aria-label="Pagination"
-            >
-              <div className="hidden sm:block">
-                <p className="text-sm text-gray-700">
-                  Showing <span className="font-medium">1</span> to{" "}
-                  <span className="font-medium">10</span> of{" "}
-                  <span className="font-medium">20</span> results
-                </p>
-              </div>
-              <div className="flex flex-1 justify-between gap-x-3 sm:justify-end">
-                <a
-                  href="#"
-                  className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-                >
-                  Previous
-                </a>
-                <a
-                  href="#"
-                  className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
-                >
-                  Next
-                </a>
-              </div>
-            </nav>
+      <div className="mt-8 flow-root">
+        <h2 className="mb-2 text-lg font-medium leading-6 text-gray-900">
+          Recent orders
+        </h2>
+        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <BasicTable data={recentOrdersTableData}/>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="">
+          <h2 className="mb-2 text-lg font-medium leading-6 text-gray-900">
+            Low stock products
+          </h2>
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <BasicTable data={productsOnReorderLevel} />
+            </div>
+            </div>
+        </div>
+        <div className="">
+          <h2 className="mb-2 text-lg font-medium leading-6 text-gray-900">
+            Products on buffer
+          </h2>
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <BasicTable data={productsOnReorderLevel} />
+            </div>
+            </div>
         </div>
       </div>
     </Layout>

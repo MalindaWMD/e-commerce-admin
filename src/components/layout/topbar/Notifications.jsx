@@ -25,14 +25,14 @@ export default function Notifications() {
           <Menu.Item>
             <div className="p-4 flex-1 flex justify-between">
               <div>
-                <p class="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm leading-5 font-medium text-gray-900">
                   Successfully saved!
                 </p>
-                <p class="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p class="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-500">
                 12mins ago
               </p>
             </div>
@@ -40,14 +40,14 @@ export default function Notifications() {
           <Menu.Item>
             <div className="p-4 flex-1 flex justify-between">
               <div>
-                <p class="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm leading-5 font-medium text-gray-900">
                   Successfully saved!
                 </p>
-                <p class="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p class="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-500">
                 12mins ago
               </p>
             </div>
@@ -55,14 +55,14 @@ export default function Notifications() {
           <Menu.Item>
             <div className="p-4 flex-1 flex justify-between">
               <div>
-                <p class="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm leading-5 font-medium text-gray-900">
                   Successfully saved!
                 </p>
-                <p class="mt-1 text-xs text-gray-500">
+                <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p class="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-500">
                 12mins ago
               </p>
             </div>

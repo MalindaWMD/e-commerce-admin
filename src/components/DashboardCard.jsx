@@ -10,7 +10,6 @@ export default function DashboardCard({ card }) {
             <dl>
               <dt className="truncate text-sm font-medium text-gray-500">
                 {card.name}
-                <small className="ml-1 text-xs text-gray-500">({card.subtitle})</small>
               </dt>
               <dd>
                 <div className="text-lg font-medium text-gray-900">
