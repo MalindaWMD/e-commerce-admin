@@ -14,20 +14,63 @@ import {
   XMarkIcon
 } from "@heroicons/react/24/outline";
 import { classNames } from "../../utils/css";
+import { useLocation } from "react-router-dom";
+import { routes } from "../../routes";
 
-const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: true },
-  { name: "Products", href: "#", icon: ArchiveBoxIcon, current: false },
-  { name: "Balances", href: "#", icon: ScaleIcon, current: false },
-  { name: "Cards", href: "#", icon: CreditCardIcon, current: false },
-  { name: "Recipients", href: "#", icon: UserGroupIcon, current: false },
-  { name: "Reports", href: "#", icon: DocumentChartBarIcon, current: false },
-];
 const secondaryNavigation = [
   { name: "Settings", href: "#", icon: CogIcon },
   { name: "Help", href: "#", icon: QuestionMarkCircleIcon },
   { name: "Privacy", href: "#", icon: ShieldCheckIcon },
 ];
+
+const Navigation = () => {
+  let location = useLocation();
+
+  const isCurrentUrl = (path) => {
+    if(location.pathname === path){
+      return true;
+    }
+
+    let regex = new RegExp(path + '/', 'g');
+    let found = location.pathname.match(regex);
+    return found != null;
+  };
+
+  let sortedRoutes = routes.sort((a, b) => {
+    a = a.ordinal;
+    b = b.ordinal;
+    
+    if(!a || !b || a === b) { return 0; }
+    if(a < b){ return -1; }
+    if(a > b){ return 1; }
+
+    return 0;
+  });
+
+  sortedRoutes = sortedRoutes.filter(route => {
+    return route.path === '/' || !route.hidden;
+  });
+
+  return sortedRoutes.map((item) => {
+    return <a
+      key={item.path}
+      href={item.path}
+      className={classNames(
+        isCurrentUrl(item.path)
+          ? "bg-cyan-800 text-white"
+          : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
+        "group flex items-center rounded-md px-2 py-2 text-base font-medium"
+      )}
+      aria-current={item.current ? "page" : undefined}
+    >
+      <item.icon
+        className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
+        aria-hidden="true"
+      />
+      {item.display_name}
+    </a>
+  })
+}
 
 export default function Sidebar({ open, setOpen }) {
   return (
@@ -93,25 +136,7 @@ export default function Sidebar({ open, setOpen }) {
                   aria-label="Sidebar"
                 >
                   <div className="space-y-1 px-2">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-cyan-800 text-white"
-                            : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
-                          "group flex items-center rounded-md px-2 py-2 text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        <item.icon
-                          className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
-                    ))}
+                    <Navigation />
                   </div>
                   <div className="mt-6 pt-6">
                     <div className="space-y-1 px-2">
@@ -156,25 +181,7 @@ export default function Sidebar({ open, setOpen }) {
             aria-label="Sidebar"
           >
             <div className="space-y-1 px-2">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-700 text-white"
-                      : "text-cyan-100 hover:bg-gray-600 hover:text-white",
-                    "group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  <item.icon
-                    className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </a>
-              ))}
+             <Navigation />
             </div>
             <div className="mt-6 pt-6">
               <div className="space-y-1 px-2">
