@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import CurrencyInput from "../inputs/CurrencyInput";
 import SelectPicker from "../inputs/SelectPicker";
@@ -9,6 +9,12 @@ import TagsInput from "react-tagsinput";
 export default function ProductForm({ product }) {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    if(product){
+      setTags(product.tags)
+    }
+  }, [])
 
   const handleSelectChange = (value) => {
     console.log(value);
@@ -44,7 +50,7 @@ export default function ProductForm({ product }) {
             <div className="grid grid-cols-6 gap-6 mt-8">
               <div className="col-span-6 sm:col-span-4">
                 <label
-                  for="name"
+                 htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Product name
@@ -53,12 +59,13 @@ export default function ProductForm({ product }) {
                   id="name"
                   type="text"
                   name="name"
+                  defaultValue={product?.name}
                   className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="col-span-6">
                 <label
-                  for="description"
+                 htmlFor="description"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Description
@@ -68,6 +75,7 @@ export default function ProductForm({ product }) {
                     id="description"
                     name="description"
                     rows="3"
+                    defaultValue={product?.description}
                     className="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   ></textarea>
                   <span className="text-xs text-red-500"></span>
@@ -75,35 +83,35 @@ export default function ProductForm({ product }) {
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="name"
+                 htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Category
                 </label>
                 <SelectPicker
                   className="mt-1"
-                  selected={null}
+                  selected={product?.category_id}
                   options={categories}
                   onChange={handleSelectChange}
                 />
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="name"
+                 htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Brand
                 </label>
                 <SelectPicker
                   className="mt-1"
-                  selected={null}
+                  selected={product?.brand_id}
                   options={brands}
                   onChange={handleSelectChange}
                 />
               </div>
               <div className="col-span-6 sm:col-span-4">
                 <label
-                  for="name"
+                 htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Tags
@@ -191,25 +199,27 @@ export default function ProductForm({ product }) {
             <div className="grid grid-cols-6 gap-6 mt-8">
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="qty"
+                 htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   SKU
                 </label>
                 <input
                   type="text"
+                  defaultValue={product?.stocks?.sku}
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="qty"
+                 htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Barcode
                 </label>
                 <input
                   type="text"
+                  defaultValue={product?.stocks?.barcode}
                   className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -219,7 +229,7 @@ export default function ProductForm({ product }) {
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="qty"
+                 htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Initial quantity
@@ -228,13 +238,14 @@ export default function ProductForm({ product }) {
                   type="number"
                   min="1"
                   name="qty"
+                  defaultValue={product?.stocks?.qty}
                   className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for="qty"
+                 htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Buffer level
@@ -243,6 +254,7 @@ export default function ProductForm({ product }) {
                   type="number"
                   min="1"
                   name="qty"
+                  defaultValue={product?.stocks?.buffer_level}
                   className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -252,7 +264,7 @@ export default function ProductForm({ product }) {
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for=""
+                 htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Buying price
@@ -264,13 +276,14 @@ export default function ProductForm({ product }) {
                   <CurrencyInput
                     name="buying_price"
                     min="1"
+                    value={product?.stocks?.buying_price.toString()}
                     className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
                   />
                 </div>
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for=""
+                 htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Selling price
@@ -282,13 +295,14 @@ export default function ProductForm({ product }) {
                   <CurrencyInput
                     name="selling_price"
                     min="1"
+                    value={product?.stocks?.selling_price.toString()}
                     className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
                   />
                 </div>
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                  for=""
+                 htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Discount price
@@ -300,6 +314,7 @@ export default function ProductForm({ product }) {
                   <CurrencyInput
                     name="discount_price"
                     min="1"
+                    value={product?.stocks?.discount_price.toString()}
                     className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
                   />
                 </div>

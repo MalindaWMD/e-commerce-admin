@@ -23,12 +23,32 @@ const Header = () => {
   );
 };
 
-export default function AddProduct() {
+export default function EditProduct() {
+
+  const product = {
+    id: 101,
+    name: 'Garbage Bags 10L',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    category_id: 3,
+    brand_id: 3,
+    tags: ['top-products', 'household'],
+    stocks: {
+      sku: 'product-123123123',
+      barcode: '13123123123123',
+      qty: 10,
+      buffer_level: 20,
+      buying_price: 200.00,
+      selling_price: 500.00,
+      discount_price: 300.00,
+    },
+    status: 'active'
+  };
+
   return (
     <Layout>
       <Header as="page-header"/>
       <div className="relative flex flex-col">
-        <ProductForm />
+        <ProductForm product={product}/>
       </div>
     </Layout>
   );

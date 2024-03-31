@@ -3,6 +3,7 @@ import AddProduct from "../pages/AddProduct";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Route from "./route";
+import EditProduct from "../pages/EditProduct";
 
 export const routes = [
   new Route({
@@ -24,6 +25,11 @@ export const routes = [
   new Route({
     path: "/products/add",
     element: <AddProduct />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/products/edit/:id",
+    element: <EditProduct />,
     hidden: true,
   }),
 ];
