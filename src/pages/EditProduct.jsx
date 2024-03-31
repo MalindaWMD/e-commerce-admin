@@ -8,7 +8,7 @@ const Header = () => {
     <PageHeader>
       <div className="flex-1 min-w-0">
         <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-          New product
+          Edit product information
         </h1>
       </div>
       <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">

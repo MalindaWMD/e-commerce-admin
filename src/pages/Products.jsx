@@ -67,9 +67,15 @@ const columns = [
         <div>
           <a
             href={`/products/stocks/${item.id}`}
-            className="text-green-600 mr-font-medium hover:text-indigo-900"
+            className="text-green-600 mr-3 font-medium hover:text-indigo-900"
           >
             Stocks
+          </a>
+          <a
+            href={`/products/edit/${item.id}`}
+            className="text-indigo-600 font-medium hover:text-indigo-900"
+          >
+            Edit
           </a>
         </div>
       );
