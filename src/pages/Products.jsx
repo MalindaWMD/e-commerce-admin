@@ -87,7 +87,7 @@ const Header = () => {
       </div>
       <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
         <a
-          href="#add"
+          href="/products/add"
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
         >
           Add product
