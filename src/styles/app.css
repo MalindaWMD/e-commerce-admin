@@ -15,12 +15,39 @@
 .rdt_TableHead .rdt_TableCol{
     @apply bg-gray-50 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider !important;
 }
-/* 
-.rdt_Pagination select{
-    @apply h-10 shadow sm:max-w-xs sm:text-sm border-gray-300 rounded-md !important;
-} */
-/* 
-.rdt_Pagination button{
-    border: 1px solid !important;
-    @apply h-9 w-9 ml-2 relative inline-flex items-center p-1 border-gray-300 font-medium rounded-md text-xs text-gray-700 bg-white hover:bg-gray-50 !important;
-} */
+
+.react-tagsinput{
+    @apply block w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500;
+}
+
+.react-tagsinput-tag{
+    @apply inline-flex items-center px-2.5 py-0.5 mr-1 rounded-md text-sm font-medium bg-blue-100 text-blue-800;
+}
+
+.react-tagsinput-input{
+    border: none;
+    font-size: 0.875rem;
+    outline: none;
+    padding: 0 .3rem;
+    border-radius: .2rem;
+    outline: none;
+}
+
+.react-tagsinput-input:focus{
+    outline: none;
+    --tw-ring-color: transparent;
+}
+
+.react-tagsinput-remove{
+    cursor: pointer;
+}
+
+.react-tagsinput-remove:hover{
+    color: red;
+}
+
+.react-tagsinput-remove::after{
+    content: '✕';
+    font-size: 10px;
+    margin-left: 5px;
+}

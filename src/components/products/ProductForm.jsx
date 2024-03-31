@@ -4,9 +4,11 @@ import CurrencyInput from "../inputs/CurrencyInput";
 import SelectPicker from "../inputs/SelectPicker";
 import { brands } from "../../data/brands";
 import { categories } from "../../data/categories";
+import TagsInput from "react-tagsinput";
 
 export default function ProductForm({ product }) {
   const [imagePreviews, setImagePreviews] = useState([]);
+  const [tags, setTags] = useState([]);
 
   const handleSelectChange = (value) => {
     console.log(value);
@@ -106,11 +108,11 @@ export default function ProductForm({ product }) {
                 >
                   Tags
                 </label>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
+                <TagsInput
+                 value={tags}
+                 onChange={(tags) => setTags(tags)}
+                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border py-1.5 px-1.5"
                 />
               </div>
               <div className="col-span-6">
