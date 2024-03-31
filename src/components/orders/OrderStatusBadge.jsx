@@ -30,11 +30,7 @@ export default function OrderStatusBadge({ status }) {
   
   return (
     <span
-      className={`inline-flex items-center gap-x-1.5 rounded-md bg-${
-        orderStatus.color || "gray"
-      }-100 px-1.5 py-0.5 text-xs font-medium text-${
-        orderStatus.color || "gray"
-      }-600`}
+      className={`inline-flex items-center gap-x-1.5 rounded-md bg-${orderStatus.color || "gray"}-100 px-1.5 py-0.5 text-xs font-medium text-${ orderStatus.color || "gray"}-600`}
     >
       <svg
         className="h-1.5 w-1.5 fill-gray-400"

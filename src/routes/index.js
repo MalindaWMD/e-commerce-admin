@@ -1,10 +1,12 @@
-import { ArchiveBoxIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { ArchiveBoxIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/outline";
 import AddProduct from "../pages/AddProduct";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Route from "./route";
 import EditProduct from "../pages/EditProduct";
 import ProductStocks from "../pages/ProductStocks";
+import Customers from "../pages/Customers";
+import ViewCustomer from "../pages/ViewCustomer";
 
 export const routes = [
   new Route({
@@ -24,6 +26,14 @@ export const routes = [
     // ordinal: -1,
   }),
   new Route({
+    path: "/customers",
+    element: <Customers />,
+    display_name: 'Customers',
+    icon: UsersIcon,
+    // ordinal: -1,
+  }),
+  
+  new Route({
     path: "/products/add",
     element: <AddProduct />,
     hidden: true,
@@ -36,6 +46,11 @@ export const routes = [
   new Route({
     path: "/products/:id/stocks",
     element: <ProductStocks />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/customers/:id",
+    element: <ViewCustomer />,
     hidden: true,
   }),
 ];
