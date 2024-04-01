@@ -47,7 +47,7 @@ const Footer = ({ footer }) => {
 
   return (
     <nav
-      className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-gray-50 sm:px-6"
+      className="flex items-center justify-between px-4 py-4 border-t border-gray-200 bg-gray-100 sm:px-6"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">

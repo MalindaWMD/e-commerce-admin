@@ -29,7 +29,7 @@ const recentOrdersTableData = {
               return (
                 <a
                   href="#orders"
-                  className="text-indigo-600 hover:text-indigo-900"
+                  className="text-primary-600 hover:text-primary-900"
                 >
                   View
                 </a>
@@ -90,17 +90,17 @@ const PersonalInformation = ({ customer }) => {
               mask={"+000000000000000"}
               lazy={false}
               unmask={true}
-              className="block h-9 w-full rounded-md border border-gray-300 px-3 text-left shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block h-9 w-full rounded-md border border-gray-300 px-3 text-left shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
               value={customer?.phone_no}
             />
           </div>
         </div>
 
-        <div className="rounded-b-md bg-gray-100 px-4 py-3 text-right">
+        <div className="rounded-b-md border-t bg-gray-100 px-4 py-3 text-right">
           <span className="inline-flex rounded-md shadow-sm">
             <button
               type="submit"
-              className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-1.5 text-sm font-medium leading-5 text-white hover:bg-indigo-500 focus:border-indigo-500 focus:outline-none active:bg-indigo-900"
+              className="inline-flex justify-center rounded-md border border-transparent bg-primary-600 px-4 py-1.5 text-sm font-medium leading-5 text-white hover:bg-primary-500 focus:border-primary-500 focus:outline-none active:bg-primary-900"
             >
               Save
             </button>
@@ -124,7 +124,7 @@ const Orders = () => {
 
 const Address = ({ address }) => {
   return (
-    <div className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
+    <div className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-md">
       <div className="flex w-full items-center justify-between space-x-6 p-5">
         <div className="relative flex-1 truncate">
           <button className="absolute right-0 h-5 w-5 text-blue-500 hover:text-blue-700">
@@ -159,7 +159,7 @@ const Addresses = () => {
         </h2>
         <button
           type="button"
-          className="inline-flex items-center rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="inline-flex items-center rounded bg-primary-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
         >
           <PlusIcon className="mr-2 h-4 w-4" />
           New address

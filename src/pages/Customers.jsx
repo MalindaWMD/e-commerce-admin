@@ -48,7 +48,7 @@ const columns = [
         <div>
           <Link
             to={"/customers/" + item.id}
-            className="mr-3 font-medium text-green-600 hover:text-indigo-900"
+            className="mr-3 font-medium text-indigo-600 hover:text-indigo-900"
           >
             View
           </Link>

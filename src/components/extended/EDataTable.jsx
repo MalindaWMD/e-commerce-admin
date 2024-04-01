@@ -45,7 +45,7 @@ export default function EDataTables(props) {
       <FilterComponent
         filterComponents={props.filterComponents}
         loadDataFunction={props.loadDataFunction}
-        className="block rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm"
+        className="block rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:max-w-xs sm:text-sm"
         onFilter={(e) => setFilterText(e.target.value)}
         filterText={filterText}
       />

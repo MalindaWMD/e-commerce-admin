@@ -59,7 +59,7 @@ const recentOrdersTableData = {
   },
   headers: ["ID", "Customer", "Date", "Total", "Status", ""],
   rows: () => {
-    return recent_orders.splice(0, 5).map((order) => {
+    return recent_orders.map((order) => {
       return {
           ...order ,
           ...{
@@ -68,7 +68,7 @@ const recentOrdersTableData = {
             actions: {
               html: () => {
                 return (
-                  <Link to="#orders" className="text-indigo-600 hover:text-indigo-900">
+                  <Link to="#orders" className="text-primary-600 hover:text-primary-900">
                     Edit
                   </Link>
                 );

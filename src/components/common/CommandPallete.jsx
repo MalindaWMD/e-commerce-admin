@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
-import { Combobox, Dialog, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
+import { Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import {
   ArchiveBoxIcon,
@@ -8,7 +9,6 @@ import {
   InboxStackIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { classNames } from "../../utils/css";
 
 const suggestions = [
   { id: 1, name: "Users", url: "/users" },
@@ -21,7 +21,7 @@ const suggestions = [
   { id: 8, name: "Customers", url: "/customers" },
 ];
 
-const recent = [suggestions[0]];
+const recent = suggestions.splice(0, 3);
 
 const quickActions = [
   { name: "Products...", icon: ArchiveBoxIcon, url: "/products" },
@@ -70,13 +70,13 @@ export default function CommandPallete({ open = false, setOpen }) {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-              <Combobox onChange={(item) => (window.location = item.url)}>
+              <div>
                 <div className="relative">
                   <MagnifyingGlassIcon
                     className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
-                  <Combobox.Input
+                  <input
                     className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                     placeholder="Search..."
                     onChange={(event) => setQuery(event.target.value)}
@@ -84,49 +84,32 @@ export default function CommandPallete({ open = false, setOpen }) {
                 </div>
 
                 {(query === "" || filteredSuggestions.length > 0) && (
-                  <Combobox.Options
-                    static
-                    className="max-h-80 scroll-py-2 divide-y divide-gray-100 overflow-y-auto"
-                  >
+                  <div className="max-h-80 scroll-py-2 divide-y divide-gray-100 overflow-y-auto">
                     <li className="p-2">
                       {query === "" && (
                         <h2 className="mb-2 mt-4 px-3 text-xs font-semibold text-gray-500">
-                          Recent searches
+                          Common searches
                         </h2>
                       )}
                       <ul className="text-sm text-gray-700">
                         {(query === "" ? recent : filteredSuggestions).map(
                           (suggestion) => (
-                            <Combobox.Option
+                            <Link
+                              to={suggestion.url}
                               key={suggestion.id}
-                              value={suggestion}
-                              className={({ active }) =>
-                                classNames(
-                                  "flex cursor-default select-none items-center rounded-md px-3 py-2",
-                                  active && "bg-indigo-600 text-white",
-                                )
-                              }
+                              className="hover:bg-primary-600 group flex cursor-pointer select-none items-center rounded-md px-3 py-2 hover:text-white"
                             >
-                              {({ active }) => (
-                                <>
-                                  <HashtagIcon
-                                    className={classNames(
-                                      "h-6 w-6 flex-none",
-                                      active ? "text-white" : "text-gray-400",
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  <span className="ml-3 flex-auto truncate">
-                                    {suggestion.name}
-                                  </span>
-                                  {active && (
-                                    <span className="ml-3 flex-none text-indigo-100">
-                                      Jump to...
-                                    </span>
-                                  )}
-                                </>
-                              )}
-                            </Combobox.Option>
+                              <HashtagIcon
+                                className="h-6 w-6 flex-none text-gray-400 group-hover:text-white"
+                                aria-hidden="true"
+                              />
+                              <span className="ml-3 flex-auto truncate">
+                                {suggestion.name}
+                              </span>
+                              <span className="text-primary-100 ml-3 hidden flex-none group-hover:block">
+                                Jump to...
+                              </span>
+                            </Link>
                           ),
                         )}
                       </ul>
@@ -136,36 +119,25 @@ export default function CommandPallete({ open = false, setOpen }) {
                         <h2 className="sr-only">Quick actions</h2>
                         <ul className="text-sm text-gray-700">
                           {quickActions.map((action, idx) => (
-                            <Combobox.Option
+                            <Link
                               key={"action-" + idx}
-                              value={action}
-                              className={({ active }) =>
-                                classNames(
-                                  "flex cursor-default select-none items-center rounded-md px-3 py-2",
-                                  active && "bg-indigo-600 text-white",
-                                )
-                              }
+                              to={action.url}
+                              className="hover:bg-primary-600 group flex cursor-pointer select-none items-center rounded-md px-3 py-2 hover:text-white"
                             >
-                              {({ active }) => (
-                                <>
-                                  <action.icon
-                                    className={classNames(
-                                      "h-6 w-6 flex-none",
-                                      active ? "text-white" : "text-gray-400",
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                  <span className="ml-3 flex-auto truncate">
-                                    {action.name}
-                                  </span>
-                                </>
-                              )}
-                            </Combobox.Option>
+                              <action.icon
+                                className="h-6 w-6 flex-none text-gray-400 group-hover:text-white"
+                                aria-hidden="true"
+                              />
+
+                              <span className="ml-3 flex-auto truncate">
+                                {action.name}
+                              </span>
+                            </Link>
                           ))}
                         </ul>
                       </li>
                     )}
-                  </Combobox.Options>
+                  </div>
                 )}
 
                 {query !== "" && filteredSuggestions.length === 0 && (
@@ -180,7 +152,7 @@ export default function CommandPallete({ open = false, setOpen }) {
                     </p>
                   </div>
                 )}
-              </Combobox>
+              </div>
             </Dialog.Panel>
           </Transition.Child>
         </div>
