@@ -7,11 +7,12 @@ import { classNames } from '../../utils/css'
 const suggestions = [
   { id: 1, name: 'Users', url: '/users' },
   { id: 2, name: 'Add user', url: '/users/add' },
-  { id: 3, name: 'Completed orders', url: '/orders?status=delivered' },
-  { id: 4, name: 'Product details', url: '/products' },
-  { id: 5, name: 'Add product', url: '/products/add' },
-  { id: 6, name: 'Orders', url: '/orders' },
-  { id: 7, name: 'Customers', url: '/customers' },
+  { id: 3, name: 'Manage user roles', url: '/users/permissions' },
+  { id: 4, name: 'Completed orders', url: '/orders?status=delivered' },
+  { id: 5, name: 'Product details', url: '/products' },
+  { id: 6, name: 'Add product', url: '/products/add' },
+  { id: 7, name: 'Orders', url: '/orders' },
+  { id: 8, name: 'Customers', url: '/customers' },
 ]
 
 const recent = [suggestions[0]]

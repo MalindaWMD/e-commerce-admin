@@ -1,4 +1,4 @@
-import { ArchiveBoxIcon, HomeIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { ArchiveBoxIcon, HomeIcon, UserIcon, UsersIcon } from "@heroicons/react/24/outline";
 import AddProduct from "../pages/AddProduct";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
@@ -7,6 +7,8 @@ import EditProduct from "../pages/EditProduct";
 import ProductStocks from "../pages/ProductStocks";
 import Customers from "../pages/Customers";
 import ViewCustomer from "../pages/ViewCustomer";
+import Users from "../pages/Users";
+import UserRoles from "../pages/UserRoles";
 
 export const routes = [
   new Route({
@@ -32,6 +34,13 @@ export const routes = [
     icon: UsersIcon,
     // ordinal: -1,
   }),
+  new Route({
+    path: "/users",
+    element: <Users />,
+    display_name: 'Users',
+    icon: UserIcon,
+    // ordinal: -1,
+  }),
   
   new Route({
     path: "/products/add",
@@ -51,6 +60,11 @@ export const routes = [
   new Route({
     path: "/customers/:id",
     element: <ViewCustomer />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/users/permissions",
+    element: <UserRoles />,
     hidden: true,
   }),
 ];
