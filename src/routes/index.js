@@ -9,6 +9,7 @@ import Customers from "../pages/Customers";
 import ViewCustomer from "../pages/ViewCustomer";
 import Users from "../pages/Users";
 import UserRoles from "../pages/UserRoles";
+import Error404 from "../pages/Error404";
 
 export const routes = [
   new Route({
@@ -65,6 +66,11 @@ export const routes = [
   new Route({
     path: "/users/permissions",
     element: <UserRoles />,
+    hidden: true,
+  }),
+  new Route({
+    path: "*",
+    element: <Error404/>,
     hidden: true,
   }),
 ];
