@@ -1,21 +1,25 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { ArchiveBoxIcon, FolderIcon, HashtagIcon, InboxIcon, InboxStackIcon, UserIcon } from '@heroicons/react/24/outline'
+import { ArchiveBoxIcon, FolderIcon, HashtagIcon, InboxStackIcon, UserIcon } from '@heroicons/react/24/outline'
 import { classNames } from '../../utils/css'
 
 const suggestions = [
-  { id: 1, name: 'User details', url: '/users' },
-  { id: 2, name: 'Completed orders', url: '/orders?status=delivered' },
-  { id: 3, name: 'Product details', url: '/products' },
-  // More suggestions...
+  { id: 1, name: 'Users', url: '/users' },
+  { id: 2, name: 'Add user', url: '/users/add' },
+  { id: 3, name: 'Completed orders', url: '/orders?status=delivered' },
+  { id: 4, name: 'Product details', url: '/products' },
+  { id: 5, name: 'Add product', url: '/products/add' },
+  { id: 6, name: 'Orders', url: '/orders' },
+  { id: 7, name: 'Customers', url: '/customers' },
 ]
+
 const recent = [suggestions[0]]
+
 const quickActions = [
-  { name: 'Add new product...', icon: InboxIcon, shortcut: 'P', url: '/products/add' },
-  { name: 'See products...', icon: ArchiveBoxIcon, shortcut: 'O', url: '/products' },
-  { name: 'See orders...', icon: InboxStackIcon, shortcut: 'O', url: '/orders' },
-  { name: 'See customers...', icon: UserIcon, shortcut: 'U', url: '/customers' },
+  { name: 'Products...', icon: ArchiveBoxIcon, url: '/products' },
+  { name: 'Orders...', icon: InboxStackIcon, url: '/orders' },
+  { name: 'Customers...', icon: UserIcon, url: '/customers' },
 ]
 
 export default function CommandPallete({ open=false, setOpen }) {
@@ -24,8 +28,8 @@ export default function CommandPallete({ open=false, setOpen }) {
   const filteredSuggestions =
     query === ''
       ? []
-      : suggestions.filter((project) => {
-          return project.name.toLowerCase().includes(query.toLowerCase())
+      : suggestions.filter((suggestion) => {
+          return suggestion.name.toLowerCase().includes(query.toLowerCase())
         })
 
   return (
@@ -74,10 +78,10 @@ export default function CommandPallete({ open=false, setOpen }) {
                         <h2 className="mb-2 mt-4 px-3 text-xs font-semibold text-gray-500">Recent searches</h2>
                       )}
                       <ul className="text-sm text-gray-700">
-                        {(query === '' ? recent : filteredSuggestions).map((project) => (
+                        {(query === '' ? recent : filteredSuggestions).map((suggestion) => (
                           <Combobox.Option
-                            key={project.id}
-                            value={project}
+                            key={suggestion.id}
+                            value={suggestion}
                             className={({ active }) =>
                               classNames(
                                 'flex cursor-default select-none items-center rounded-md px-3 py-2',
@@ -91,7 +95,7 @@ export default function CommandPallete({ open=false, setOpen }) {
                                   className={classNames('h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-400')}
                                   aria-hidden="true"
                                 />
-                                <span className="ml-3 flex-auto truncate">{project.name}</span>
+                                <span className="ml-3 flex-auto truncate">{suggestion.name}</span>
                                 {active && <span className="ml-3 flex-none text-indigo-100">Jump to...</span>}
                               </>
                             )}
@@ -103,9 +107,9 @@ export default function CommandPallete({ open=false, setOpen }) {
                       <li className="p-2">
                         <h2 className="sr-only">Quick actions</h2>
                         <ul className="text-sm text-gray-700">
-                          {quickActions.map((action) => (
+                          {quickActions.map((action, idx) => (
                             <Combobox.Option
-                              key={action.shortcut}
+                              key={'action-' + idx}
                               value={action}
                               className={({ active }) =>
                                 classNames(
@@ -121,15 +125,6 @@ export default function CommandPallete({ open=false, setOpen }) {
                                     aria-hidden="true"
                                   />
                                   <span className="ml-3 flex-auto truncate">{action.name}</span>
-                                  <span
-                                    className={classNames(
-                                      'ml-3 flex-none text-xs font-semibold',
-                                      active ? 'text-indigo-100' : 'text-gray-400'
-                                    )}
-                                  >
-                                    <kbd className="font-sans">⌘</kbd>
-                                    <kbd className="font-sans">{action.shortcut}</kbd>
-                                  </span>
                                 </>
                               )}
                             </Combobox.Option>

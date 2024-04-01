@@ -1,27 +1,29 @@
+import { classNames } from "../../utils/css";
+
 const statuses = {
   awaiting_payment: {
     label: "Awaiting payment",
-    color: "gray",
+    color: "bg-gray-100 text-gray-600",
   },
   in_progress: {
     label: "In progress",
-    color: "pink",
+    color: "bg-pink-100 text-pink-600",
   },
   shipped: {
     label: "Shipped",
-    color: "purple",
+    color: "bg-purple-100 text-purple-600",
   },
   delivered: {
     label: "Delivered",
-    color: "green",
+    color: "bg-green-100 text-green-600",
   },
   cancelled: {
     label: "Cancelled",
-    color: "red",
+    color: "bg-red-100 text-red-600",
   },
   refunded: {
     label: "Refunded",
-    color: "red",
+    color: "bg-red-100 text-red-600",
   },
 };
 
@@ -30,7 +32,7 @@ export default function OrderStatusBadge({ status }) {
   
   return (
     <span
-      className={`inline-flex items-center gap-x-1.5 rounded-md bg-${orderStatus.color || "gray"}-100 px-1.5 py-0.5 text-xs font-medium text-${ orderStatus.color || "gray"}-600`}
+      className={ classNames('inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-xs font-medium', orderStatus.color)}
     >
       <svg
         className="h-1.5 w-1.5 fill-gray-400"

@@ -18,7 +18,7 @@ export default function SearchBar() {
   return (
     <div className="-ml-3 flex justify-start items-center">
       <button 
-        className="flex justify-start items-center px-3 py-2 rounded-md text-sm text-gray-400 focus-within:text-gray-600 hover:bg-gray-100"
+        className="flex justify-start items-center px-3 py-2 rounded-md text-sm text-gray-500 focus-within:text-gray-600 hover:bg-gray-100"
         onClick={() => setOpenPallete( ! openPallete)}
       >
         <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
