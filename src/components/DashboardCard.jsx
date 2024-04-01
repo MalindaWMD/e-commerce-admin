@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function DashboardCard({ card }) {
   return (
     <div key={card.name} className="overflow-hidden rounded-lg bg-white shadow">
@@ -22,12 +24,12 @@ export default function DashboardCard({ card }) {
       </div>
       <div className="bg-gray-50 px-5 py-3">
         <div className="text-sm">
-          <a
-            href={card.action}
+          <Link
+            to={card.action}
             className="font-medium text-cyan-700 hover:text-cyan-900"
           >
             View all
-          </a>
+          </Link>
         </div>
       </div>
     </div>

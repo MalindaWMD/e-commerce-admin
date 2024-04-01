@@ -9,6 +9,7 @@ import DashboardCard from "../components/DashboardCard";
 import BasicTable from "../components/common/BasicTable";
 import { recent_orders } from "../data/recent_orders";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
+import { Link } from "react-router-dom";
 
 
 const cards = [
@@ -58,7 +59,7 @@ const recentOrdersTableData = {
   },
   headers: ["ID", "Customer", "Date", "Total", "Status", ""],
   rows: () => {
-    return recent_orders.map((order) => {
+    return recent_orders.splice(0, 5).map((order) => {
       return {
           ...order ,
           ...{
@@ -67,9 +68,9 @@ const recentOrdersTableData = {
             actions: {
               html: () => {
                 return (
-                  <a href="#orders" className="text-indigo-600 hover:text-indigo-900">
+                  <Link to="#orders" className="text-indigo-600 hover:text-indigo-900">
                     Edit
-                  </a>
+                  </Link>
                 );
               },
             }

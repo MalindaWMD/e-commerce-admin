@@ -13,12 +13,11 @@ const maskBlock = {
 };
 
 const CurrencyInput = (props) => {
-
   const handleChange = (value) => {
-    if(props.onChange){
-      props.onChange(props.name, value)
+    if (props.onChange) {
+      props.onChange(props.name, value);
     }
-  }
+  };
   return (
     <IMaskInput
       mask={"num"}

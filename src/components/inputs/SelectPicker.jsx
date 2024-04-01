@@ -36,7 +36,8 @@ export default function SelectPicker(props) {
     if (props.action) {
       setLoading(true);
 
-      props.action()
+      props
+        .action()
         .then((response) => {
           setLoading(false);
           setOptions(response);
@@ -57,9 +58,10 @@ export default function SelectPicker(props) {
 
   return (
     <Select
-      className={
-        classNames(`block w-full border-gray-300 rounded-md shadow-sm sm:text-sm focus:ring-secondary-500 focus:border-secondary-500`, props.className)
-      }
+      className={classNames(
+        `focus:ring-secondary-500 focus:border-secondary-500 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm`,
+        props.className,
+      )}
       isClearable={true}
       isLoading={loading}
       isSearchable={true}

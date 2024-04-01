@@ -1,9 +1,8 @@
+import { Link } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
-import ProductTableFilters from "../components/products/ProductTableFilters";
 import { customers } from "../data/customers";
-import { products } from "../data/products";
 
 const columns = [
   {
@@ -47,12 +46,12 @@ const columns = [
     selector: (item) => {
       return (
         <div>
-          <a
-            href={'/customers/' + item.id}
-            className="text-green-600 mr-3 font-medium hover:text-indigo-900"
+          <Link
+            to={"/customers/" + item.id}
+            className="mr-3 font-medium text-green-600 hover:text-indigo-900"
           >
             View
-          </a>
+          </Link>
         </div>
       );
     },
@@ -62,20 +61,18 @@ const columns = [
 const Header = () => {
   return (
     <PageHeader>
-      <div className="flex-1 min-w-0">
-        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+      <div className="min-w-0 flex-1">
+        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
           Customers
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-      </div>
+      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
     </PageHeader>
   );
 };
 
 export default function Customers(props) {
-  
-  const searchFields = ['name', 'email', 'phone_no'];
+  const searchFields = ["name", "email", "phone_no"];
 
   const loadCustomers = () => {
     return customers;

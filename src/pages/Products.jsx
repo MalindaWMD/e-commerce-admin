@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
@@ -46,14 +47,14 @@ const columns = [
     selector: (item) => {
       if ((item.item?.status || item.status) === "active") {
         return (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+          <span className="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-800">
             Active
           </span>
         );
       }
 
       return (
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+        <span className="inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800">
           Draft
         </span>
       );
@@ -65,18 +66,18 @@ const columns = [
     selector: (item) => {
       return (
         <div>
-          <a
-            href={'/products/' + item.id + '/stocks'}
-            className="text-green-600 mr-3 font-medium hover:text-indigo-900"
+          <Link
+            to={"/products/" + item.id + "/stocks"}
+            className="mr-3 font-medium text-green-600 hover:text-indigo-900"
           >
             Stocks
-          </a>
-          <a
-            href={`/products/edit/${item.id}`}
-            className="text-indigo-600 font-medium hover:text-indigo-900"
+          </Link>
+          <Link
+            to={`/products/edit/${item.id}`}
+            className="font-medium text-indigo-600 hover:text-indigo-900"
           >
             Edit
-          </a>
+          </Link>
         </div>
       );
     },
@@ -86,26 +87,25 @@ const columns = [
 const Header = () => {
   return (
     <PageHeader>
-      <div className="flex-1 min-w-0">
-        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+      <div className="min-w-0 flex-1">
+        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
           Products
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-        <a
-          href="/products/add"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+        <Link
+          to="/products/add"
+          className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
         >
           Add product
-        </a>
+        </Link>
       </div>
     </PageHeader>
   );
 };
 
 export default function Products(props) {
-  
-  const searchFields = ['name'];
+  const searchFields = ["name"];
 
   const loadProducts = () => {
     return products;

@@ -14,7 +14,7 @@ import {
   XMarkIcon
 } from "@heroicons/react/24/outline";
 import { classNames } from "../../utils/css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { routes } from "../../routes";
 
 const secondaryNavigation = [
@@ -52,9 +52,9 @@ const Navigation = () => {
   });
 
   return sortedRoutes.map((item) => {
-    return <a
+    return <Link
       key={item.path}
-      href={item.path}
+      to={item.path}
       className={classNames(
         isCurrentUrl(item.path)
           ? "bg-cyan-800 text-white"
@@ -68,7 +68,7 @@ const Navigation = () => {
         aria-hidden="true"
       />
       {item.display_name}
-    </a>
+    </Link>
   })
 }
 

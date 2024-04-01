@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
+import TagsInput from "react-tagsinput";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import CurrencyInput from "../inputs/CurrencyInput";
 import SelectPicker from "../inputs/SelectPicker";
 import { brands } from "../../data/brands";
 import { categories } from "../../data/categories";
-import TagsInput from "react-tagsinput";
 
 export default function ProductForm({ product }) {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    if(product){
-      setTags(product.tags)
+    if (product) {
+      setTags(product.tags);
     }
-  }, [])
+  }, []);
 
   const handleSelectChange = (value) => {
     console.log(value);
@@ -41,16 +41,16 @@ export default function ProductForm({ product }) {
 
   return (
     <form action="">
-      <div className="shadow sm:rounded-md sm:overflow-hidden mb-6">
-        <div className="px-4 py-6 space-y-8 bg-white divide-y divide-gray-200 sm:p-6">
+      <div className="mb-6 shadow sm:overflow-hidden sm:rounded-md">
+        <div className="space-y-8 divide-y divide-gray-200 bg-white px-4 py-6 sm:p-6">
           <div>
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               General information
             </h3>
-            <div className="grid grid-cols-6 gap-6 mt-8">
+            <div className="mt-8 grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-4">
                 <label
-                 htmlFor="name"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Product name
@@ -60,12 +60,12 @@ export default function ProductForm({ product }) {
                   type="text"
                   name="name"
                   defaultValue={product?.name}
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="col-span-6">
                 <label
-                 htmlFor="description"
+                  htmlFor="description"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Description
@@ -76,14 +76,14 @@ export default function ProductForm({ product }) {
                     name="description"
                     rows="3"
                     defaultValue={product?.description}
-                    className="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   ></textarea>
                   <span className="text-xs text-red-500"></span>
                 </div>
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="name"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Category
@@ -97,7 +97,7 @@ export default function ProductForm({ product }) {
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="name"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Brand
@@ -111,16 +111,16 @@ export default function ProductForm({ product }) {
               </div>
               <div className="col-span-6 sm:col-span-4">
                 <label
-                 htmlFor="name"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Tags
                 </label>
 
                 <TagsInput
-                 value={tags}
-                 onChange={(tags) => setTags(tags)}
-                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border py-1.5 px-1.5"
+                  value={tags}
+                  onChange={(tags) => setTags(tags)}
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="col-span-6">
@@ -128,23 +128,23 @@ export default function ProductForm({ product }) {
                   Images
                 </label>
                 <div className="mt-2">
-                  <div className="flex flex-col items-center justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                  <div className="flex flex-col items-center justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
                     {/* Preview */}
-                    <div className="grid w-full grid-cols-6 gap-4 mb-3">
+                    <div className="mb-3 grid w-full grid-cols-6 gap-4">
                       {imagePreviews.map((file, index) => {
                         return (
                           <div
                             key={"image-" + index}
-                            className="relative bg-gray-100 bg-center bg-cover rounded shadow-md h-28 w-28"
+                            className="relative h-28 w-28 rounded bg-gray-100 bg-cover bg-center shadow-md"
                             style={{ backgroundImage: `url(${file})` }}
                           >
                             <button
                               type="button"
-                              className="absolute text-white bg-red-400 -right-2 -top-2 hover:text-gray-300 r-0 rounded-2xl"
+                              className="r-0 absolute -right-2 -top-2 rounded-2xl bg-red-400 text-white hover:text-gray-300"
                               onClick={() => handleRemovePreview(index)}
                             >
                               <XMarkIcon
-                                className="w-5 h-5"
+                                className="h-5 w-5"
                                 aria-hidden="true"
                               />
                             </button>
@@ -153,9 +153,9 @@ export default function ProductForm({ product }) {
                       })}
                     </div>
                     {/* Actions */}
-                    <div className="flex flex-col items-center justify-center max-w-sm space-y-1 text-center">
+                    <div className="flex max-w-sm flex-col items-center justify-center space-y-1 text-center">
                       <svg
-                        className="w-12 h-12 mx-auto text-gray-400"
+                        className="mx-auto h-12 w-12 text-gray-400"
                         stroke="currentColor"
                         fill="none"
                         viewBox="0 0 48 48"
@@ -169,7 +169,7 @@ export default function ProductForm({ product }) {
                         />
                       </svg>
                       <div className="flex text-sm text-gray-600">
-                        <label className="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer hover:text-indigo-500">
+                        <label className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 hover:text-indigo-500">
                           <span>Select files</span>
                           <input
                             id="file-upload"
@@ -196,10 +196,10 @@ export default function ProductForm({ product }) {
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               Stocks
             </h3>
-            <div className="grid grid-cols-6 gap-6 mt-8">
+            <div className="mt-8 grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="qty"
+                  htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   SKU
@@ -207,12 +207,12 @@ export default function ProductForm({ product }) {
                 <input
                   type="text"
                   defaultValue={product?.stocks?.sku}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="qty"
+                  htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Barcode
@@ -220,7 +220,7 @@ export default function ProductForm({ product }) {
                 <input
                   type="text"
                   defaultValue={product?.stocks?.barcode}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -229,7 +229,7 @@ export default function ProductForm({ product }) {
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="qty"
+                  htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Initial quantity
@@ -239,13 +239,13 @@ export default function ProductForm({ product }) {
                   min="1"
                   name="qty"
                   defaultValue={product?.stocks?.qty}
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor="qty"
+                  htmlFor="qty"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Buffer level
@@ -255,7 +255,7 @@ export default function ProductForm({ product }) {
                   min="1"
                   name="qty"
                   defaultValue={product?.stocks?.buffer_level}
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -264,77 +264,77 @@ export default function ProductForm({ product }) {
 
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor=""
+                  htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Buying price
                 </label>
-                <div className="relative rounded-md shadow-sm mt-1">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <div className="relative mt-1 rounded-md shadow-sm">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
                   <CurrencyInput
                     name="buying_price"
                     min="1"
                     value={product?.stocks?.buying_price.toString()}
-                    className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
+                    className="block h-9 w-full rounded-md border border-gray-300 px-3 text-right shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor=""
+                  htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Selling price
                 </label>
-                <div className="relative rounded-md shadow-sm mt-1">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <div className="relative mt-1 rounded-md shadow-sm">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
                   <CurrencyInput
                     name="selling_price"
                     min="1"
                     value={product?.stocks?.selling_price.toString()}
-                    className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
+                    className="block h-9 w-full rounded-md border border-gray-300 px-3 text-right shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
               <div className="col-span-6 sm:col-span-2">
                 <label
-                 htmlFor=""
+                  htmlFor=""
                   className="block text-sm font-medium text-gray-700"
                 >
                   Discount price
                 </label>
-                <div className="relative rounded-md shadow-sm mt-1">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <div className="relative mt-1 rounded-md shadow-sm">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
                   <CurrencyInput
                     name="discount_price"
                     min="1"
                     value={product?.stocks?.discount_price.toString()}
-                    className="block w-full px-3 text-right border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 h-9 sm:text-sm"
+                    className="block h-9 w-full rounded-md border border-gray-300 px-3 text-right shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="px-4 py-3 flex justify-between items-center bg-gray-50 sm:px-6">
+        <div className="flex items-center justify-between bg-gray-50 px-4 py-3 sm:px-6">
           <a
             href="/products"
-            className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
             Cancel
           </a>
 
           <div>
-            <button className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            <button className="inline-flex justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
               Save as draft
             </button>
-            <button className="ml-3 inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <button className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Publish
             </button>
           </div>

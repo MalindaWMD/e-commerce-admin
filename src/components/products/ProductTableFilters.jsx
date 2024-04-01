@@ -46,11 +46,11 @@ export default function ProductTableFilters() {
         </div>
       </div>
       <div className="">
-        <button className="items-center px-4 py-1.5 mt-8 text-sm font-medium text-white border border-transparent rounded-md shadow-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <MagnifyingGlassIcon className="w-5 h-5" />
+        <button className="mt-8 items-center rounded-md border border-transparent bg-indigo-600 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          <MagnifyingGlassIcon className="h-5 w-5" />
         </button>
-        <button className="items-center px-4 py-1.5 mt-8 ml-4 text-sm font-medium text-white border border-transparent rounded-md shadow-md bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-          <ArrowPathIcon className="w-5 h-5" />
+        <button className="ml-4 mt-8 items-center rounded-md border border-transparent bg-gray-500 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+          <ArrowPathIcon className="h-5 w-5" />
         </button>
       </div>
     </div>

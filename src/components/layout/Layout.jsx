@@ -9,12 +9,12 @@ export default function Layout({ children }) {
   let otherChildren = [];
 
   Children.forEach(children, (child, index) => {
-    if(child.type.name === 'PageHeader' || child.props?.as === 'page-header'){
+    if (child.type.name === "PageHeader" || child.props?.as === "page-header") {
       pageHeaderChild = child;
-    }else{
-      otherChildren.push(child) 
+    } else {
+      otherChildren.push(child);
     }
-  })
+  });
 
   return (
     <>
@@ -27,9 +27,7 @@ export default function Layout({ children }) {
           {pageHeaderChild}
 
           <main className="flex-1 pb-8">
-            <div className="mt-8 mx-auto max-w-6xl">
-            {otherChildren}
-            </div>
+            <div className="mx-auto mt-8 max-w-6xl">{otherChildren}</div>
           </main>
         </div>
       </div>

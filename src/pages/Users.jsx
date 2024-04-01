@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
@@ -88,18 +89,18 @@ const Header = () => {
         </h1>
       </div>
       <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-        <a
-          href="/users/permissions"
+        <Link
+          to="/users/permissions"
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
         >
           Manage roles
-        </a>
-        <a
-          href="/users/add"
+        </Link>
+        <Link
+          to="/users/add"
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
         >
           Add user
-        </a>
+        </Link>
       </div>
     </PageHeader>
   );

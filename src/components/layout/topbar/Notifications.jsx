@@ -1,4 +1,3 @@
-
 import { BellIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -21,55 +20,49 @@ export default function Notifications() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute divide-y right-0 z-10 mt-2 w-96 origin-top-right rounded-md bg-white pt-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-96 origin-top-right divide-y rounded-md bg-white pt-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <Menu.Item>
-            <div className="p-4 flex-1 flex justify-between">
+            <div className="flex flex-1 justify-between p-4">
               <div>
-                <p className="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm font-medium leading-5 text-gray-900">
                   Successfully saved!
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p className="mt-1 text-xs text-gray-500">
-                12mins ago
-              </p>
+              <p className="mt-1 text-xs text-gray-500">12mins ago</p>
             </div>
           </Menu.Item>
           <Menu.Item>
-            <div className="p-4 flex-1 flex justify-between">
+            <div className="flex flex-1 justify-between p-4">
               <div>
-                <p className="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm font-medium leading-5 text-gray-900">
                   Successfully saved!
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p className="mt-1 text-xs text-gray-500">
-                12mins ago
-              </p>
+              <p className="mt-1 text-xs text-gray-500">12mins ago</p>
             </div>
           </Menu.Item>
           <Menu.Item>
-            <div className="p-4 flex-1 flex justify-between">
+            <div className="flex flex-1 justify-between p-4">
               <div>
-                <p className="text-sm leading-5 font-medium text-gray-900">
+                <p className="text-sm font-medium leading-5 text-gray-900">
                   Successfully saved!
                 </p>
                 <p className="mt-1 text-xs text-gray-500">
                   Anyone with a link can now view this file.
                 </p>
               </div>
-              <p className="mt-1 text-xs text-gray-500">
-                12mins ago
-              </p>
+              <p className="mt-1 text-xs text-gray-500">12mins ago</p>
             </div>
           </Menu.Item>
           <Menu.Item>
-            <div className="bg-gray-100 px-4 py-1 rounded-b-md text-right">
-              <button className="text-xs leading-5 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline">
+            <div className="rounded-b-md bg-gray-100 px-4 py-1 text-right">
+              <button className="text-xs font-medium leading-5 text-indigo-600 hover:text-indigo-500 focus:underline focus:outline-none">
                 Read all
               </button>
             </div>
@@ -77,6 +70,5 @@ export default function Notifications() {
         </Menu.Items>
       </Transition>
     </Menu>
-  
   );
 }

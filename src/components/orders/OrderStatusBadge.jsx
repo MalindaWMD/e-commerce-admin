@@ -29,10 +29,13 @@ const statuses = {
 
 export default function OrderStatusBadge({ status }) {
   let orderStatus = statuses[status];
-  
+
   return (
     <span
-      className={ classNames('inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-xs font-medium', orderStatus.color)}
+      className={classNames(
+        "inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-xs font-medium",
+        orderStatus.color,
+      )}
     >
       <svg
         className="h-1.5 w-1.5 fill-gray-400"

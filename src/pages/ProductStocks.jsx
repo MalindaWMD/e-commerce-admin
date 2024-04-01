@@ -37,12 +37,12 @@ const tableData = {
 const Header = () => {
   return (
     <PageHeader>
-      <div className="flex-1 min-w-0">
-        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+      <div className="min-w-0 flex-1">
+        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
           Stocks details
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4"></div>
+      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
     </PageHeader>
   );
 };
@@ -52,8 +52,8 @@ export default function ProductStocks() {
     <Layout>
       <Header as="page-header" />
 
-      <div className="px-5 py-4 bg-white rounded-md shadow mb-4">
-        <h3 className="mb-4 text-xl font-bold text-gray-900 truncate">
+      <div className="mb-4 rounded-md bg-white px-5 py-4 shadow">
+        <h3 className="mb-4 truncate text-xl font-bold text-gray-900">
           Garbage bags 30L
         </h3>
         <div className="grid grid-cols-5 gap-4">

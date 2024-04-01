@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { classNames } from "../../utils/css";
 
 const HeaderColumn = ({ header, actionCol = false }) => {
@@ -54,12 +55,12 @@ const Footer = ({ footer }) => {
       </div>
       <div className="flex justify-between flex-1 sm:justify-end">
         {footer.action && (
-          <a
-            href={footer.action.href}
+          <Link
+            to={footer.action.href}
             className="text-sm font-medium text-indigo-500 hover:text-indigo-700"
           >
             {footer.action.label}
-          </a>
+          </Link>
         )}
       </div>
     </nav>
