@@ -1,4 +1,4 @@
-import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 import BasicTable from "../components/common/BasicTable";
 import Layout from "../components/layout/Layout";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
@@ -44,7 +44,7 @@ const recentOrdersTableData = {
 
 const PersonalInformation = ({ customer }) => {
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       <h2 className="mb-4 text-lg leading-6 font-medium text-gray-900">
         Personal information
       </h2>
@@ -100,7 +100,7 @@ const PersonalInformation = ({ customer }) => {
           <span className="inline-flex rounded-md shadow-sm">
             <button
               type="submit"
-              className="bg-gray-800 border border-transparent rounded-md py-1.5 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-gray-700 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray active:bg-gray-900 transition duration-150 ease-in-out"
+              className="bg-indigo-600 border border-transparent rounded-md py-1.5 px-4 inline-flex justify-center text-sm leading-5 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:border-indigo-500 active:bg-indigo-900"
             >
               Save
             </button>
@@ -113,7 +113,7 @@ const PersonalInformation = ({ customer }) => {
 
 const Orders = () => {
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       <h2 className="mb-4 text-lg leading-6 font-medium text-gray-900">
         Orders
       </h2>
@@ -152,10 +152,19 @@ const Address = ({ address }) => {
 
 const Addresses = () => {
   return (
-    <div className="mb-6">
-      <h2 className="mb-4 text-lg leading-6 font-medium text-gray-900">
-        Addresses
-      </h2>
+    <div className="mb-8">
+      <div className="flex justify-between items-center">
+        <h2 className="mb-4 text-lg leading-6 font-medium text-gray-900">
+          Addresses
+        </h2>
+        <button
+        type="button"
+        className="inline-flex items-center rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        <PlusIcon className="w-4 h-4 mr-2"/>
+        New address
+      </button>
+      </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4">
         {addresses.map((address, idx) => {
           return <Address key={'address-' + idx} address={address} />;
