@@ -154,30 +154,4 @@ export const permissions = [
       },
     ],
   },
-  {
-    group: "Reports",
-    routes: [
-      {
-        name: "reports.list",
-        displayName: "List",
-      },
-      {
-        name: "reports.create",
-        displayName: "Create",
-      },
-      {
-        name: "reports.delete",
-        displayName: "Delete",
-      },
-    ],
-  },
-  {
-    group: "Contracts",
-    routes: [
-      {
-        name: "contracts.list",
-        displayName: "List",
-      },
-    ],
-  },
 ];
