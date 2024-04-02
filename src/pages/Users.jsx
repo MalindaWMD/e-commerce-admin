@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
 import { users } from "../data/users";
-import AddUserModalSlideOver from "../components/users/AddUserSlideOver";
+import UserFormSlideOver from "../components/users/UserFormSlideOver";
+import { useEffect } from "react";
+import { isCurrentUrl } from "../utils/url";
 
-const columns = [
+const columns = (editAction) => {
+return [
   {
     name: "ID",
     sortable: true,
@@ -43,7 +46,7 @@ const columns = [
 
       return groups.map((group, idx) => {
         return (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+          <span key={'group-' + idx} className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
             {group}
           </span>
         );
@@ -67,17 +70,18 @@ const columns = [
     selector: (item) => {
       return (
         <div>
-          <a
-            href={"/users/" + item.id}
+          <button
             className="text-blue-600 mr-3 font-medium hover:text-indigo-900"
+            onClick={() => editAction(item.item?.id || item.id)}
           >
             Edit
-          </a>
+          </button>
         </div>
       );
     },
   },
 ];
+}
 
 const Header = ({ addUserAction }) => {
   return (
@@ -106,17 +110,32 @@ const Header = ({ addUserAction }) => {
 };
 
 export default function Users() {
-
-  const [openUserModal, setOpenUserModal] = useState()
-
   const searchFields = ["name", "email", "phone_no", "groups", "status"];
+
+  const [openUserForm, setOpenUserForm] = useState(false);
+  const [selectedUser, setSelectedUser] = useState();
 
   const loadUsers = () => {
     return users;
   };
 
   const addUserAction = () => {
-    setOpenUserModal( ! openUserModal)
+    setSelectedUser(null);
+    setOpenUserForm(true);
+  }
+
+  const editUserAction = (userId) => {
+    if( ! userId){
+      return;
+    }
+
+    let userObj = users.filter(user => {
+      return user.id === userId;
+    })[0];
+
+
+    setSelectedUser(userObj);
+    setOpenUserForm(true);
   }
 
   return (
@@ -124,13 +143,13 @@ export default function Users() {
       <Header as="page-header" addUserAction={addUserAction}/>
       <EDataTables
         data={users}
-        columns={columns}
+        columns={columns(editUserAction)}
         searchFields={searchFields}
         filterable={true}
         loadDataFunction={loadUsers}
       />
 
-      <AddUserModalSlideOver open={openUserModal} setOpen={setOpenUserModal}/>
+      <UserFormSlideOver open={openUserForm} setOpen={setOpenUserForm} user={selectedUser}/>
     </Layout>
   );
 }

@@ -16,6 +16,7 @@ import {
 import { classNames } from "../../utils/css";
 import { Link, useLocation } from "react-router-dom";
 import { routes } from "../../routes";
+import { isCurrentUrl } from "../../utils/url";
 
 const secondaryNavigation = [
   { name: "Settings", href: "#", icon: CogIcon },
@@ -24,18 +25,6 @@ const secondaryNavigation = [
 ];
 
 const Navigation = () => {
-  let location = useLocation();
-
-  const isCurrentUrl = (path) => {
-    if(location.pathname === path){
-      return true;
-    }
-
-    let regex = new RegExp(path + '/', 'g');
-    let found = location.pathname.match(regex);
-    return found != null;
-  };
-
   let sortedRoutes = routes.sort((a, b) => {
     a = a.ordinal;
     b = b.ordinal;

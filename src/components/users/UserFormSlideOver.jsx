@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import TagsInput from "react-tagsinput";
 import SlideOver from "../common/SlideOver";
-import { useState } from "react";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { users } from "../../data/users";
 
 const Message = ({ open }) => {
   if (!open) {
@@ -37,15 +38,19 @@ const Message = ({ open }) => {
   );
 };
 
-export default function AddUserModalSlideOver({ open, setOpen }) {
+export default function AddUserModalSlideOver({ open, setOpen, user }) {
   const [tags, setTags] = useState([]);
   const [displayMessage, setDisplayMessage] = useState(false);
 
+  useEffect(() => {
+      setTags(user?.groups || []);
+  }, [user]);
+
   const closeAction = () => {
+    setOpen(false);
     setTags([]);
     setDisplayMessage(false);
-    setOpen()
-  }
+  };
 
   return (
     <SlideOver open={open} setOpen={closeAction} title="New user">
@@ -59,6 +64,7 @@ export default function AddUserModalSlideOver({ open, setOpen }) {
           </label>
           <input
             id="first_name"
+            defaultValue={user?.name}
             className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
         </div>
@@ -71,6 +77,7 @@ export default function AddUserModalSlideOver({ open, setOpen }) {
           </label>
           <input
             id="first_name"
+            defaultValue={user?.email}
             className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
         </div>
@@ -83,6 +90,7 @@ export default function AddUserModalSlideOver({ open, setOpen }) {
           </label>
           <input
             id="first_name"
+            defaultValue={user?.phone_no}
             className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
         </div>
@@ -107,17 +115,17 @@ export default function AddUserModalSlideOver({ open, setOpen }) {
             Status
           </label>
           <select
-            defaultValue="active"
+            defaultValue={user?.status || 'active'}
             className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           >
             <option value="">Select option</option>
             <option value="active">Active</option>
-            <option value="Blocked">Blocked</option>
+            <option value="blocked">Blocked</option>
           </select>
         </div>
       </div>
 
-      <Message open={displayMessage}/>
+      <Message open={displayMessage} />
 
       <div className="flex flex-shrink-0 justify-between border-t px-4 py-4">
         <button

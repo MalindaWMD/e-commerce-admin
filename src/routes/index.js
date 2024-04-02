@@ -69,6 +69,11 @@ export const routes = [
     hidden: true,
   }),
   new Route({
+    path: "/users/edit/:id",
+    element: <Users />,
+    hidden: true,
+  }),
+  new Route({
     path: "*",
     element: <Error404/>,
     hidden: true,
