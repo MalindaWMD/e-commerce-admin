@@ -1,11 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
-import ProductTableFilters from "../components/products/ProductTableFilters";
-import { customers } from "../data/customers";
-import { products } from "../data/products";
 import { users } from "../data/users";
+import AddUserModalSlideOver from "../components/users/AddUserSlideOver";
 
 const columns = [
   {
@@ -80,7 +79,7 @@ const columns = [
   },
 ];
 
-const Header = () => {
+const Header = ({ addUserAction }) => {
   return (
     <PageHeader>
       <div className="flex-1 min-w-0">
@@ -95,27 +94,34 @@ const Header = () => {
         >
           Manage roles
         </Link>
-        <Link
-          to="/users/add"
+        <button
           className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+          onClick={addUserAction}
         >
           Add user
-        </Link>
+        </button>
       </div>
     </PageHeader>
   );
 };
 
-export default function Users(props) {
+export default function Users() {
+
+  const [openUserModal, setOpenUserModal] = useState()
+
   const searchFields = ["name", "email", "phone_no", "groups", "status"];
 
   const loadUsers = () => {
     return users;
   };
 
+  const addUserAction = () => {
+    setOpenUserModal( ! openUserModal)
+  }
+
   return (
     <Layout>
-      <Header as="page-header" />
+      <Header as="page-header" addUserAction={addUserAction}/>
       <EDataTables
         data={users}
         columns={columns}
@@ -123,6 +129,8 @@ export default function Users(props) {
         filterable={true}
         loadDataFunction={loadUsers}
       />
+
+      <AddUserModalSlideOver open={openUserModal} setOpen={setOpenUserModal}/>
     </Layout>
   );
 }
