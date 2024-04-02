@@ -21,13 +21,13 @@ const cards = [
   },
   { 
     name: "New registrations", 
-    action: "#", 
+    action: "/users", 
     icon: UserIcon, 
     amount: "143" 
   },
   {
     name: "Completed orders",
-    action: "#",
+    action: "/orders",
     icon: ArchiveBoxIcon,
     amount: "26",
     subtitle: "Past week",
@@ -54,7 +54,7 @@ const recentOrdersTableData = {
     label: "Showing up to 5 resulsts",
     action: {
       label: "View all",
-      href: "#orders",
+      href: "/orders",
     },
   },
   headers: ["ID", "Customer", "Date", "Total", "Status", ""],
@@ -85,7 +85,7 @@ const productsOnReorderLevel = {
     label: "Showing up to 5 resulsts",
     action: {
       label: "View all",
-      href: "#products",
+      href: "/products",
     },
   },
   headers: ['Product', 'Level', 'QTY'],
