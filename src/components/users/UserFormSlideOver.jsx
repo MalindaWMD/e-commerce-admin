@@ -1,54 +1,13 @@
-import { useEffect, useState } from "react";
-import TagsInput from "react-tagsinput";
+import { useState } from "react";
 import SlideOver from "../common/SlideOver";
-import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { users } from "../../data/users";
-
-const Message = ({ open }) => {
-  if (!open) {
-    return null;
-  }
-  return (
-    <div className="bg-green-300 p-4">
-      <div className="flex">
-        <div className="flex-shrink-0">
-          <CheckCircleIcon
-            className="h-5 w-5 text-green-800"
-            aria-hidden="true"
-          />
-        </div>
-        <div className="ml-3">
-          <p className="text-sm font-medium text-green-800">
-            Successfully uploaded
-          </p>
-        </div>
-        <div className="ml-auto pl-3">
-          <div className="-mx-1.5 -my-1.5">
-            <button
-              type="button"
-              className="inline-flex rounded-md  p-1.5 text-green-800 hover:bg-green-200 focus:outline-none"
-            >
-              <span className="sr-only">Dismiss</span>
-              <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import SlideOverMessage from "../common/SlideOverMessage";
+import UserGroupSelect from "./UserGroupSelect";
 
 export default function AddUserModalSlideOver({ open, setOpen, user }) {
-  const [tags, setTags] = useState([]);
   const [displayMessage, setDisplayMessage] = useState(false);
-
-  useEffect(() => {
-      setTags(user?.groups || []);
-  }, [user]);
 
   const closeAction = () => {
     setOpen(false);
-    setTags([]);
     setDisplayMessage(false);
   };
 
@@ -99,13 +58,9 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
             htmlFor="first_name"
             className="block text-sm font-medium leading-5 text-gray-700"
           >
-            Groups
+            Group
           </label>
-          <TagsInput
-            value={tags}
-            onChange={(tags) => setTags(tags)}
-            className="mt-1 block w-full  rounded-md border-0 px-2.5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-          />
+          <UserGroupSelect defaultValue={user?.group} onChange={(value) => user.group = value}/>
         </div>
         <div className="mb-4">
           <label
@@ -125,7 +80,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
         </div>
       </div>
 
-      <Message open={displayMessage} />
+      <SlideOverMessage open={displayMessage} />
 
       <div className="flex flex-shrink-0 justify-between border-t px-4 py-4">
         <button

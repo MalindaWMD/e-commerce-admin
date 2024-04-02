@@ -5,7 +5,7 @@ export const users = [
     email: "lbergen0@usatoday.com",
     status: "active",
     created_at: "2020-11-25 03:21:41",
-    groups: ["Admin"],
+    group: "admin",
     phone_no: "4266954947",
   },
   {
@@ -14,7 +14,7 @@ export const users = [
     email: "scurrall1@360.cn",
     status: "blocked",
     created_at: "2022-06-11 15:20:07",
-    groups: ["Front office"],
+    group: "front_office",
     phone_no: "6124638811",
   },
   {
@@ -23,7 +23,7 @@ export const users = [
     email: "khincks2@godaddy.com",
     status: "Active",
     created_at: "2022-09-11 03:42:06",
-    groups: ["Admin"],
+    group: "admin",
     phone_no: "2594662899",
   },
   {
@@ -32,7 +32,7 @@ export const users = [
     email: "gnacci3@joomla.org",
     status: "active",
     created_at: "2022-06-16 01:45:49",
-    groups: ["Marketing"],
+    group: "marketing",
     phone_no: "9757083282",
   },
   {
@@ -41,7 +41,7 @@ export const users = [
     email: "wdrinkhall4@ftc.gov",
     status: "active",
     created_at: "2020-08-15 11:48:45",
-    groups: ["Admin"],
+    group: "admin",
     phone_no: "5996380911",
   },
   {
@@ -50,7 +50,7 @@ export const users = [
     email: "lfoister5@guardian.co.uk",
     status: "Active",
     created_at: "2021-03-23 19:49:53",
-    groups: ["Super admin"],
+    group: "super_admin",
     phone_no: "6374420690",
   },
   {
@@ -59,7 +59,7 @@ export const users = [
     email: "gchesworth6@google.com.au",
     status: "active",
     created_at: "2021-09-19 15:22:55",
-    groups: ["Marketing"],
+    group: "marketing",
     phone_no: "5269600456",
   },
   {
@@ -68,7 +68,7 @@ export const users = [
     email: "bmcgaughay7@joomla.org",
     status: "active",
     created_at: "2020-09-15 11:54:52",
-    groups: ["Front office"],
+    group: "front_office",
     phone_no: "4214496902",
   },
   {
@@ -77,7 +77,7 @@ export const users = [
     email: "nvarga8@a8.net",
     status: "Active",
     created_at: "2021-02-07 12:58:05",
-    groups: ["Front office"],
+    group: "front_office",
     phone_no: "1533498156",
   },
   {
@@ -86,7 +86,7 @@ export const users = [
     email: "dpiller9@wsj.com",
     status: "blocked",
     created_at: "2021-01-04 06:04:11",
-    groups: ["Admin"],
+    group: "admin",
     phone_no: "1232093618",
   },
 ];

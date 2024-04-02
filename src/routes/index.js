@@ -1,4 +1,4 @@
-import { ArchiveBoxIcon, HomeIcon, UserIcon, UsersIcon } from "@heroicons/react/24/outline";
+import { ArchiveBoxIcon, HomeIcon, InboxStackIcon, UserIcon, UsersIcon } from "@heroicons/react/24/outline";
 import AddProduct from "../pages/AddProduct";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
@@ -10,6 +10,7 @@ import ViewCustomer from "../pages/ViewCustomer";
 import Users from "../pages/Users";
 import UserRoles from "../pages/UserRoles";
 import Error404 from "../pages/Error404";
+import Orders from "../pages/Orders";
 
 export const routes = [
   new Route({
@@ -26,6 +27,13 @@ export const routes = [
     hidden: false,
     display_name: 'Products',
     icon: ArchiveBoxIcon,
+    // ordinal: -1,
+  }),
+  new Route({
+    path: "/orders",
+    element: <Orders />,
+    display_name: 'Orders',
+    icon: InboxStackIcon,
     // ordinal: -1,
   }),
   new Route({
