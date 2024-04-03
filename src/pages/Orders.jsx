@@ -3,6 +3,9 @@ import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
 import { customers } from "../data/customers";
+import OrderTableFilters from "../components/orders/OrderTableFilters";
+import { orders } from "../data/orders";
+import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 
 const columns = [
   {
@@ -13,31 +16,32 @@ const columns = [
     },
   },
   {
-    name: "Name",
+    name: "Customer",
     sortable: true,
     selector: (item) => {
-      return item.item?.name || item.name;
+      return item.item?.customer || item.customer;
     },
   },
   {
-    name: "Email",
+    name: "Date",
     sortable: true,
     selector: (item) => {
-      return item.item?.email || item.email;
+      return item.item?.date || item.date;
     },
   },
   {
-    name: "Phone no",
+    name: "Total",
     sortable: true,
+    right:true,
     selector: (item) => {
-      return item.item?.phone_no || item.phone_no;
+      return '$' + (item.item?.total || item.total);
     },
   },
   {
-    name: "Order count",
+    name: "Status",
     sortable: true,
     selector: (item) => {
-      return item.item?.order_count || item.order_count;
+      return <OrderStatusBadge status={item.item?.status || item.status} />
     },
   },
   {
@@ -47,10 +51,10 @@ const columns = [
       return (
         <div>
           <Link
-            to={"/customers/" + item.id}
+            to={"/orders/" + item.id}
             className="mr-3 font-medium text-indigo-600 hover:text-indigo-900"
           >
-            View
+            Edit
           </Link>
         </div>
       );
@@ -63,7 +67,7 @@ const Header = () => {
     <PageHeader>
       <div className="min-w-0 flex-1">
         <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-          Customers
+          Orders
         </h1>
       </div>
       <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
@@ -82,10 +86,11 @@ export default function Orders(props) {
     <Layout>
       <Header as="page-header" />
       <EDataTables
-        data={customers}
+        data={orders}
         columns={columns}
         searchFields={searchFields}
         filterable={true}
+        filterComponents={OrderTableFilters}
         loadDataFunction={loadCustomers}
         className={props.classNames}
       />

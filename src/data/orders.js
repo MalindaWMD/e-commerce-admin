@@ -1,4 +1,4 @@
-export const recent_orders = [
+export const orders = [
   {
     id: "100",
     customer: "Jane Brown",
