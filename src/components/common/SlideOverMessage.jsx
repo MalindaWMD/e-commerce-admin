@@ -15,7 +15,7 @@ export default function SlideOverMessage({ open }) {
         </div>
         <div className="ml-3">
           <p className="text-sm font-medium text-green-800">
-            Successfully uploaded
+            Successfully updated
           </p>
         </div>
         <div className="ml-auto pl-3">
