@@ -69,7 +69,14 @@ const Header = () => {
           Orders
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
+      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <button
+          type="button"
+          className="rounded-md bg-cyan-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+        >
+          Export all
+          </button>
+      </div>
     </PageHeader>
   );
 };
