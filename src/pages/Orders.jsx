@@ -6,7 +6,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
-  useReactTable
+  useReactTable,
 } from "@tanstack/react-table";
 import Table from "../components/common/Table";
 import Layout from "../components/layout/Layout";
@@ -14,6 +14,7 @@ import PageHeader from "../components/layout/PageHeader";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import OrderTableFilters from "../components/orders/OrderTableFilters";
 import { orders } from "../data/orders";
+import { PrinterIcon } from "@heroicons/react/24/outline";
 
 const columnHelper = createColumnHelper();
 
@@ -96,6 +97,16 @@ const Header = ({ selected }) => {
         </h1>
       </div>
       <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+        {selectedCount > 0 && (
+          <button
+            type="button"
+            className="inline-flex rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          >
+            <PrinterIcon className="mr-2 h-5 w-5 text-gray-600" />
+            Print labels
+          </button>
+        )}
+
         <button
           type="button"
           className="rounded-md bg-cyan-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
@@ -115,7 +126,7 @@ export default function Orders(props) {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
-  })
+  });
 
   const table = useReactTable({
     columns,
@@ -149,7 +160,7 @@ export default function Orders(props) {
       />
 
       <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-        <Table table={table}/>
+        <Table table={table} />
       </div>
     </Layout>
   );
