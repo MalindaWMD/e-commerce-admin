@@ -1,58 +1,111 @@
-import {
-  ArrowPathIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+import { useRef } from "react";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import moment from "moment";
+import ReactDatePicker from "react-datepicker";
+import "../../styles/datepicker.css";
 
-export default function ProductTableFilters() {
+export default function ProductTableFilters({
+  filters,
+  setFilters,
+  globalFilter,
+  setGlobalFilter,
+}) {
+  const formRef = useRef();
+
+  const setFilterValue = (key, value) => {
+    setFilters([
+      ...filters,
+      {
+        id: key,
+        value: value,
+      },
+    ]);
+  };
+
+  const resetFilters = (e) => {
+    e.preventDefault();
+
+    setFilters([]);
+    formRef.current.reset();
+  };
+
   return (
-    <div className="grid grid-cols-4 gap-4">
-      <div className="">
+    <form className="mb-4 grid grid-cols-5 gap-4" ref={formRef}>
+      <div>
         <label
-          htmlFor="first-name"
+          htmlFor="search-all"
           className="block text-sm font-medium leading-6 text-gray-900"
         >
-          Stock level
+          Search
         </label>
-        <div className="mt-2">
-          <select
-            name=""
-            id=""
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-          >
-            <option value="">All</option>
-            <option value="">Re-order level</option>
-            <option value="">Buffer level</option>
-          </select>
-        </div>
+        <input
+          id="search-all"
+          type="text"
+          value={globalFilter}
+          className="mt-1 block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          onChange={(e) => setGlobalFilter(e.target.value)}
+        />
+      </div>
+      <div>
+        <label
+          htmlFor="filter-status"
+          className="block text-sm font-medium leading-6 text-gray-900"
+        >
+          Product Status
+        </label>
+        <select
+          id="filter-status"
+          className="mt-1 block  w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          onChange={(e) => setFilterValue("status", e.target.value)}
+        >
+          <option value=""></option>
+          <option value="active">Active</option>
+          <option value="draft">Draft</option>
+        </select>
+      </div>
+      <div>
+        <label
+          htmlFor="filter-category"
+          className="block text-sm font-medium leading-6 text-gray-900"
+        >
+          Category
+        </label>
+        <select
+          id="filter-status"
+          className="mt-1 block  w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          onChange={(e) => setFilterValue("category", e.target.value)}
+        >
+          <option value=""></option>
+          <option value="Other cleaning items">Other cleaning items</option>
+        </select>
       </div>
 
-      <div className="">
+      <div>
         <label
-          htmlFor="first-name"
+          htmlFor="filter-brand"
           className="block text-sm font-medium leading-6 text-gray-900"
         >
-          Status
+          Brand
         </label>
-        <div className="mt-2">
-          <select
-            name=""
-            id=""
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-          >
-            <option value="">All</option>
-            <option value="">Active</option>
-            <option value="">Draft</option>
-          </select>
-        </div>
+        <select
+          id="filter-status"
+          className="mt-1 block  w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          onChange={(e) => setFilterValue("brand", e.target.value)}
+        >
+          <option value=""></option>
+          <option value="Common">Common</option>
+        </select>
       </div>
-      <div className="">
-        <button className="mt-8 items-center rounded-md border border-transparent bg-primary-600 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-          <MagnifyingGlassIcon className="h-5 w-5" />
-        </button>
-        <button className="ml-4 mt-8 items-center rounded-md border border-transparent bg-gray-500 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+
+      <div>
+        <button
+          type="button"
+          className="mt-7 items-center rounded-md border border-transparent bg-gray-500 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          onClick={resetFilters}
+        >
           <ArrowPathIcon className="h-5 w-5" />
         </button>
       </div>
-    </div>
+    </form>
   );
 }
