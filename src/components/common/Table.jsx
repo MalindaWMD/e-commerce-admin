@@ -85,7 +85,7 @@ export default function Table({ table, paginated = false }) {
                 return (
                   <td
                     key={cell.id}
-                    className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                    className="whitespace-nowrap px-3 py-4 text-sm text-gray-600"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
