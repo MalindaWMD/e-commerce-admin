@@ -1,67 +1,92 @@
+import { useState } from "react";
+import { rankItem } from "@tanstack/match-sorter-utils";
 import { Link } from "react-router-dom";
-import EDataTables from "../components/extended/EDataTable";
+import {
+  createColumnHelper,
+  getCoreRowModel,
+  getFilteredRowModel,
+  useReactTable
+} from "@tanstack/react-table";
+import Table from "../components/common/Table";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
+import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import OrderTableFilters from "../components/orders/OrderTableFilters";
 import { orders } from "../data/orders";
-import OrderStatusBadge from "../components/orders/OrderStatusBadge";
+
+const columnHelper = createColumnHelper();
 
 const columns = [
   {
-    name: "ID",
-    sortable: true,
-    selector: (item) => {
-      return item.item?.id || item.id;
-    },
-  },
-  {
-    name: "Customer",
-    sortable: true,
-    selector: (item) => {
-      return item.item?.customer || item.customer;
-    },
-  },
-  {
-    name: "Date",
-    sortable: true,
-    selector: (item) => {
-      return item.item?.date || item.date;
-    },
-  },
-  {
-    name: "Total",
-    sortable: true,
-    right:true,
-    selector: (item) => {
-      return '$' + (item.item?.total || item.total);
-    },
-  },
-  {
-    name: "Status",
-    sortable: true,
-    selector: (item) => {
-      return <OrderStatusBadge status={item.item?.status || item.status} />
-    },
-  },
-  {
-    name: "",
-    sortable: false,
-    selector: (item) => {
+    id: "select",
+    header: ({ table }) => {
       return (
-        <div>
-          <Link
-            to={"/orders/" + item.id}
-            className="mr-3 font-medium text-indigo-600 hover:text-indigo-900"
-          >
-            Edit
-          </Link>
+        <div className="text-center">
+          <input
+            type="checkbox"
+            className="h-4 w-4 rounded border-gray-400 text-indigo-600 focus:ring-indigo-600"
+            onChange={table.getToggleAllRowsSelectedHandler()}
+            checked={table.getIsAllRowsSelected()}
+          />
         </div>
       );
     },
+    cell: ({ row }) => (
+      <div className="text-center">
+        <input
+          type="checkbox"
+          className="h-4 w-4 rounded border-gray-400 text-indigo-600 focus:ring-indigo-600"
+          onChange={row.getToggleSelectedHandler()}
+          checked={row.getIsSelected()}
+        />
+      </div>
+    ),
+  },
+  columnHelper.accessor("id", {
+    header: () => <span>#</span>,
+    cell: (item) => item.getValue(),
+  }),
+  columnHelper.accessor("customer", {
+    header: () => <span>Customer</span>,
+    cell: (item) => item.getValue(),
+  }),
+  columnHelper.accessor("date", {
+    header: () => <div className="w-16">Date</div>,
+    cell: (item) => <div className="w-16">{item.getValue()}</div>,
+  }),
+  columnHelper.accessor("total", {
+    header: () => <div className="text-center">Total</div>,
+    cell: (item) => <div className="pr-8 text-right">${item.getValue()}</div>,
+  }),
+  columnHelper.accessor("status", {
+    header: () => <span>Status</span>,
+    cell: (item) => <OrderStatusBadge status={item.getValue()} />,
+  }),
+  {
+    id: "actions",
+    header: null,
+    cell: ({ row }) => (
+      <Link
+        to={"/orders/" + row.original.id}
+        className="mr-3 font-medium text-indigo-600 hover:text-indigo-900"
+      >
+        Edit
+      </Link>
+    ),
   },
 ];
 
-const Header = () => {
+const fuzzyFilter = (row, columnId, value, addMeta) => {
+  const itemRank = rankItem(row.getValue(columnId), value);
+  addMeta({
+    itemRank,
+  });
+  return itemRank.passed;
+};
+
+const Header = ({ selected }) => {
+  const selectedCount = Object.keys(selected).length;
+
   return (
     <PageHeader>
       <div className="min-w-0 flex-1">
@@ -70,36 +95,54 @@ const Header = () => {
         </h1>
       </div>
       <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
-      <button
+        <button
           type="button"
           className="rounded-md bg-cyan-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
         >
-          Export all
-          </button>
+          Export {selectedCount > 0 ? selectedCount : "all"}
+        </button>
       </div>
     </PageHeader>
   );
 };
 
 export default function Orders(props) {
-  const searchFields = ["name", "email", "phone_no"];
+  let data = orders;
 
-  const loadOrders = () => {
-    return orders;
-  };
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [columnFilters, setColumnFilters] = useState([]);
+
+  const table = useReactTable({
+    columns,
+    data,
+    filterFns: {
+      fuzzy: fuzzyFilter,
+    },
+    state: {
+      globalFilter,
+      columnFilters,
+    },
+    globalFilterFn: fuzzyFilter,
+    onColumnFiltersChange: setColumnFilters,
+    onGlobalFilterChange: setGlobalFilter,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+  });
 
   return (
     <Layout>
-      <Header as="page-header" />
-      <EDataTables
-        data={orders}
-        columns={columns}
-        searchFields={searchFields}
-        filterable={true}
-        filterComponents={OrderTableFilters}
-        loadDataFunction={loadOrders}
-        className={props.classNames}
+      <Header as="page-header" selected={table.getState().rowSelection} />
+
+      <OrderTableFilters
+        filters={columnFilters}
+        setFilters={setColumnFilters}
+        globalFilter={globalFilter}
+        setGlobalFilter={setGlobalFilter}
       />
+
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+        <Table table={table} />
+      </div>
     </Layout>
   );
 }
