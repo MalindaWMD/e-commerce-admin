@@ -15,8 +15,10 @@ import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import OrderTableFilters from "../components/orders/OrderTableFilters";
 import { orders } from "../data/orders";
 import { PrinterIcon } from "@heroicons/react/24/outline";
+import { fuzzyFilter } from "../utils/table";
 
 const columnHelper = createColumnHelper();
+
 
 const columns = [
   {
@@ -77,14 +79,6 @@ const columns = [
     ),
   },
 ];
-
-const fuzzyFilter = (row, columnId, value, addMeta) => {
-  const itemRank = rankItem(row.getValue(columnId), value);
-  addMeta({
-    itemRank,
-  });
-  return itemRank.passed;
-};
 
 const Header = ({ selected }) => {
   const selectedCount = Object.keys(selected).length;
