@@ -5,6 +5,7 @@ import {
   createColumnHelper,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable
 } from "@tanstack/react-table";
 import Table from "../components/common/Table";
@@ -111,6 +112,10 @@ export default function Orders(props) {
 
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState([]);
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  })
 
   const table = useReactTable({
     columns,
@@ -121,12 +126,15 @@ export default function Orders(props) {
     state: {
       globalFilter,
       columnFilters,
+      pagination,
     },
     globalFilterFn: fuzzyFilter,
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
@@ -141,7 +149,7 @@ export default function Orders(props) {
       />
 
       <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-        <Table table={table} />
+        <Table table={table}/>
       </div>
     </Layout>
   );

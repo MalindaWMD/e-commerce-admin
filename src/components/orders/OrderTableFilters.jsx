@@ -1,11 +1,8 @@
-import {
-  ArrowPathIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import moment from "moment";
 import ReactDatePicker from "react-datepicker";
 import "../../styles/datepicker.css";
-import moment from "moment";
 
 export default function OrderTableFilters({ filters, setFilters, globalFilter, setGlobalFilter }) {
   const formRef = useRef();
