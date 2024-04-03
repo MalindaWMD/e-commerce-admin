@@ -57,7 +57,7 @@ export default function OrderItems({ items }) {
             </div>
             <div className="flex items-center justify-between pt-2">
               <dt className="font-medium text-gray-900">Order total</dt>
-              <dd className="font-medium text-indigo-600">$83.16</dd>
+              <dd className="font-bold text-indigo-600">$83.16</dd>
             </div>
           </dl>
         </div>

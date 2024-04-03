@@ -26,7 +26,7 @@ export default function OrderTimeline({ timeline }) {
                 <span className="font-medium text-gray-900">
                   {activityItem.person.name}
                 </span>{" "}
-                {activityItem.type} the invoice.
+                {activityItem.type} the order.
               </p>
               <time
                 dateTime={activityItem.dateTime}

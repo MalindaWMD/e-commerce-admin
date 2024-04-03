@@ -1,7 +1,7 @@
 export const order_activity = [
   {
     id: 1,
-    type: "created",
+    type: "placed",
     person: { name: "Customer name" },
     dateTime: "2024-04-01T10:32",
   },
