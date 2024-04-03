@@ -13,6 +13,9 @@ import Error404 from "../pages/Error404";
 import Orders from "../pages/Orders";
 import OrderDetails from "../pages/OrderDetails";
 import Promotions from "../pages/Promotions";
+import Login from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
 
 export const routes = [
   new Route({
@@ -93,6 +96,21 @@ export const routes = [
   new Route({
     path: "/orders/:id",
     element: <OrderDetails />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/login",
+    element: <Login />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/reset-password",
+    element: <ResetPassword />,
     hidden: true,
   }),
 
