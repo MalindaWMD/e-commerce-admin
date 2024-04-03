@@ -1,16 +1,17 @@
-import { ArrowLeftIcon, PrinterIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ArrowLeftIcon, PrinterIcon } from "@heroicons/react/24/outline";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
-import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import DeliveryInformation from "../components/orders/DeliveryInformation";
 import OrderItems from "../components/orders/OrderItems";
+import OrderNotes from "../components/orders/OrderNotes";
+import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import OrderTimeline from "../components/orders/OrderTimeline";
 import TrackingInformation from "../components/orders/TrackingInformation";
 import { order_activity } from "../data/order_activity";
-import { products } from "../data/products";
 import { orders } from "../data/orders";
+import { products } from "../data/products";
 
 const Header = ({ order }) => {
   if (!order) {
@@ -88,6 +89,7 @@ export default function OrderDetails(props) {
         </div>
         <div>
           <TrackingInformation order={order} />
+          <OrderNotes />
         </div>
       </div>
     </Layout>
