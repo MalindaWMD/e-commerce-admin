@@ -12,7 +12,6 @@ import {
 
 const suggestions = [
   { id: 1, name: "Users", url: "/users" },
-  { id: 2, name: "Add user", url: "/users/add" },
   { id: 3, name: "Manage user roles", url: "/users/permissions" },
   { id: 4, name: "Completed orders", url: "/orders?status=delivered" },
   { id: 5, name: "Product details", url: "/products" },
