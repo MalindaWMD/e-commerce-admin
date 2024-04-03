@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import EDataTables from "../components/extended/EDataTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
-import { customers } from "../data/customers";
 import OrderTableFilters from "../components/orders/OrderTableFilters";
 import { orders } from "../data/orders";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
@@ -78,8 +77,8 @@ const Header = () => {
 export default function Orders(props) {
   const searchFields = ["name", "email", "phone_no"];
 
-  const loadCustomers = () => {
-    return customers;
+  const loadOrders = () => {
+    return orders;
   };
 
   return (
@@ -91,7 +90,7 @@ export default function Orders(props) {
         searchFields={searchFields}
         filterable={true}
         filterComponents={OrderTableFilters}
-        loadDataFunction={loadCustomers}
+        loadDataFunction={loadOrders}
         className={props.classNames}
       />
     </Layout>

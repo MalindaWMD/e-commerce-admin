@@ -73,7 +73,7 @@ const columns = [
             Stocks
           </Link>
           <Link
-            to={`/products/edit/${item.id}`}
+            to={`/products/${item.id}`}
             className="font-medium text-indigo-600 hover:text-indigo-900"
           >
             Edit

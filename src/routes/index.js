@@ -11,6 +11,7 @@ import Users from "../pages/Users";
 import UserRoles from "../pages/UserRoles";
 import Error404 from "../pages/Error404";
 import Orders from "../pages/Orders";
+import OrderDetails from "../pages/OrderDetails";
 
 export const routes = [
   new Route({
@@ -57,7 +58,7 @@ export const routes = [
     hidden: true,
   }),
   new Route({
-    path: "/products/edit/:id",
+    path: "/products/:id",
     element: <EditProduct />,
     hidden: true,
   }),
@@ -81,6 +82,13 @@ export const routes = [
     element: <Users />,
     hidden: true,
   }),
+  new Route({
+    path: "/orders/:id",
+    element: <OrderDetails />,
+    hidden: true,
+  }),
+
+
   new Route({
     path: "*",
     element: <Error404/>,
