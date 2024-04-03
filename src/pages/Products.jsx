@@ -1,9 +1,3 @@
-import { Link } from "react-router-dom";
-import EDataTables from "../components/extended/EDataTable";
-import Layout from "../components/layout/Layout";
-import PageHeader from "../components/layout/PageHeader";
-import ProductTableFilters from "../components/products/ProductTableFilters";
-import { products } from "../data/products";
 import {
   createColumnHelper,
   getCoreRowModel,
@@ -12,8 +6,13 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { fuzzyFilter } from "../utils/table";
+import { Link } from "react-router-dom";
 import Table from "../components/common/Table";
+import Layout from "../components/layout/Layout";
+import PageHeader from "../components/layout/PageHeader";
+import ProductTableFilters from "../components/products/ProductTableFilters";
+import { products } from "../data/products";
+import { fuzzyFilter } from "../utils/table";
 
 const columnHelper = createColumnHelper();
 
@@ -164,7 +163,6 @@ export default function Products(props) {
   return (
     <Layout>
       <Header as="page-header" selected={table.getState().rowSelection} />
-
 
       <ProductTableFilters
         filters={columnFilters}

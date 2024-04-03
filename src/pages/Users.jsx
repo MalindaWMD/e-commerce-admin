@@ -1,83 +1,70 @@
+import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import EDataTables from "../components/extended/EDataTable";
+import { Link } from "react-router-dom";
+import Table from "../components/common/Table";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
-import { users } from "../data/users";
 import UserFormSlideOver from "../components/users/UserFormSlideOver";
-import { useEffect } from "react";
-import { isCurrentUrl } from "../utils/url";
-import { user_groups } from "../data/user_groups";
+import { users } from "../data/users";
+import { fuzzyFilter } from "../utils/table";
 import { getGroupFromValue } from "../utils/users";
+import { user_groups } from "../data/user_groups";
 
-const columns = (editAction) => {
+const columnHelper = createColumnHelper();
+
+const getColumns = (editAction) => {
   return [
-    {
-      name: "ID",
-      sortable: true,
-      selector: (item) => {
-        return item.item?.id || item.id;
-      },
-    },
-    {
-      name: "Name",
-      sortable: true,
-      selector: (item) => {
-        return item.item?.name || item.name;
-      },
-    },
-    {
-      name: "Email",
-      sortable: true,
-      selector: (item) => {
-        return item.item?.email || item.email;
-      },
-    },
-    {
-      name: "Phone no",
-      sortable: true,
-      selector: (item) => {
-        return item.item?.phone_no || item.phone_no;
-      },
-    },
-    {
-      name: "group",
-      sortable: true,
-      selector: (item) => (
+    columnHelper.accessor("id", {
+      header: () => <span>ID</span>,
+      cell: (item) => item.getValue(),
+    }),
+    columnHelper.accessor("name", {
+      header: () => <span>Name</span>,
+      cell: (item) => item.getValue(),
+    }),
+    columnHelper.accessor("email", {
+      header: () => <span>Email</span>,
+      cell: (item) => item.getValue(),
+    }),
+    columnHelper.accessor("phone_no", {
+      header: () => <span>Phone no</span>,
+      cell: (item) => item.getValue(),
+    }),
+    columnHelper.accessor("group", {
+      header: () => <span>Group</span>,
+      cell: (item) => (
         <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-          {getGroupFromValue(item.item?.group || item.group, user_groups)?.label}
-        </span>
+            {getGroupFromValue(item.getValue(), user_groups)?.label}
+          </span>
+      ),
+    }),
+    columnHelper.accessor("created_at", {
+      header: () => <span>Created at</span>,
+      cell: (item) => item.getValue(),
+    }),
+    columnHelper.accessor("status", {
+      header: () => <span>Status</span>,
+      cell: (item) => (
+        <div className="inline-flex items-center rounded-md bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
+              {item.getValue()}
+            </div>
+      ),
+    }),
+    {
+      id: "actions",
+      header: null,
+      cell: ({ row }) => (
+        <button
+                className="mr-3 font-medium text-blue-600 hover:text-indigo-900"
+                onClick={() => editAction(row.original.id)}
+              >
+                Edit
+              </button>
       ),
     },
-    {
-      name: "Status",
-      sortable: true,
-      selector: (item) => {
-        return (
-          <div className="inline-flex items-center rounded-md bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
-            {item.item?.status || item.status}
-          </div>
-        );
-      },
-    },
-    {
-      name: "",
-      sortable: false,
-      selector: (item) => {
-        return (
-          <div>
-            <button
-              className="mr-3 font-medium text-blue-600 hover:text-indigo-900"
-              onClick={() => editAction(item.item?.id || item.id)}
-            >
-              Edit
-            </button>
-          </div>
-        );
-      },
-    },
   ];
-};
+}
+
 
 const Header = ({ addUserAction }) => {
   return (
@@ -106,14 +93,17 @@ const Header = ({ addUserAction }) => {
 };
 
 export default function Users() {
-  const searchFields = ["name", "email", "phone_no", "group", "status"];
+    let data = users;
 
   const [openUserForm, setOpenUserForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState();
 
-  const loadUsers = () => {
-    return users;
-  };
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [columnFilters, setColumnFilters] = useState([]);
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  });
 
   const addUserAction = () => {
     setSelectedUser(null);
@@ -133,16 +123,35 @@ export default function Users() {
     setOpenUserForm(true);
   };
 
+  let columns = getColumns(editUserAction);
+
+  const table = useReactTable({
+    columns,
+    data,
+    filterFns: {
+      fuzzy: fuzzyFilter,
+    },
+    state: {
+      globalFilter,
+      columnFilters,
+      pagination,
+    },
+    globalFilterFn: fuzzyFilter,
+    onColumnFiltersChange: setColumnFilters,
+    onGlobalFilterChange: setGlobalFilter,
+    onPaginationChange: setPagination,
+    getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
+
   return (
     <Layout>
       <Header as="page-header" addUserAction={addUserAction} />
-      <EDataTables
-        data={users}
-        columns={columns(editUserAction)}
-        searchFields={searchFields}
-        filterable={true}
-        loadDataFunction={loadUsers}
-      />
+      
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+        <Table table={table} />
+      </div>
 
       <UserFormSlideOver
         open={openUserForm}

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { rankItem } from "@tanstack/match-sorter-utils";
 import { Link } from "react-router-dom";
 import {
   createColumnHelper,
@@ -18,7 +17,6 @@ import { PrinterIcon } from "@heroicons/react/24/outline";
 import { fuzzyFilter } from "../utils/table";
 
 const columnHelper = createColumnHelper();
-
 
 const columns = [
   {
