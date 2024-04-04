@@ -23,11 +23,6 @@ const supportNavigation = [
     href: "/documentation",
     icon: QuestionMarkCircleIcon,
   },
-  {
-    name: "Components",
-    href: "/documentation/components",
-    icon: RectangleGroupIcon,
-  }
 ];
 
 const Navigation = () => {
@@ -122,7 +117,7 @@ export default function Sidebar({ open, setOpen }) {
                 <div className="flex flex-shrink-0 items-center px-4">
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+                    src="/images/logo-full-light.svg"
                     alt="Easywire logo"
                   />
                 </div>
@@ -172,7 +167,7 @@ export default function Sidebar({ open, setOpen }) {
           <div className="flex flex-shrink-0 items-center px-4">
             <img
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+              src="/images/logo-full-light.svg"
               alt="Easywire logo"
             />
           </div>

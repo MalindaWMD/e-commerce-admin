@@ -86,13 +86,7 @@ const columns = [
     cell: ({ row }) => (
       <>
         <Link
-          to={"/products/" + row.original.id + "/stocks"}
-          className="mr-3 font-medium text-green-600 hover:text-primary-900"
-        >
-          Stocks
-        </Link>
-        <Link
-          to={"/orders/" + row.original.id}
+          to={"/products/" + row.original.id}
           className="mr-3 font-medium text-primary-600 hover:text-primary-900"
         >
           Edit

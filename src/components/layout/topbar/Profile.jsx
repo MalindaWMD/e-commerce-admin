@@ -11,7 +11,7 @@ export default function Profile() {
         <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
           <span className="absolute -inset-1.5 lg:hidden" />
           <span className="ml-3 hidden text-sm font-medium text-gray-700 lg:block">
-            <span className="sr-only">Open user menu for </span>John Doe
+            <span className="sr-only">Open user menu for </span>Linea Bergen
           </span>
           <ChevronDownIcon
             className="ml-1 hidden h-5 w-5 flex-shrink-0 text-gray-400 lg:block"
@@ -29,32 +29,6 @@ export default function Profile() {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <Menu.Item>
-            {({ active }) => (
-              <Link
-                to="#"
-                className={classNames(
-                  active ? "bg-gray-100" : "",
-                  "block px-4 py-2 text-sm text-gray-700",
-                )}
-              >
-                Your Profile
-              </Link>
-            )}
-          </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <Link
-                to="#"
-                className={classNames(
-                  active ? "bg-gray-100" : "",
-                  "block px-4 py-2 text-sm text-gray-700",
-                )}
-              >
-                Settings
-              </Link>
-            )}
-          </Menu.Item>
           <Menu.Item>
             {({ active }) => (
               <a

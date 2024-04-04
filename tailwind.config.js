@@ -4,7 +4,6 @@ module.exports = {
     "./src/**/*.{html,js,jsx}"
   ],
   theme: {
-    extend: {},
     colors: ({colors}) => ({
       ...colors,
       'primary': colors.indigo,
@@ -13,6 +12,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
   ],
 }
 

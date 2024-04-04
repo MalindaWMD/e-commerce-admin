@@ -18,6 +18,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import Settings from "../pages/Settings";
 import Components from "../documentation/pages/Components";
+import Documentation from "../documentation/pages/Documentation";
 
 export const routes = [
   new Route({
@@ -26,7 +27,6 @@ export const routes = [
     hidden: false,
     display_name: 'Home',
     icon: HomeIcon,
-    // ordinal: -1,
   }),
   new Route({
     path: "/products",
@@ -34,7 +34,6 @@ export const routes = [
     hidden: false,
     display_name: 'Products',
     icon: ArchiveBoxIcon,
-    // ordinal: -1,
   }),
   new Route({
     path: "/orders",
@@ -48,21 +47,18 @@ export const routes = [
     element: <Customers />,
     display_name: 'Customers',
     icon: UsersIcon,
-    // ordinal: -1,
   }),
   new Route({
     path: "/users",
     element: <Users />,
     display_name: 'Users',
     icon: UserIcon,
-    // ordinal: -1,
   }),
   new Route({
     path: "/promotions",
     element: <Promotions />,
     display_name: 'Promotions',
     icon: TicketIcon,
-    // ordinal: -1,
   }),
   
 
@@ -126,6 +122,11 @@ export const routes = [
    * Documentation routes
    * TODO: remove
    */
+  new Route({
+    path: "/documentation",
+    element: <Documentation />,
+    hidden: true,
+  }),
   new Route({
     path: "/documentation/components",
     element: <Components />,

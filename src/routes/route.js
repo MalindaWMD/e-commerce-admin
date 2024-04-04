@@ -22,8 +22,6 @@ export default function Route (porps) {
         private: false,
         icon: null,
         hidden: false,
-        ordinal: -1,
-        index: true,
     }
 
     return {...options, ...porps};
