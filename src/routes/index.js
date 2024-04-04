@@ -17,6 +17,7 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import Settings from "../pages/Settings";
+import Components from "../documentation/pages/Components";
 
 export const routes = [
   new Route({
@@ -118,6 +119,16 @@ export const routes = [
   new Route({
     path: "/settings",
     element: <Settings />,
+    hidden: true,
+  }),
+
+  /**
+   * Documentation routes
+   * TODO: remove
+   */
+  new Route({
+    path: "/documentation/components",
+    element: <Components />,
     hidden: true,
   }),
 

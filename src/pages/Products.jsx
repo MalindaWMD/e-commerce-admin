@@ -24,7 +24,7 @@ const columns = [
         <div className="text-center">
           <input
             type="checkbox"
-            className="h-4 w-4 rounded border-gray-400 text-indigo-600 focus:ring-indigo-600"
+            className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
             onChange={table.getToggleAllRowsSelectedHandler()}
             checked={table.getIsAllRowsSelected()}
           />
@@ -35,7 +35,7 @@ const columns = [
       <div className="text-center">
         <input
           type="checkbox"
-          className="h-4 w-4 rounded border-gray-400 text-indigo-600 focus:ring-indigo-600"
+          className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
           onChange={row.getToggleSelectedHandler()}
           checked={row.getIsSelected()}
         />
@@ -67,7 +67,7 @@ const columns = [
     cell: (item) => {
       if (item.getValue() === "active") {
         return (
-          <span className="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-800">
+          <span className="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800">
             Active
           </span>
         );
@@ -87,13 +87,13 @@ const columns = [
       <>
         <Link
           to={"/products/" + row.original.id + "/stocks"}
-          className="mr-3 font-medium text-green-600 hover:text-indigo-900"
+          className="mr-3 font-medium text-green-600 hover:text-primary-900"
         >
           Stocks
         </Link>
         <Link
           to={"/orders/" + row.original.id}
-          className="mr-3 font-medium text-indigo-600 hover:text-indigo-900"
+          className="mr-3 font-medium text-primary-600 hover:text-primary-900"
         >
           Edit
         </Link>
@@ -115,13 +115,13 @@ const Header = ({ selected }) => {
       <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
         <Link
           to="/products/add"
-          className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
         >
           Add product
         </Link>
         <button
           type="button"
-          className="rounded-md bg-cyan-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>

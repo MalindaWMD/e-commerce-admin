@@ -35,7 +35,7 @@
 }
 
 .react-tagsinput--focused{
-    @apply ring-2 ring-inset ring-indigo-600;
+    @apply ring-2 ring-inset ring-primary-600;
 }
 
 .react-tagsinput-input{

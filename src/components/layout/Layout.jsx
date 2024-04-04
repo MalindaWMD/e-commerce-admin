@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   let otherChildren = [];
 
   Children.forEach(children, (child, index) => {
-    if (child.type.name === "PageHeader" || child.props?.as === "page-header") {
+    if (child.type?.name === "PageHeader" || child.props?.as === "page-header") {
       pageHeaderChild = child;
     } else {
       otherChildren.push(child);

@@ -53,14 +53,14 @@ export default function UserRoles() {
                             name="name"
                             id="name"
                             autoComplete="off"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                             placeholder="Role Name"
                           />
                         </div>
                       </div>
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-indigo-500 bg-indigo-500 px-3.5 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
+                        className="inline-flex justify-center rounded-md border border-primary-500 bg-primary-500 px-3.5 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700"
                       >
                         Create
                       </button>
@@ -83,7 +83,7 @@ export default function UserRoles() {
                               <div
                                 className={classNames(
                                   selectedRole && selectedRole === role
-                                    ? "bg-indigo-600 text-white"
+                                    ? "bg-primary-600 text-white"
                                     : "text-gray-900 hover:bg-gray-50",
                                   "relative flex items-center space-x-3 px-6 py-3 ",
                                 )}
@@ -131,7 +131,7 @@ export default function UserRoles() {
                                         <input
                                           name={permission.name}
                                           type="checkbox"
-                                          className="mr-3 h-4 w-4 rounded border-gray-300 text-indigo-600 outline-none focus:outline-none"
+                                          className="mr-3 h-4 w-4 rounded border-gray-300 text-primary-600 outline-none focus:outline-none"
                                         />
                                         <span>{permission.displayName}</span>
                                       </label>
@@ -153,7 +153,7 @@ export default function UserRoles() {
                   <div className="w-full bg-gray-50 px-4 py-3 text-right sm:px-6">
                     <button
                       type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     >
                       Save
                     </button>

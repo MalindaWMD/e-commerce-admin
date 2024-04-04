@@ -55,7 +55,7 @@ const getColumns = (editAction) => {
       header: null,
       cell: ({ row }) => (
         <button
-                className="mr-3 font-medium text-blue-600 hover:text-indigo-900"
+                className="mr-3 font-medium text-blue-600 hover:text-primary-900"
                 onClick={() => editAction(row.original.id)}
               >
                 Edit
@@ -77,12 +77,12 @@ const Header = ({ addUserAction }) => {
       <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
         <Link
           to="/users/permissions"
-          className="focus:ring-primary-500 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
         >
           Manage roles
         </Link>
         <button
-          className="inline-flex items-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
           onClick={addUserAction}
         >
           Add user

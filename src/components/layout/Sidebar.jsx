@@ -1,7 +1,10 @@
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Disclosure, Transition } from "@headlessui/react";
 import {
+  ChevronRightIcon,
   CogIcon,
+  InboxIcon,
   QuestionMarkCircleIcon,
+  RectangleGroupIcon,
   XMarkIcon
 } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
@@ -12,7 +15,19 @@ import { isCurrentUrl } from "../../utils/url";
 
 const secondaryNavigation = [
   { name: "Settings", href: "/settings", icon: CogIcon },
-  { name: "Help", href: "/help", icon: QuestionMarkCircleIcon },
+];
+
+const supportNavigation = [
+  {
+    name: "Documentation",
+    href: "/documentation",
+    icon: QuestionMarkCircleIcon,
+  },
+  {
+    name: "Components",
+    href: "/documentation/components",
+    icon: RectangleGroupIcon,
+  }
 ];
 
 const Navigation = () => {
@@ -124,14 +139,12 @@ export default function Sidebar({ open, setOpen }) {
                         <Link
                           key={item.name}
                           to={item.href}
-                          className={
-                            classNames(
-                              isCurrentUrl(item.href)
+                          className={classNames(
+                            isCurrentUrl(item.href)
                               ? "bg-cyan-800 text-white"
                               : "text-cyan-100",
-                              "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
-                            )
-                          }
+                            "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white",
+                          )}
                         >
                           <item.icon
                             className="mr-4 h-5 w-5 text-cyan-200"
@@ -168,7 +181,7 @@ export default function Sidebar({ open, setOpen }) {
             aria-label="Sidebar"
           >
             <div className="space-y-1 px-2">
-             <Navigation />
+              <Navigation />
             </div>
             <div className="mt-6 pt-6">
               <div className="space-y-1 px-2">
@@ -176,14 +189,36 @@ export default function Sidebar({ open, setOpen }) {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={
-                      classNames(
-                        isCurrentUrl(item.href)
+                    className={classNames(
+                      isCurrentUrl(item.href)
                         ? "bg-cyan-800 text-white"
                         : "text-cyan-100",
-                        "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
-                      )
-                    }
+                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white",
+                    )}
+                  >
+                    <item.icon
+                      className="mr-4 h-6 w-6 text-cyan-200"
+                      aria-hidden="true"
+                    />
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Documentation routes */}
+            <div className="mt-6 pt-6">
+              <div className="space-y-1 px-2">
+              {supportNavigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={classNames(
+                      isCurrentUrl(item.href)
+                        ? "bg-cyan-800 text-white"
+                        : "text-cyan-100",
+                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white",
+                    )}
                   >
                     <item.icon
                       className="mr-4 h-6 w-6 text-cyan-200"
