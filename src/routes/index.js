@@ -16,6 +16,7 @@ import Promotions from "../pages/Promotions";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
+import Settings from "../pages/Settings";
 
 export const routes = [
   new Route({
@@ -63,6 +64,7 @@ export const routes = [
     // ordinal: -1,
   }),
   
+
   new Route({
     path: "/products/add",
     element: <AddProduct />,
@@ -111,6 +113,11 @@ export const routes = [
   new Route({
     path: "/reset-password",
     element: <ResetPassword />,
+    hidden: true,
+  }),
+  new Route({
+    path: "/settings",
+    element: <Settings />,
     hidden: true,
   }),
 

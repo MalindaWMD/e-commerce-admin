@@ -1,27 +1,18 @@
-import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
-  ArchiveBoxIcon,
-  ClockIcon,
   CogIcon,
-  CreditCardIcon,
-  DocumentChartBarIcon,
-  HomeIcon,
   QuestionMarkCircleIcon,
-  ScaleIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
   XMarkIcon
 } from "@heroicons/react/24/outline";
-import { classNames } from "../../utils/css";
-import { Link, useLocation } from "react-router-dom";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { routes } from "../../routes";
+import { classNames } from "../../utils/css";
 import { isCurrentUrl } from "../../utils/url";
 
 const secondaryNavigation = [
-  { name: "Settings", href: "#", icon: CogIcon },
-  { name: "Help", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
+  { name: "Settings", href: "/settings", icon: CogIcon },
+  { name: "Help", href: "/help", icon: QuestionMarkCircleIcon },
 ];
 
 const Navigation = () => {
@@ -130,17 +121,24 @@ export default function Sidebar({ open, setOpen }) {
                   <div className="mt-6 pt-6">
                     <div className="space-y-1 px-2">
                       {secondaryNavigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
-                          className="group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                          to={item.href}
+                          className={
+                            classNames(
+                              isCurrentUrl(item.href)
+                              ? "bg-cyan-800 text-white"
+                              : "text-cyan-100",
+                              "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                            )
+                          }
                         >
                           <item.icon
                             className="mr-4 h-5 w-5 text-cyan-200"
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -175,17 +173,24 @@ export default function Sidebar({ open, setOpen }) {
             <div className="mt-6 pt-6">
               <div className="space-y-1 px-2">
                 {secondaryNavigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
-                    className="group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6 text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                    to={item.href}
+                    className={
+                      classNames(
+                        isCurrentUrl(item.href)
+                        ? "bg-cyan-800 text-white"
+                        : "text-cyan-100",
+                        "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                      )
+                    }
                   >
                     <item.icon
                       className="mr-4 h-6 w-6 text-cyan-200"
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
