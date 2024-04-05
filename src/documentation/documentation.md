@@ -137,3 +137,4 @@ new  Route({
 - React imask `react-imask` [https://www.npmjs.com/package/react-imask](https://www.npmjs.com/package/react-imask)
 - React Select `react-select` [https://react-select.com](https://react-select.com)
 - React TagsInput `react-tagsinput` [https://www.npmjs.com/package/react-tagsinput](https://www.npmjs.com/package/react-tagsinput)
+- React ChartJS `react-chartjs-2` [https://react-chartjs-2.js.org](https://react-chartjs-2.js.org) 
