@@ -13,8 +13,9 @@ import PageHeader from "../components/layout/PageHeader";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import OrderTableFilters from "../components/orders/OrderTableFilters";
 import { orders } from "../data/orders";
-import { PrinterIcon } from "@heroicons/react/24/outline";
+import { BanknotesIcon, ChevronLeftIcon, ChevronRightIcon, PrinterIcon } from "@heroicons/react/24/outline";
 import { fuzzyFilter } from "../utils/table";
+import { isMobile } from "../utils/window";
 
 const columnHelper = createColumnHelper();
 
@@ -88,7 +89,7 @@ const Header = ({ selected }) => {
           Orders
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
         {selectedCount > 0 && (
           <button
             type="button"
@@ -101,7 +102,7 @@ const Header = ({ selected }) => {
 
         <button
           type="button"
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="hidden sm:block rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>
@@ -110,7 +111,51 @@ const Header = ({ selected }) => {
   );
 };
 
-export default function Orders(props) {
+const MobileComponent = () => {
+  return (
+    <Layout>
+      <Header as="page-header" selected={{}} />
+
+      <div className="mt-4 shadow sm:hidden">
+        <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
+        {orders.map((order) => (
+            <li key={order.id}>
+              <Link
+                to={'/orders/' + order.id}
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <BanknotesIcon
+                      className="h-5 w-5 flex-shrink-0 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate">{order.customer}</span>
+                        <span className="font-medium text-gray-900">
+                          ${order.total}
+                        </span>
+                      <time dateTime={order.date}>
+                        {order.date}
+                      </time>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    </Layout>
+  );
+};
+
+const DesktopComponent = () => {
   let data = orders;
 
   const [globalFilter, setGlobalFilter] = useState("");
@@ -156,4 +201,12 @@ export default function Orders(props) {
       </div>
     </Layout>
   );
+}
+
+export default function Orders(props) {
+  if(isMobile()){
+    return <MobileComponent {...props}/>
+  }
+
+  return <DesktopComponent {...props}/>
 }

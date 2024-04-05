@@ -26,7 +26,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
 
 
   return (
-    <form className="mb-4 grid grid-cols-5 gap-4" ref={formRef}>
+    <form className="hidden sm:grid mb-4 grid-cols-5 gap-4" ref={formRef}>
         <div>
           <label
             htmlFor="search-all"

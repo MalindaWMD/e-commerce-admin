@@ -220,8 +220,8 @@ const DesktopComponent = (props) => {
 
 export default function Products(props) {
   if (isMobile()) {
-    return MobileComponent();
+    return <MobileComponent {...props}/>;
   }
 
-  return DesktopComponent(props);
+  return <DesktopComponent {...props}/>;
 }
