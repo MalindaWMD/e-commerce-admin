@@ -1,6 +1,8 @@
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
 import ProductForm from "../components/products/ProductForm";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +12,14 @@ const Header = () => {
           New product
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <Link
+          to="/products"
+          className="sm:hidden inline-flex rounded-md bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          <ArrowLeftIcon className="h-5 w-5 text-gray-600" />
+        </Link>
+      </div>
     </PageHeader>
   );
 };

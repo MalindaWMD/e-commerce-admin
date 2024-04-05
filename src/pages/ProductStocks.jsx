@@ -1,6 +1,8 @@
+import { Link, useNavigation } from "react-router-dom";
 import BasicTable from "../components/common/BasicTable";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 const tableData = {
   headers: [
@@ -35,14 +37,23 @@ const tableData = {
 };
 
 const Header = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
   return (
     <PageHeader>
       <div className="min-w-0 flex-1">
         <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
-          Stocks details
+          Stocks
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <Link
+          to="/products"
+          className="sm:hidden inline-flex rounded-md bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          <ArrowLeftIcon className="h-5 w-5 text-gray-600" />
+        </Link>
+      </div>
     </PageHeader>
   );
 };

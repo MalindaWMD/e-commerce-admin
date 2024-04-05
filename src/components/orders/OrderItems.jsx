@@ -6,7 +6,7 @@ export default function OrderItems({ items }) {
         <h2 className="mb-3 text-lg font-medium leading-6 text-gray-900">
           Items
         </h2>
-        <ul role="list" className="divide-y divide-gray-200  border-gray-200">
+        <ul className="divide-y divide-gray-200  border-gray-200">
           {items.map((product) => (
             <li key={product.id} className="flex py-2">
               <div className="flex-shrink-0">

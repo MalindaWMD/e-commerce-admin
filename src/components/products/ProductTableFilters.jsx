@@ -1,7 +1,5 @@
-import { useRef } from "react";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import moment from "moment";
-import ReactDatePicker from "react-datepicker";
+import { useRef } from "react";
 import "../../styles/datepicker.css";
 
 export default function ProductTableFilters({
@@ -30,7 +28,7 @@ export default function ProductTableFilters({
   };
 
   return (
-    <form className="mb-4 grid grid-cols-5 gap-4" ref={formRef}>
+    <form className="hidden sm:grid mb-4 grid-cols-5 gap-4" ref={formRef}>
       <div>
         <label
           htmlFor="search-all"

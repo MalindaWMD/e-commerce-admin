@@ -13,6 +13,8 @@ import PageHeader from "../components/layout/PageHeader";
 import ProductTableFilters from "../components/products/ProductTableFilters";
 import { products } from "../data/products";
 import { fuzzyFilter } from "../utils/table";
+import { isMobile } from "../utils/window";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const columnHelper = createColumnHelper();
 
@@ -24,7 +26,7 @@ const columns = [
         <div className="text-center">
           <input
             type="checkbox"
-            className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
+            className="text-primary-600 focus:ring-primary-600 h-4 w-4 rounded border-gray-400"
             onChange={table.getToggleAllRowsSelectedHandler()}
             checked={table.getIsAllRowsSelected()}
           />
@@ -35,7 +37,7 @@ const columns = [
       <div className="text-center">
         <input
           type="checkbox"
-          className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
+          className="text-primary-600 focus:ring-primary-600 h-4 w-4 rounded border-gray-400"
           onChange={row.getToggleSelectedHandler()}
           checked={row.getIsSelected()}
         />
@@ -67,7 +69,7 @@ const columns = [
     cell: (item) => {
       if (item.getValue() === "active") {
         return (
-          <span className="inline-flex items-center rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-medium text-primary-800">
+          <span className="bg-primary-100 text-primary-800 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium">
             Active
           </span>
         );
@@ -87,7 +89,7 @@ const columns = [
       <>
         <Link
           to={"/products/" + row.original.id}
-          className="mr-3 font-medium text-primary-600 hover:text-primary-900"
+          className="text-primary-600 hover:text-primary-900 mr-3 font-medium"
         >
           Edit
         </Link>
@@ -106,16 +108,16 @@ const Header = ({ selected }) => {
           Products
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <div className="flex space-x-3 sm:mt-6 md:ml-4 md:mt-0">
         <Link
           to="/products/add"
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Add product
         </Link>
         <button
           type="button"
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 hidden rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:block"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>
@@ -124,7 +126,62 @@ const Header = ({ selected }) => {
   );
 };
 
-export default function Products(props) {
+const MobileComponent = () => {
+  return (
+    <Layout>
+      <Header as="page-header" selected={{}} />
+
+      <div className="mt-4 shadow sm:hidden">
+        <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
+          {products.map((product) => (
+            <li key={product.id}>
+              <Link
+                to={"/products/" + product.id}
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="mt-1 h-12 w-12 rounded-md object-cover object-center"
+                    />
+
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate font-medium text-gray-600">
+                        {product.name}
+                      </span>
+                      <span className="font-medium ">{product.category}</span>
+                      <span className="font-medium ">QTY: {product.qty}</span>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <nav
+          className="flex items-center justify-between border-t border-gray-200 bg-gray-100 px-4 py-4 sm:px-6"
+          aria-label="Pagination"
+        >
+          <Link
+            to="/products"
+            className="text-primary-500 hover:text-primary-700 text-sm font-medium"
+          >
+            View all
+          </Link>
+        </nav>
+      </div>
+    </Layout>
+  );
+};
+
+const DesktopComponent = (props) => {
   let data = products;
 
   const [globalFilter, setGlobalFilter] = useState("");
@@ -170,4 +227,12 @@ export default function Products(props) {
       </div>
     </Layout>
   );
+};
+
+export default function Products(props) {
+  if (isMobile()) {
+    return MobileComponent();
+  }
+
+  return DesktopComponent(props);
 }
