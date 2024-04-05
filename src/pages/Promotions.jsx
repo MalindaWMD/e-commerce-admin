@@ -1,4 +1,10 @@
-import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import {
+  createColumnHelper,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "../components/common/Table";
@@ -12,6 +18,8 @@ import { user_groups } from "../data/user_groups";
 import { promotions } from "../data/promotions";
 import { capitalize } from "../utils/string";
 import PromotionFormSlideOver from "../components/promotions/PromotionFormSlideOver";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { isMobile } from "../utils/window";
 
 const columnHelper = createColumnHelper();
 
@@ -25,8 +33,8 @@ const getColumns = (editAction) => {
       header: () => <span>Status</span>,
       cell: (item) => (
         <div className="inline-flex items-center rounded-md bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
-              {item.getValue()}
-            </div>
+          {item.getValue()}
+        </div>
       ),
     }),
     columnHelper.accessor("method", {
@@ -38,16 +46,15 @@ const getColumns = (editAction) => {
       header: null,
       cell: ({ row }) => (
         <button
-                className="mr-3 font-medium text-blue-600 hover:text-primary-900"
-                onClick={() => editAction(row.original.id)}
-              >
-                Edit
-              </button>
+          className="hover:text-primary-900 mr-3 font-medium text-blue-600"
+          onClick={() => editAction(row.original.id)}
+        >
+          Edit
+        </button>
       ),
     },
   ];
-}
-
+};
 
 const Header = ({ addPromotionAction }) => {
   return (
@@ -57,9 +64,9 @@ const Header = ({ addPromotionAction }) => {
           Promotions
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <div className="flex space-x-3 sm:mt-6 md:ml-4 md:mt-0">
         <button
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={addPromotionAction}
         >
           New promotion
@@ -69,11 +76,50 @@ const Header = ({ addPromotionAction }) => {
   );
 };
 
-export default function Promotions() {
-    let data = promotions;
+const MobileComponent = ({ addAction, editAction }) => {
+  return (
+    <Layout>
+      <Header as="page-header" addPromotionAction={addAction} />
 
-  const [openPromotionForm, setOpenPromotionForm] = useState(false);
-  const [selectedPromotion, setSelectedPromotion] = useState();
+      <div className="mt-4 shadow sm:hidden">
+        <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
+          {promotions.map((promotion) => (
+            <li key={promotion.id}>
+              <a
+                href="#"
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+                onClick={() => editAction(promotion.id)}
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate font-medium text-gray-600">
+                        {promotion.title}
+                      </span>
+                      <span className="font-medium ">
+                        {capitalize(promotion.method)}
+                      </span>
+                      <span className="mt-1 w-fit rounded-full bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
+                        {promotion.status}
+                      </span>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
+  );
+};
+
+const DesktopComponent = ({ addAction, editAction }) => {
+  let data = promotions;
 
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState([]);
@@ -82,25 +128,7 @@ export default function Promotions() {
     pageSize: 10,
   });
 
-  const addPromotionAction = () => {
-    setSelectedPromotion(null);
-    setOpenPromotionForm(true);
-  };
-
-  const editPromotionAction = (promoId) => {
-    if (!promoId) {
-      return;
-    }
-
-    let promoObj = promotions.filter((promo) => {
-      return promo.id === promoId;
-    })[0];
-
-    setSelectedPromotion(promoObj);
-    setOpenPromotionForm(true);
-  };
-
-  let columns = useMemo( () => getColumns(editPromotionAction), [selectedPromotion]);
+  let columns = useMemo(() => getColumns(editAction), []);
 
   const table = useReactTable({
     columns,
@@ -124,17 +152,49 @@ export default function Promotions() {
 
   return (
     <Layout>
-      <Header as="page-header" addPromotionAction={addPromotionAction} />
-      
+      <Header as="page-header" addPromotionAction={addAction} />
+
       <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
         <Table table={table} />
       </div>
+    </Layout>
+  );
+};
 
+export default function Promotions(props) {
+  const [openPromotionForm, setOpenPromotionForm] = useState(false);
+  const [selectedPromotion, setSelectedPromotion] = useState();
+
+  const addPromotionAction = () => {
+    setSelectedPromotion(null);
+    setOpenPromotionForm(true);
+  };
+
+  const editPromotionAction = (promoId) => {
+    if (!promoId) {
+      return;
+    }
+
+    let promoObj = promotions.filter((promo) => {
+      return promo.id === promoId;
+    })[0];
+
+    setSelectedPromotion(promoObj);
+    setOpenPromotionForm(true);
+  };
+
+  let Component = isMobile() ? MobileComponent : DesktopComponent;
+  return (
+    <>
+      <Component
+        addAction={addPromotionAction}
+        editAction={editPromotionAction}
+      />
       <PromotionFormSlideOver
         open={openPromotionForm}
         setOpen={setOpenPromotionForm}
         promotion={selectedPromotion}
       />
-    </Layout>
+    </>
   );
 }

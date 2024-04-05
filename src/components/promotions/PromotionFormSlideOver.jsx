@@ -6,7 +6,6 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const SelectedProducts = ({ products }) => {
-
   if( ! products || products.length === 0){
     return null;
   }
@@ -28,14 +27,14 @@ const SelectedProducts = ({ products }) => {
           <div className="ml-4 flex flex-1 flex-col justify-center sm:ml-6">
             <div>
               <div className="flex justify-between">
-                <h4 className="text-sm">
+                <p className="text-sm">
                   <Link
                     to={"/products/" + product.id}
                     className="text-primary-600 hover:text-primary-700 font-medium"
                   >
                     {product.name}
                   </Link>
-                </h4>
+                </p>
                 <p className="ml-4 text-sm font-medium text-gray-900">
                   <button className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none">
                     <XMarkIcon className="h-5 w-5" />
@@ -65,7 +64,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
 
   return (
     <SlideOver open={open} setOpen={closeAction} title="New promotion">
-      <div className="relative mt-6 flex-1 px-4 sm:px-6">
+      <div className="relative mt-6 flex-1 px-4 sm:pl-6 pr-5 sm:pr-5">
         <div className="mb-4">
           <label
             htmlFor="first_name"
@@ -76,11 +75,11 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
           <input
             id="first_name"
             defaultValue={promotion?.title}
-            className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="discount-type"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -90,7 +89,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="discount-type"
               defaultValue={promotion?.discount_type}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="percentage">Percentage</option>
@@ -107,12 +106,12 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="discount-value"
               defaultValue={promotion?.discount_value}
-              className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="minimum_requirement"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -122,7 +121,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="minimum_requirement"
               defaultValue={promotion?.minimum_requirement}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="amount">Amount</option>
@@ -139,12 +138,12 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="minimum_requirement_value"
               defaultValue={promotion?.minimum_requirement_value}
-              className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="minimum_requirement"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -154,7 +153,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="minimum_requirement"
               defaultValue={promotion?.method}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="automatic">Automatic</option>
@@ -171,12 +170,12 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="minimum_requirement_value"
               defaultValue={promotion?.minimum_requirement_value}
-              className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="minimum_requirement"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -185,7 +184,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             </label>
             <ReactDatePicker
               value={startDate}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               onChange={(value) => setStartDate(value)}
             />
           </div>
@@ -203,13 +202,13 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
               timeCaption="Time"
               dateFormat="h:mm aa"
               value={startTime}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               onChange={(value) => setStartTime(value)}
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="minimum_requirement"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -241,8 +240,8 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:mb-4">
             <label
               htmlFor="application_type"
               className="block text-sm font-medium leading-5 text-gray-700"
@@ -252,7 +251,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="application_type"
               defaultValue={promotion?.application_type}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="specific_products">Specific products</option>
@@ -270,7 +269,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="purchase_type"
               defaultValue={promotion?.purchase_type}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="one_time">One time</option>
@@ -295,7 +294,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             </div>
             <input
               type="search"
-              className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+              className="block w-full  text-sm rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
               placeholder="Search products..."
             />
           </div>
