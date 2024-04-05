@@ -131,6 +131,9 @@ new  Route({
 	icon:  ArchiveBoxIcon,
 }),
 ```
+### Email templates
+
+There is one email template located in the `documentation > teampltes > emails` directory. This template is built using `maizzle` which uses TailwindCSS to build email templates. Refer their documation for more information  at [https://maizzle.com](https://maizzle.com).
 
 ### Dependencies
 
