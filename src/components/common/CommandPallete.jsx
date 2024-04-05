@@ -20,7 +20,7 @@ const suggestions = [
   { id: 8, name: "Customers", url: "/customers" },
 ];
 
-const recent = suggestions.splice(0, 3);
+const recent = suggestions.slice(0, 3);
 
 const quickActions = [
   { name: "Products...", icon: ArchiveBoxIcon, url: "/products" },

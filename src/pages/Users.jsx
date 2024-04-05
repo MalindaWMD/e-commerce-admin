@@ -1,4 +1,10 @@
-import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import {
+  createColumnHelper,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Table from "../components/common/Table";
@@ -9,6 +15,8 @@ import { users } from "../data/users";
 import { fuzzyFilter } from "../utils/table";
 import { getGroupFromValue } from "../utils/users";
 import { user_groups } from "../data/user_groups";
+import { ChevronRightIcon, UserIcon } from "@heroicons/react/24/outline";
+import { isMobile } from "../utils/window";
 
 const columnHelper = createColumnHelper();
 
@@ -34,8 +42,8 @@ const getColumns = (editAction) => {
       header: () => <span>Group</span>,
       cell: (item) => (
         <span className="inline-flex items-center rounded-md bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
-            {getGroupFromValue(item.getValue(), user_groups)?.label}
-          </span>
+          {getGroupFromValue(item.getValue(), user_groups)?.label}
+        </span>
       ),
     }),
     columnHelper.accessor("created_at", {
@@ -46,8 +54,8 @@ const getColumns = (editAction) => {
       header: () => <span>Status</span>,
       cell: (item) => (
         <div className="inline-flex items-center rounded-md bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
-              {item.getValue()}
-            </div>
+          {item.getValue()}
+        </div>
       ),
     }),
     {
@@ -55,16 +63,15 @@ const getColumns = (editAction) => {
       header: null,
       cell: ({ row }) => (
         <button
-                className="mr-3 font-medium text-blue-600 hover:text-primary-900"
-                onClick={() => editAction(row.original.id)}
-              >
-                Edit
-              </button>
+          className="hover:text-primary-900 mr-3 font-medium text-blue-600"
+          onClick={() => editAction(row.original.id)}
+        >
+          Edit
+        </button>
       ),
     },
   ];
-}
-
+};
 
 const Header = ({ addUserAction }) => {
   return (
@@ -74,15 +81,15 @@ const Header = ({ addUserAction }) => {
           Users
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <div className="flex space-x-3 sm:mt-6 md:ml-4 md:mt-0">
         <Link
           to="/users/permissions"
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Manage roles
         </Link>
         <button
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={addUserAction}
         >
           Add user
@@ -92,11 +99,56 @@ const Header = ({ addUserAction }) => {
   );
 };
 
-export default function Users() {
-    let data = users;
+const MobileComponent = ({ addAction, editAction }) => {
+  return (
+    <Layout>
+      <Header as="page-header" addUserAction={addAction}/>
+      <div className="mt-4 shadow sm:hidden">
+        <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
+          {users.map((user) => (
+            <li key={user.id}>
+              <a
+                href="#"
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+                onClick={() => editAction(user.id)}
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <UserIcon
+                      className="h-5 w-5 flex-shrink-0 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate font-medium text-gray-600">
+                        {user.name}
+                      </span>
+                      <span className="font-medium ">{user.email}</span>
+                      <span className="inline-flex">
+                        <span className="mr-1 mt-1 w-fit items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">
+                          {getGroupFromValue(user.group, user_groups)?.label}
+                        </span>
+                        <span className="mt-1 w-fit items-center rounded-full bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
+                          {user.status}
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
+  );
+};
 
-  const [openUserForm, setOpenUserForm] = useState(false);
-  const [selectedUser, setSelectedUser] = useState();
+const DesktopComponent = ({ addAction, editAction}) => {
+  let data = users;
 
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState([]);
@@ -105,25 +157,7 @@ export default function Users() {
     pageSize: 10,
   });
 
-  const addUserAction = () => {
-    setSelectedUser(null);
-    setOpenUserForm(true);
-  };
-
-  const editUserAction = (userId) => {
-    if (!userId) {
-      return;
-    }
-
-    let userObj = users.filter((user) => {
-      return user.id === userId;
-    })[0];
-
-    setSelectedUser(userObj);
-    setOpenUserForm(true);
-  };
-
-  let columns = getColumns(editUserAction);
+  let columns = getColumns(editAction);
 
   const table = useReactTable({
     columns,
@@ -147,17 +181,46 @@ export default function Users() {
 
   return (
     <Layout>
-      <Header as="page-header" addUserAction={addUserAction} />
-      
+      <Header as="page-header" addUserAction={addAction} />
+
       <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
         <Table table={table} />
       </div>
+    </Layout>
+  );
+};
 
-      <UserFormSlideOver
+export default function Users() {
+  const [openUserForm, setOpenUserForm] = useState(false);
+  const [selectedUser, setSelectedUser] = useState();
+
+  const addUserAction = () => {
+    setSelectedUser(null);
+    setOpenUserForm(true);
+  };
+
+  const editUserAction = (userId) => {
+    if (!userId) {
+      return;
+    }
+
+    let userObj = users.filter((user) => {
+      return user.id === userId;
+    })[0];
+
+    setSelectedUser(userObj);
+    setOpenUserForm(true);
+  };
+
+
+  let Component = isMobile() ? MobileComponent : DesktopComponent;
+  return <>
+    <Component addAction={addUserAction} editAction={editUserAction}/>
+
+    <UserFormSlideOver
         open={openUserForm}
         setOpen={setOpenUserForm}
         user={selectedUser}
       />
-    </Layout>
-  );
+  </>;
 }

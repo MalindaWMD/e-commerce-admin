@@ -127,7 +127,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Activity list (smallest breakpoint only) */}
+      {/* (smallest breakpoint only) */}
       <div className="shadow sm:hidden mt-4">
       <h2 className="mb-2 px-2 text-lg font-medium leading-6 text-gray-900">
           Recent orders

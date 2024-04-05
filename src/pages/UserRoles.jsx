@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { classNames } from "../utils/css";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { permissions } from "../routes/permissions";
 import ConfirmationModal from "../components/common/ConfirmationModal";
 import PageHeader from "../components/layout/PageHeader";
 import Layout from "../components/layout/Layout";
+import { Link } from "react-router-dom";
 
 const roles = ["Admin", "Marketing", "Front desk"];
 
@@ -16,7 +17,14 @@ const Header = () => {
           User roles
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0"></div>
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <Link
+          to="/users"
+          className="sm:hidden inline-flex rounded-md bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          <ArrowLeftIcon className="h-5 w-5 text-gray-600" />
+        </Link>
+      </div>
     </PageHeader>
   );
 };
@@ -36,26 +44,24 @@ export default function UserRoles() {
         <div className="flex flex-col">
           <div className="relative -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-              <div className="relative z-0 flex flex-1 overflow-hidden rounded-md bg-white shadow-md">
-                <aside className="hidden w-96 flex-shrink-0 border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
+              <div className="relative z-0 flex flex-1 flex-col sm:flex-row overflow-hidden rounded-md bg-white shadow-md">
+                <aside className="w-full sm:w-96 flex-shrink-0 border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
                   <div className="px-6 pb-4 pt-6">
                     <h2 className="text-lg font-medium text-gray-900">
                       User Roles
                     </h2>
-                    <div className="mt-6 flex items-start space-x-4">
+                    <div className="mt-2 flex items-start space-x-4">
                       <div className="min-w-0 flex-1">
                         <label htmlFor="search" className="sr-only">
                           Create New
                         </label>
                         <div className="">
-                          <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            autoComplete="off"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
-                            placeholder="Role Name"
-                          />
+                        <input
+                          type="text"
+                          name="role_name"
+                          placeholder="Role name"
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                        />
                         </div>
                       </div>
                       <button
@@ -107,12 +113,12 @@ export default function UserRoles() {
                   </nav>
                 </aside>
                 <main className="relative z-0 flex flex-1 flex-col items-start justify-start overflow-y-auto focus:outline-none xl:order-last">
-                  <div className="flex-1 p-6">
+                  <div className="flex-1 w-full p-4 sm:p-6">
                     <h2 className="text-lg font-medium text-gray-900">
                       Role Permissions
                     </h2>
 
-                    <div className="ap-4 mt-6 grid grid-cols-2">
+                    <div className="ap-4 mt-6 grid grid-cols-1 sm:grid-cols-2">
                       {selectedRole ? (
                         permissions.map((group, idx) => {
                           return (
