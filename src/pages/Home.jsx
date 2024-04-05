@@ -14,14 +14,14 @@ import { Link } from "react-router-dom";
 
 const cards = [
   {
-    name: "Account balance",
-    action: "#",
+    name: "Total sales",
+    action: "/orders",
     icon: ScaleIcon,
-    amount: "$30,659.45",
+    amount: "$1,059.45",
   },
   { 
     name: "New registrations", 
-    action: "/users", 
+    action: "/customers", 
     icon: UserIcon, 
     amount: "143" 
   },
