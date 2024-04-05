@@ -26,7 +26,7 @@ export default function DashboardCard({ card }) {
         <div className="text-sm">
           <Link
             to={card.action}
-            className="font-medium text-cyan-700 hover:text-cyan-900"
+            className="text-sm font-medium text-primary-500 hover:text-primary-700"
           >
             View all
           </Link>

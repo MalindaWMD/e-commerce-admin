@@ -116,7 +116,7 @@ const productsOnReorderLevel = {
 export default function Home() {
   return (
     <Layout>
-      <h2 className="text-lg font-medium leading-6 text-gray-900">
+      <h2 className="text-lg px-2 font-medium leading-6 text-gray-900">
         Overview
         <small className="text-xs ml-1 text-gray-500 italic">(Past week)</small>
       </h2>
@@ -128,15 +128,17 @@ export default function Home() {
       </div>
 
       {/* Activity list (smallest breakpoint only) */}
-      <div className="shadow sm:hidden">
+      <div className="shadow sm:hidden mt-4">
+      <h2 className="mb-2 px-2 text-lg font-medium leading-6 text-gray-900">
+          Recent orders
+        </h2>
         <ul
-          role="list"
           className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"
         >
-          {transactions.map((transaction) => (
-            <li key={transaction.id}>
-              <a
-                href={transaction.href}
+          {recent_orders.map((order) => (
+            <li key={order.id}>
+              <Link
+                to={'/orders/' + order.id}
                 className="block bg-white px-4 py-4 hover:bg-gray-50"
               >
                 <span className="flex items-center space-x-4">
@@ -146,15 +148,12 @@ export default function Home() {
                       aria-hidden="true"
                     />
                     <span className="flex flex-col truncate text-sm text-gray-500">
-                      <span className="truncate">{transaction.name}</span>
-                      <span>
+                      <span className="truncate">{order.customer}</span>
                         <span className="font-medium text-gray-900">
-                          {transaction.amount}
-                        </span>{" "}
-                        {transaction.currency}
-                      </span>
-                      <time dateTime={transaction.datetime}>
-                        {transaction.date}
+                          ${order.total}
+                        </span>
+                      <time dateTime={order.date}>
+                        {order.date}
                       </time>
                     </span>
                   </span>
@@ -163,33 +162,25 @@ export default function Home() {
                     aria-hidden="true"
                   />
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         <nav
-          className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3"
-          aria-label="Pagination"
-        >
-          <div className="flex flex-1 justify-between">
-            <a
-              href="#"
-              className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            >
-              Previous
-            </a>
-            <a
-              href="#"
-              className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-            >
-              Next
-            </a>
-          </div>
-        </nav>
+      className="flex items-center justify-between px-4 py-4 border-t border-gray-200 bg-gray-100 sm:px-6"
+      aria-label="Pagination"
+    >
+      <Link
+            to="/orders"
+            className="text-sm font-medium text-primary-500 hover:text-primary-700"
+          >
+            View all
+          </Link>
+    </nav>
       </div>
 
-      <div className="mt-8 flow-root">
+      <div className="mt-8 hidden sm:flow-root">
         <h2 className="mb-2 text-lg font-medium leading-6 text-gray-900">
           Recent orders
         </h2>
@@ -200,7 +191,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="mt-8 hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="">
           <h2 className="mb-2 text-lg font-medium leading-6 text-gray-900">
             Low stock products
