@@ -59,7 +59,7 @@ export default function SelectPicker(props) {
   return (
     <Select
       className={classNames(
-        `focus:ring-secondary-500 focus:border-secondary-500 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm`,
+        `focus:ring-primary-600 w-full rounded-md py-1 text-sm text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`,
         props.className,
       )}
       isClearable={true}

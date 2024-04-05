@@ -24,7 +24,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.name}
-            className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -37,7 +37,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.email}
-            className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -50,7 +50,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.phone_no}
-            className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -60,7 +60,10 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           >
             Group
           </label>
-          <UserGroupSelect defaultValue={user?.group} onChange={(value) => user.group = value}/>
+          <UserGroupSelect
+            defaultValue={user?.group}
+            onChange={(value) => (user.group = value)}
+          />
         </div>
         <div className="mb-4">
           <label
@@ -70,8 +73,8 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
             Status
           </label>
           <select
-            defaultValue={user?.status || 'active'}
-            className="mt-1 block w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+            defaultValue={user?.status || "active"}
+            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           >
             <option value="">Select option</option>
             <option value="active">Active</option>
@@ -92,7 +95,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
         </button>
         <button
           type="submit"
-          className="ml-4 inline-flex justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+          className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-500 ml-4 inline-flex justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => setDisplayMessage(true)}
         >
           Save

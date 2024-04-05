@@ -219,9 +219,12 @@ const DesktopComponent = (props) => {
 };
 
 export default function Products(props) {
+
+  console.log(isMobile());
+
   if (isMobile()) {
-    return <MobileComponent {...props}/>;
+    return <MobileComponent/>;
   }
 
-  return <DesktopComponent {...props}/>;
+  return <DesktopComponent/>;
 }
