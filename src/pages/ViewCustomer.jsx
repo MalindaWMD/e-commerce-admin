@@ -1,11 +1,14 @@
 import { IMaskInput } from "react-imask";
-import { PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, BanknotesIcon, ChevronRightIcon, PencilSquareIcon, PlusIcon } from "@heroicons/react/24/outline";
 import BasicTable from "../components/common/BasicTable";
 import Layout from "../components/layout/Layout";
 import OrderStatusBadge from "../components/orders/OrderStatusBadge";
 import { addresses } from "../data/addresses";
 import { recent_orders } from "../data/recent_orders";
 import { customers } from "../data/customers";
+import { isMobile } from "../utils/window";
+import { Link } from "react-router-dom";
+import PageHeader from "../components/layout/PageHeader";
 
 const recentOrdersTableData = {
   footer: {
@@ -42,10 +45,30 @@ const recentOrdersTableData = {
   },
 };
 
+const Header = ({ id }) => {
+  return (
+    <PageHeader>
+      <div className="min-w-0 flex-1">
+        <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9">
+          #{id}
+        </h1>
+      </div>
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
+        <Link
+          to="/customers"
+          className="sm:hidden inline-flex rounded-md bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          <ArrowLeftIcon className="h-5 w-5 text-gray-600" />
+        </Link>
+      </div>
+    </PageHeader>
+  );
+};
+
 const PersonalInformation = ({ customer }) => {
   return (
     <div className="mb-8">
-      <h2 className="mb-4 text-lg font-medium leading-6 text-gray-900">
+      <h2 className="mb-4 px-3 sm:px-0 text-lg font-medium leading-6 text-gray-900">
         Personal information
       </h2>
       <div className="mb-4 rounded-md bg-white shadow-md">
@@ -112,9 +135,54 @@ const PersonalInformation = ({ customer }) => {
 };
 
 const Orders = () => {
+
+  if(isMobile()){
+    return(
+      <div className="mb-8">
+      <h2 className="mb-4 px-3 sm:px-0 text-lg font-medium leading-6 text-gray-900">
+        Orders
+      </h2>
+      <ul
+          className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden"
+        >
+          {recent_orders.map((order) => (
+            <li key={order.id}>
+              <Link
+                to={'/orders/' + order.id}
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <BanknotesIcon
+                      className="h-5 w-5 flex-shrink-0 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate">#{order.id}</span>
+                        <span className="font-medium text-gray-900">
+                          ${order.total}
+                        </span>
+                      <time dateTime={order.date}>
+                        {order.date}
+                      </time>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+    </div>
+    )
+  }
+
   return (
     <div className="mb-8">
-      <h2 className="mb-4 text-lg font-medium leading-6 text-gray-900">
+      <h2 className="mb-4 px-3 sm:px-0 text-lg font-medium leading-6 text-gray-900">
         Orders
       </h2>
       <BasicTable data={recentOrdersTableData} />
@@ -154,12 +222,12 @@ const Addresses = () => {
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between">
-        <h2 className="mb-4 text-lg font-medium leading-6 text-gray-900">
+        <h2 className="mb-4 px-3 sm:px-0 text-lg font-medium leading-6 text-gray-900">
           Addresses
         </h2>
         <button
           type="button"
-          className="inline-flex items-center rounded bg-primary-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+          className="hidden sm:inline-flex items-center rounded bg-primary-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
         >
           <PlusIcon className="mr-2 h-4 w-4" />
           New address
@@ -178,6 +246,7 @@ export default function ViewCustomer(props) {
   const customer = customers[0];
   return (
     <Layout>
+      <Header as="page-header" id={customer.id} />
       <PersonalInformation customer={customer} />
       <Orders />
       <Addresses />

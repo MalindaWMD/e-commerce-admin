@@ -6,6 +6,8 @@ import { createColumnHelper, getCoreRowModel, getFilteredRowModel, getPagination
 import { useState } from "react";
 import { fuzzyFilter } from "../utils/table";
 import Table from "../components/common/Table";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { isMobile } from "../utils/window";
 
 const columnHelper = createColumnHelper();
 
@@ -80,10 +82,10 @@ const Header = ({ selected }) => {
           Customers
         </h1>
       </div>
-      <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+      <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
       <button
           type="button"
-          className="rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="hidden sm:block rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>
@@ -92,7 +94,45 @@ const Header = ({ selected }) => {
   );
 };
 
-export default function Customers(props) {
+const MobileComponent = () => {
+  return (
+    <Layout>
+      <Header as="page-header" selected={{}} />
+
+      <div className="mt-4 shadow sm:hidden">
+        <ul className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
+          {customers.map((customer) => (
+            <li key={customer.id}>
+              <Link
+                to={"/customers/" + customer.id}
+                className="block bg-white px-4 py-4 hover:bg-gray-50"
+              >
+                <span className="flex items-center space-x-4">
+                  <span className="flex flex-1 space-x-2 truncate">
+                    <span className="flex flex-col truncate text-sm text-gray-500">
+                      <span className="truncate font-medium text-gray-600">
+                        {customer.name}
+                      </span>
+                      <span className="font-medium ">{customer.email}</span>
+                      <span className="font-medium ">{customer.phone_no}</span>
+                    </span>
+                  </span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    </Layout>
+  );
+};
+
+const DesktopComponent = (props) => {
   let data = customers;
 
   const [globalFilter, setGlobalFilter] = useState("");
@@ -132,4 +172,12 @@ export default function Customers(props) {
       </div>
     </Layout>
   );
+}
+
+export default function Customers(props) {
+  if (isMobile()) {
+    return <MobileComponent {...props}/>;
+  }
+
+  return <DesktopComponent {...props}/>;
 }
