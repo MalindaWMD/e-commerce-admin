@@ -19,6 +19,8 @@ const suggestions = [
   { id: 7, name: "Orders", url: "/orders" },
   { id: 8, name: "Customers", url: "/customers" },
   { id: 9, name: "Home/Dashboard", url: "/" },
+  { id: 10, name: "Promotions", url: "/promotions" },
+  { id: 11, name: "Analytics", url: "/analytics" },
 ];
 
 const recent = suggestions.slice(0, 3);
