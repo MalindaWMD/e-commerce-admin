@@ -165,17 +165,6 @@ const MobileComponent = () => {
           ))}
         </ul>
 
-        <nav
-          className="flex items-center justify-between border-t border-gray-200 bg-gray-100 px-4 py-4 sm:px-6"
-          aria-label="Pagination"
-        >
-          <Link
-            to="/products"
-            className="text-primary-500 hover:text-primary-700 text-sm font-medium"
-          >
-            View all
-          </Link>
-        </nav>
       </div>
     </Layout>
   );
