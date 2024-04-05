@@ -188,7 +188,7 @@ export default function Analytics() {
       <Header as="page-header" />
       <StatsBar stats={stats} />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <TotalSalesChart />
         <ConversionRateChart />
         <WebsiteTrafficChart />
