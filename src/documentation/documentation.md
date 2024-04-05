@@ -26,6 +26,12 @@ This comprehensive guide empowers you to understand, customize, and utilize the 
 4. **Clean Up Directories (Data & Documentation):**
 	The data and documentation directories might contain sample data and introductory documents. Make sure to remove them.
 
+5. **Build for production:**
+	When you done building your admin panel and ready to deploy, run following command to build for production.
+    ```
+    npm build
+    ```
+
 
 ### Project Structure
 
