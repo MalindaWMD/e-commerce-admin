@@ -37,13 +37,6 @@ export default function OrderStatusBadge({ status }) {
         orderStatus.color,
       )}
     >
-      <svg
-        className="h-1.5 w-1.5 fill-gray-400"
-        viewBox="0 0 6 6"
-        aria-hidden="true"
-      >
-        <circle cx={3} cy={3} r={3} />
-      </svg>
       {orderStatus.label}
     </span>
   );

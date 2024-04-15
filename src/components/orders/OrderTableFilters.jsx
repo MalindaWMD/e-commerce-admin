@@ -38,7 +38,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
             id="search-all"
             type="text"
             value={globalFilter}
-            className="mt-1 block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+            className="mt-1 w-full block rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-400 sm:text-sm sm:leading-6"
             onChange={(e) => setGlobalFilter(e.target.value)}
           />
         </div>
@@ -51,7 +51,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
           </label>
           <select
             id="filter-status"
-            className="mt-1 block  w-full  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+            className="mt-1 block  w-full  rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-400 sm:text-sm sm:leading-6"
             onChange={(e) => setFilterValue("status", e.target.value)}
           >
             <option value=""></option>
@@ -73,7 +73,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
           <div className="mt-1">
             <ReactDatePicker
               onChange={(date) => setFilterValue("date", moment(date).format('YYYY-MM-DD'))}
-              className="focus:ring-denim-600 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              className="focus:ring-denim-400 w-full rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
           <div className="mt-1">
             <ReactDatePicker
               onChange={(date) => setFilterValue("date", moment(date).format('YYYY-MM-DD'))}
-              className="focus:ring-denim-600 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              className="focus:ring-denim-400 block w-full rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function OrderTableFilters({ filters, setFilters, globalFilter, s
         <div>
         <button 
           type="button"
-          className="mt-7 items-center rounded-md border border-transparent bg-gray-500 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          className="mt-7 items-center rounded-sm border border-transparent bg-denim-400 px-4 py-1.5 text-sm font-medium text-white shadow-md hover:bg-denim-500 focus:outline-none"
           onClick={resetFilters}
           >
           <ArrowPathIcon className="h-5 w-5" />
