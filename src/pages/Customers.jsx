@@ -85,7 +85,7 @@ const Header = ({ selected }) => {
       <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
       <button
           type="button"
-          className="hidden sm:block rounded-sm bg-rose-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-rose-600"
+          className="hidden sm:block rounded-sm bg-rose-500 px-2.5 py-1.5 text-sm text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-rose-600"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>

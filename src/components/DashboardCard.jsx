@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { abbr } from "../utils/number";
 
 export default function DashboardCard({ card }) {
+  let change = 0;
   
-  let change = (card.amount - card.previousAmount)/100;
+  if(card.amount && card.previousAmount){
+    change = (card.amount - card.previousAmount)/100;
+  }
 
   return (
     <div key={card.name} className="overflow-hidden rounded-sm bg-white shadow-md">
@@ -23,6 +26,8 @@ export default function DashboardCard({ card }) {
                   {abbr(card.amount)}
                   {card.suffix || null}
                 </div>
+                { change ? 
+                <>
                 <div className="text-gray-500 text-sm pl-1">
                   from  
                   <span className="pl-1">
@@ -34,6 +39,7 @@ export default function DashboardCard({ card }) {
                 <span className="pl-1 bg-green-200 text-xs rounded-md text-green-800 px-1 text-center mx-1">
                 {change}%
                 </span>
+                </> : null}
               </dd>
             </dl>
           </div>

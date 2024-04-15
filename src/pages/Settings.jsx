@@ -58,7 +58,7 @@ export default function Settings() {
     <Layout>
       <Header as="page-header" />
 
-      <div className="overflow-hidden rounded-lg bg-white shadow">
+      <div className="overflow-hidden rounded-sm bg-white shadow">
         <div className="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
           <aside className="py-6 lg:col-span-3">
             <nav className="space-y-1">

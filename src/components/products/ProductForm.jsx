@@ -60,7 +60,7 @@ export default function ProductForm({ product }) {
                   type="text"
                   name="name"
                   defaultValue={product?.name}
-                  className="focus:ring-denim-600 mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
               <div className="col-span-6">
