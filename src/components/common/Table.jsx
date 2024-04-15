@@ -16,28 +16,28 @@ const TableFooter = ({ table }) => {
           className="px-4 py-2 text-right bg-white"
         >
           <button
-            className="rounded-md border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300  disabled:text-gray-400"
+            className="rounded-sm border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300  disabled:text-gray-400"
             onClick={() => table.firstPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <ChevronDoubleLeftIcon className="h-5 w-5" />
           </button>
           <button
-            className="ml-2 rounded-md border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400"
+            className="ml-2 rounded-sm border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
             <ChevronLeftIcon className="h-5 w-5" />
           </button>
           <button
-            className="ml-2 rounded-md border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300  disabled:text-gray-400"
+            className="ml-2 rounded-sm border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300  disabled:text-gray-400"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
             <ChevronRightIcon className="h-5 w-5" />
           </button>
           <button
-            className="ml-2 rounded-md border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400"
+            className="ml-2 rounded-sm border border-gray-300 bg-white p-1 text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400"
             onClick={() => table.lastPage()}
             disabled={!table.getCanNextPage()}
           >

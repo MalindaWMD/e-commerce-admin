@@ -32,7 +32,7 @@ const recentOrdersTableData = {
               return (
                 <a
                   href="#orders"
-                  className="text-denim-600 hover:text-denim-900"
+                  className="text-denim-500 hover:text-denim-600"
                 >
                   View
                 </a>
@@ -56,7 +56,7 @@ const Header = ({ id }) => {
       <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
         <Link
           to="/customers"
-          className="sm:hidden inline-flex rounded-md bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          className="sm:hidden inline-flex rounded-sm bg-white p-2 sm:px-2.5 sm:py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
           <ArrowLeftIcon className="h-5 w-5 text-gray-600" />
         </Link>
@@ -71,7 +71,7 @@ const PersonalInformation = ({ customer }) => {
       <h2 className="mb-4 px-3 sm:px-0 text-lg font-medium leading-6 text-gray-900">
         Personal information
       </h2>
-      <div className="mb-4 rounded-md bg-white shadow-md">
+      <div className="mb-4 rounded-sm bg-white shadow-md">
         <div className="grid grid-cols-4 gap-6 p-4">
           <div className="col-span-4 sm:col-span-2">
             <label
@@ -83,7 +83,7 @@ const PersonalInformation = ({ customer }) => {
             <input
               id="first_name"
               defaultValue={customer?.name}
-              className="focus:shadow-outline-blue form-input mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:outline-none sm:text-sm sm:leading-5"
+              className="focus:shadow-outline-blue form-input mt-1 block w-full rounded-sm border border-gray-300 px-3 py-2 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:outline-none sm:text-sm sm:leading-5"
             />
           </div>
           <div className="col-span-4 sm:col-span-2"></div>
@@ -98,7 +98,7 @@ const PersonalInformation = ({ customer }) => {
             <input
               id="last_name"
               defaultValue={customer?.email}
-              className="focus:shadow-outline-blue form-input mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:outline-none sm:text-sm sm:leading-5"
+              className="focus:shadow-outline-blue form-input mt-1 block w-full rounded-sm border border-gray-300 px-3 py-2 shadow-sm transition duration-150 ease-in-out focus:border-blue-300 focus:outline-none sm:text-sm sm:leading-5"
             />
           </div>
 
@@ -113,17 +113,17 @@ const PersonalInformation = ({ customer }) => {
               mask={"+000000000000000"}
               lazy={false}
               unmask={true}
-              className="block h-9 w-full rounded-md border border-gray-300 px-3 text-left shadow-sm focus:border-denim-500 focus:ring-denim-500 sm:text-sm"
+              className="block mt-1 w-full rounded-sm border border-gray-300 px-3 text-left shadow-sm focus:border-denim-500 focus:ring-denim-500 sm:text-sm"
               value={customer?.phone_no}
             />
           </div>
         </div>
 
-        <div className="rounded-b-md border-t bg-gray-100 px-4 py-3 text-right">
-          <span className="inline-flex rounded-md shadow-sm">
+        <div className="rounded-b-md border-t px-4 py-3 text-right">
+          <span className="inline-flex rounded-sm shadow-sm">
             <button
               type="submit"
-              className="inline-flex justify-center rounded-md border border-transparent bg-denim-600 px-4 py-1.5 text-sm font-medium leading-5 text-white hover:bg-denim-500 focus:border-denim-500 focus:outline-none active:bg-denim-900"
+              className="inline-flex justify-center rounded-sm border border-transparent bg-denim-500 px-4 py-1.5 text-sm font-medium leading-5 text-white hover:bg-denim-400 focus:border-denim-500 focus:outline-none active:bg-denim-600"
             >
               Save
             </button>
@@ -192,7 +192,7 @@ const Orders = () => {
 
 const Address = ({ address }) => {
   return (
-    <div className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow-md">
+    <div className="col-span-1 divide-y divide-gray-200 rounded-sm bg-white shadow-md">
       <div className="flex w-full items-center justify-between space-x-6 p-5">
         <div className="relative flex-1 truncate">
           <button className="absolute right-0 h-5 w-5 text-blue-500 hover:text-blue-700">
@@ -227,7 +227,7 @@ const Addresses = () => {
         </h2>
         <button
           type="button"
-          className="hidden sm:inline-flex items-center rounded bg-denim-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-denim-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-600"
+          className="hidden sm:inline-flex items-center rounded-sm bg-denim-500 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-denim-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-500"
         >
           <PlusIcon className="mr-2 h-4 w-4" />
           New address

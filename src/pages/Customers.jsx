@@ -85,7 +85,7 @@ const Header = ({ selected }) => {
       <div className="sm:mt-6 flex space-x-3 md:ml-4 md:mt-0">
       <button
           type="button"
-          className="hidden sm:block rounded-md bg-secondary-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-600"
+          className="hidden sm:block rounded-sm bg-rose-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-400 focus-visible:outline focus-visible:outline-rose-600"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>
@@ -167,7 +167,7 @@ const DesktopComponent = (props) => {
     <Layout>
       <Header as="page-header" selected={table.getState().rowSelection} />
       
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-sm">
         <Table table={table} />
       </div>
     </Layout>
