@@ -12,7 +12,7 @@ const SelectedProducts = ({ products }) => {
 
   return (
     <ul
-      className="mt-4 divide-y  divide-gray-200 rounded-md border border-gray-200 px-3"
+      className="mt-4 divide-y  divide-gray-200 rounded-sm border border-gray-200 px-3"
     >
       {products?.map((product) => (
         <li key={product.id} className="flex py-3">
@@ -20,7 +20,7 @@ const SelectedProducts = ({ products }) => {
             <img
               src={product.image}
               alt={product.name}
-              className="h-12 w-12 rounded-md object-cover object-center"
+              className="h-12 w-12 rounded-sm object-cover object-center"
             />
           </div>
 
@@ -36,7 +36,7 @@ const SelectedProducts = ({ products }) => {
                   </Link>
                 </p>
                 <p className="ml-4 text-sm font-medium text-gray-900">
-                  <button className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none">
+                  <button className="rounded-sm bg-white text-gray-400 hover:text-gray-500 focus:outline-none">
                     <XMarkIcon className="h-5 w-5" />
                   </button>
                 </p>
@@ -75,7 +75,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
           <input
             id="first_name"
             defaultValue={promotion?.title}
-            className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+            className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -89,7 +89,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="discount-type"
               defaultValue={promotion?.discount_type}
-              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="percentage">Percentage</option>
@@ -106,7 +106,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="discount-value"
               defaultValue={promotion?.discount_value}
-              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="minimum_requirement"
               defaultValue={promotion?.minimum_requirement}
-              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="amount">Amount</option>
@@ -138,7 +138,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="minimum_requirement_value"
               defaultValue={promotion?.minimum_requirement_value}
-              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="minimum_requirement"
               defaultValue={promotion?.method}
-              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="automatic">Automatic</option>
@@ -170,7 +170,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <input
               id="minimum_requirement_value"
               defaultValue={promotion?.minimum_requirement_value}
-              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             </label>
             <ReactDatePicker
               value={startDate}
-              className="mt-1 block w-full text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
               onChange={(value) => setStartDate(value)}
             />
           </div>
@@ -202,7 +202,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
               timeCaption="Time"
               dateFormat="h:mm aa"
               value={startTime}
-              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
               onChange={(value) => setStartTime(value)}
             />
           </div>
@@ -222,7 +222,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
               timeCaption="Time"
               dateFormat="h:mm aa"
               value={endDate}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
               onChange={(value) => setEndDate(value)}
             />
           </div>
@@ -235,7 +235,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             </label>
             <ReactDatePicker
               value={endTime}
-              className="mt-1 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
               onChange={(value) => setEndTime(value)}
             />
           </div>
@@ -251,7 +251,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="application_type"
               defaultValue={promotion?.application_type}
-              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="specific_products">Specific products</option>
@@ -269,7 +269,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             <select
               id="purchase_type"
               defaultValue={promotion?.purchase_type}
-              className="mt-1 block w-full  text-sm rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="mt-1 block w-full  text-sm rounded-sm border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
             >
               <option value=""></option>
               <option value="one_time">One time</option>
@@ -285,7 +285,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
           >
             Products
           </label>
-          <div className="relative mt-2 rounded-md shadow-sm">
+          <div className="relative mt-2 rounded-sm shadow-sm">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <MagnifyingGlassIcon
                 className="h-5 w-5 text-gray-400"
@@ -294,7 +294,7 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
             </div>
             <input
               type="search"
-              className="block w-full  text-sm rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-denim-600 sm:text-sm sm:leading-6"
+              className="block w-full  text-sm rounded-sm border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
               placeholder="Search products..."
             />
           </div>
@@ -308,14 +308,14 @@ export default function PromotionFormSlideOver({ open, setOpen, promotion }) {
       <div className="flex flex-shrink-0 justify-between border-t px-4 py-4">
         <button
           type="button"
-          className="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
+          className="rounded-sm bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400"
           onClick={() => setOpen(false)}
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="ml-4 inline-flex justify-center rounded-md bg-denim-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-denim-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-500"
+          className="ml-4 inline-flex justify-center rounded-sm bg-denim-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-denim-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-500"
           onClick={() => setDisplayMessage(true)}
         >
           Save

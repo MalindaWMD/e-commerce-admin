@@ -32,7 +32,7 @@ const getColumns = (editAction) => {
     columnHelper.accessor("status", {
       header: () => <span>Status</span>,
       cell: (item) => (
-        <div className="inline-flex items-center rounded-md bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
+        <div className="inline-flex items-center rounded-sm bg-blue-200 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-800">
           {item.getValue()}
         </div>
       ),
@@ -66,7 +66,7 @@ const Header = ({ addPromotionAction }) => {
       </div>
       <div className="flex space-x-3 sm:mt-6 md:ml-4 md:mt-0">
         <button
-          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="bg-rose-500 hover:bg-rose-400 focus-visible:outline-rose-600 rounded-sm px-2.5 py-1.5 text-sm text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={addPromotionAction}
         >
           New promotion
@@ -154,7 +154,7 @@ const DesktopComponent = ({ addAction, editAction }) => {
     <Layout>
       <Header as="page-header" addPromotionAction={addAction} />
 
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-sm">
         <Table table={table} />
       </div>
     </Layout>

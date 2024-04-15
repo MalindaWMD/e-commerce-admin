@@ -34,7 +34,7 @@ export default function Example({ defaultValue, onChange }) {
     >
       <div className="relative mt-2">
         <Combobox.Input
-          className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          className="focus:ring-denim-400 mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
           onChange={(event) => setQuery(event.target.value)}
           displayValue={(group) => group?.label}
         />
@@ -46,7 +46,7 @@ export default function Example({ defaultValue, onChange }) {
         </Combobox.Button>
 
         {filteredGroups.length > 0 && (
-          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-sm bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {filteredGroups.map((group) => (
               <Combobox.Option
                 key={group.value}
