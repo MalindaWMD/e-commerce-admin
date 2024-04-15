@@ -211,7 +211,7 @@ const DesktopComponent = (props) => {
         setGlobalFilter={setGlobalFilter}
       />
 
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-sm">
         <Table table={table} />
       </div>
     </Layout>

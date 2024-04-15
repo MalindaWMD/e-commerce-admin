@@ -78,7 +78,7 @@ export default function BasicTable({ data }) {
   const headers = data.headers;
 
   return (
-    <div className="overflow-hidden shadow-md rounded-sm">
+    <div className="overflow-hidden shadow-md rounded-sm border">
       <table className="min-w-full divide-y divide-gray-300">
         <thead className="bg-gray-50">
           <tr>
