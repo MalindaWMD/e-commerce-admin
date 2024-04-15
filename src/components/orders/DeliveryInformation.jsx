@@ -11,7 +11,7 @@ export default function DeliveryInformation({ order }) {
 
       <div className="mb-4 text-sm">
         <p className="text-gray-700">{order.customer}</p>
-        <p className="text-primary-500 cursor-pointer font-medium">
+        <p className="text-denim-500 cursor-pointer font-medium">
           0912312312312312
         </p>
       </div>

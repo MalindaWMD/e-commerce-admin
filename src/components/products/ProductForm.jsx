@@ -41,7 +41,7 @@ export default function ProductForm({ product }) {
 
   return (
     <form action="">
-      <div className="mb-6 shadow sm:overflow-hidden sm:rounded-md">
+      <div className="mb-6 shadow sm:overflow-hidden sm:rounded-sm">
         <div className="space-y-8 divide-y divide-gray-200 bg-white px-4 py-6 sm:p-6">
           <div>
             <h3 className="text-lg font-medium leading-6 text-gray-900">
@@ -60,7 +60,7 @@ export default function ProductForm({ product }) {
                   type="text"
                   name="name"
                   defaultValue={product?.name}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="focus:ring-denim-600 mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
               <div className="col-span-6">
@@ -76,7 +76,7 @@ export default function ProductForm({ product }) {
                     name="description"
                     rows="3"
                     defaultValue={product?.description}
-                    className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                   ></textarea>
                   <span className="text-xs text-red-500"></span>
                 </div>
@@ -103,7 +103,7 @@ export default function ProductForm({ product }) {
                   Brand
                 </label>
                 <SelectPicker
-                  className="mt-1 "
+                  className="mt-1"
                   selected={product?.brand_id}
                   options={brands}
                   onChange={handleSelectChange}
@@ -120,7 +120,7 @@ export default function ProductForm({ product }) {
                 <TagsInput
                   value={tags}
                   onChange={(tags) => setTags(tags)}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 px-2.5 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
               <div className="col-span-6">
@@ -128,7 +128,7 @@ export default function ProductForm({ product }) {
                   Images
                 </label>
                 <div className="mt-2">
-                  <div className="flex flex-col items-center justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
+                  <div className="flex flex-col items-center justify-center rounded-sm border-2 border-dashed border-gray-300 px-6 pb-6 pt-5">
                     {/* Preview */}
                     <div className="mb-3 grid w-full grid-cols-6 gap-4">
                       {imagePreviews.map((file, index) => {
@@ -169,7 +169,7 @@ export default function ProductForm({ product }) {
                         />
                       </svg>
                       <div className="flex text-sm text-gray-600">
-                        <label className="text-primary-600 hover:text-primary-500 relative cursor-pointer rounded-md bg-white font-medium">
+                        <label className="text-denim-600 hover:text-denim-500 relative cursor-pointer rounded-sm bg-white font-medium">
                           <span>Select files</span>
                           <input
                             id="file-upload"
@@ -207,7 +207,7 @@ export default function ProductForm({ product }) {
                 <input
                   type="text"
                   defaultValue={product?.stocks?.sku}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
               <div className="col-span-6 sm:col-span-2">
@@ -220,7 +220,7 @@ export default function ProductForm({ product }) {
                 <input
                   type="text"
                   defaultValue={product?.stocks?.barcode}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
 
@@ -239,7 +239,7 @@ export default function ProductForm({ product }) {
                   min="1"
                   name="qty"
                   defaultValue={product?.stocks?.qty}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
 
@@ -255,7 +255,7 @@ export default function ProductForm({ product }) {
                   min="1"
                   name="qty"
                   defaultValue={product?.stocks?.buffer_level}
-                  className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="mt-1 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                 />
               </div>
 
@@ -269,7 +269,7 @@ export default function ProductForm({ product }) {
                 >
                   Buying price
                 </label>
-                <div className="relative mt-1 rounded-md shadow-sm">
+                <div className="relative mt-1 rounded-sm shadow-sm">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
@@ -277,7 +277,7 @@ export default function ProductForm({ product }) {
                     name="buying_price"
                     min="1"
                     value={product?.stocks?.buying_price.toString()}
-                    className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="mt-1 pl-6  block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function ProductForm({ product }) {
                 >
                   Selling price
                 </label>
-                <div className="relative mt-1 rounded-md shadow-sm">
+                <div className="relative mt-1 rounded-sm shadow-sm">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
@@ -296,7 +296,7 @@ export default function ProductForm({ product }) {
                     name="selling_price"
                     min="1"
                     value={product?.stocks?.selling_price.toString()}
-                    className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="mt-1 pl-6  block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -307,7 +307,7 @@ export default function ProductForm({ product }) {
                 >
                   Discount price
                 </label>
-                <div className="relative mt-1 rounded-md shadow-sm">
+                <div className="relative mt-1 rounded-sm shadow-sm">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
@@ -315,7 +315,7 @@ export default function ProductForm({ product }) {
                     name="discount_price"
                     min="1"
                     value={product?.stocks?.discount_price.toString()}
-                    className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="mt-1 pl-6 block w-full rounded-sm border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-denim-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -325,16 +325,16 @@ export default function ProductForm({ product }) {
         <div className="flex items-center justify-between bg-gray-50 px-4 py-3 sm:px-6">
           <a
             href="/products"
-            className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            className="inline-flex justify-center rounded-sm border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
             Cancel
           </a>
 
           <div>
-            <button className="bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+            <button className="bg-secondary-500 hover:bg-secondary-600 focus:ring-secondary-500 inline-flex justify-center rounded-sm border border-transparent px-4 py-2 text-sm font-medium text-white shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2">
               Save as draft
             </button>
-            <button className="bg-primary-600 hover:bg-primary-700 focus:ring-primary-500 ml-3 inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+            <button className="bg-denim-500 hover:bg-denim-600 focus:ring-denim-500 ml-3 inline-flex justify-center rounded-sm border border-transparent px-4 py-2 text-sm font-medium text-white shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2">
               Publish
             </button>
           </div>

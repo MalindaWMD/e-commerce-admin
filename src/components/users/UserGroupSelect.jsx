@@ -34,7 +34,7 @@ export default function Example({ defaultValue, onChange }) {
     >
       <div className="relative mt-2">
         <Combobox.Input
-          className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+          className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           onChange={(event) => setQuery(event.target.value)}
           displayValue={(group) => group?.label}
         />
@@ -54,7 +54,7 @@ export default function Example({ defaultValue, onChange }) {
                 className={({ active }) =>
                   classNames(
                     "relative cursor-default select-none py-2 pl-3 pr-9 text-sm",
-                    active ? "bg-primary-600 text-white" : "text-gray-900",
+                    active ? "bg-denim-600 text-white" : "text-gray-900",
                   )
                 }
               >
@@ -73,7 +73,7 @@ export default function Example({ defaultValue, onChange }) {
                       <span
                         className={classNames(
                           "absolute inset-y-0 right-0 flex items-center pr-4",
-                          active ? "text-white" : "text-primary-600",
+                          active ? "text-white" : "text-denim-600",
                         )}
                       >
                         <CheckIcon className="h-5 w-5" aria-hidden="true" />

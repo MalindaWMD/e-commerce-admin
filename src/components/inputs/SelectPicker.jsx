@@ -58,10 +58,18 @@ export default function SelectPicker(props) {
 
   return (
     <Select
-      className={classNames(
-        `focus:ring-primary-600 w-full rounded-md py-1 text-sm text-gray-900 shadow-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6`,
+    className={classNames(
+        `w-full rounded-md py-1 text-sm text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6`,
         props.className,
       )}
+      styles={{
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          borderRadius: '0.125rem',
+          borderColor: state.isFocused ? '#3775D2' : '#d1d5db',
+          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1'
+        }),
+      }}
       isClearable={true}
       isLoading={loading}
       isSearchable={true}

@@ -26,7 +26,7 @@ const columns = [
         <div className="text-center">
           <input
             type="checkbox"
-            className="text-primary-600 focus:ring-primary-600 h-4 w-4 rounded border-gray-400"
+            className="text-denim-600 focus:ring-denim-600 h-4 w-4 rounded border-gray-400"
             onChange={table.getToggleAllRowsSelectedHandler()}
             checked={table.getIsAllRowsSelected()}
           />
@@ -37,7 +37,7 @@ const columns = [
       <div className="text-center">
         <input
           type="checkbox"
-          className="text-primary-600 focus:ring-primary-600 h-4 w-4 rounded border-gray-400"
+          className="text-denim-600 focus:ring-denim-600 h-4 w-4 rounded border-gray-400"
           onChange={row.getToggleSelectedHandler()}
           checked={row.getIsSelected()}
         />
@@ -69,7 +69,7 @@ const columns = [
     cell: (item) => {
       if (item.getValue() === "active") {
         return (
-          <span className="bg-primary-100 text-primary-800 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium">
+          <span className="bg-purple-200 text-denim-800 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium">
             Active
           </span>
         );
@@ -89,7 +89,7 @@ const columns = [
       <>
         <Link
           to={"/products/" + row.original.id}
-          className="text-primary-600 hover:text-primary-900 mr-3 font-medium"
+          className="text-denim-600 hover:text-denim-900 mr-3 font-medium"
         >
           Edit
         </Link>
@@ -111,13 +111,13 @@ const Header = ({ selected }) => {
       <div className="flex space-x-3 sm:mt-6 md:ml-4 md:mt-0">
         <Link
           to="/products/add"
-          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="bg-rose-500 hover:bg-rose-400 rounded-sm px-2.5 py-1.5 text-sm text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Add product
         </Link>
         <button
           type="button"
-          className="bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600 hidden rounded-md px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:block"
+          className="bg-rose-500 hover:bg-rose-400 hidden rounded-sm px-2.5 py-1.5 text-sm text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:block"
         >
           Export {selectedCount > 0 ? selectedCount : "all"}
         </button>

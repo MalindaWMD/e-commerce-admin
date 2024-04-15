@@ -63,7 +63,7 @@ const getColumns = (editAction) => {
       header: null,
       cell: ({ row }) => (
         <button
-          className="hover:text-primary-900 mr-3 font-medium text-blue-600"
+          className="hover:text-denim-900 mr-3 font-medium text-blue-600"
           onClick={() => editAction(row.original.id)}
         >
           Edit

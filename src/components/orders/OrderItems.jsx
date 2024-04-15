@@ -23,7 +23,7 @@ export default function OrderItems({ items }) {
                     <h4 className="text-sm">
                       <Link
                         to={"/products/" + product.id}
-                        className="text-primary-600 hover:text-primary-700 font-medium"
+                        className="text-denim-600 hover:text-denim-700 font-medium"
                       >
                         {product.name}
                       </Link>
@@ -57,7 +57,7 @@ export default function OrderItems({ items }) {
             </div>
             <div className="flex items-center justify-between pt-2">
               <dt className="font-medium text-gray-900">Order total</dt>
-              <dd className="font-bold text-primary-600">$83.16</dd>
+              <dd className="font-bold text-denim-600">$83.16</dd>
             </div>
           </dl>
         </div>

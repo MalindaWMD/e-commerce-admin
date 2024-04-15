@@ -24,7 +24,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.name}
-            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+            className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -37,7 +37,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.email}
-            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+            className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -50,7 +50,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           <input
             id="first_name"
             defaultValue={user?.phone_no}
-            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+            className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           />
         </div>
         <div className="mb-4">
@@ -74,7 +74,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
           </label>
           <select
             defaultValue={user?.status || "active"}
-            className="focus:ring-primary-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+            className="focus:ring-denim-600 mt-1 block w-full rounded-md border-0 py-1.5 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
           >
             <option value="">Select option</option>
             <option value="active">Active</option>
@@ -95,7 +95,7 @@ export default function AddUserModalSlideOver({ open, setOpen, user }) {
         </button>
         <button
           type="submit"
-          className="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-500 ml-4 inline-flex justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="bg-denim-600 hover:bg-denim-500 focus-visible:outline-denim-500 ml-4 inline-flex justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           onClick={() => setDisplayMessage(true)}
         >
           Save

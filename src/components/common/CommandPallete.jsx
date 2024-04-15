@@ -81,7 +81,7 @@ export default function CommandPallete({ open = false, setOpen }) {
                             <Link
                               to={suggestion.url}
                               key={suggestion.id}
-                              className="hover:bg-primary-600 group flex cursor-pointer select-none items-center rounded-md px-3 py-2 hover:text-white"
+                              className="hover:bg-denim-600 group flex cursor-pointer select-none items-center rounded-md px-3 py-2 hover:text-white"
                             >
                               <HashtagIcon
                                 className="h-6 w-6 flex-none text-gray-400 group-hover:text-white"
@@ -90,7 +90,7 @@ export default function CommandPallete({ open = false, setOpen }) {
                               <span className="ml-3 flex-auto truncate">
                                 {suggestion.name}
                               </span>
-                              <span className="text-primary-100 ml-3 hidden flex-none group-hover:block">
+                              <span className="text-denim-100 ml-3 hidden flex-none group-hover:block">
                                 Jump to...
                               </span>
                             </Link>

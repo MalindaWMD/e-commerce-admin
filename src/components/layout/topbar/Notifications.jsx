@@ -62,7 +62,7 @@ export default function Notifications() {
           </Menu.Item>
           <Menu.Item>
             <div className="rounded-b-md bg-gray-100 px-4 py-1 text-right">
-              <button className="text-xs font-medium leading-5 text-primary-600 hover:text-primary-500 focus:underline focus:outline-none">
+              <button className="text-xs font-medium leading-5 text-denim-600 hover:text-denim-500 focus:underline focus:outline-none">
                 Read all
               </button>
             </div>

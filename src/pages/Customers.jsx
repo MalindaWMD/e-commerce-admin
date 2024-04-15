@@ -19,7 +19,7 @@ const columns = [
         <div className="text-center">
           <input
             type="checkbox"
-            className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
+            className="h-4 w-4 rounded border-gray-400 text-denim-600 focus:ring-denim-600"
             onChange={table.getToggleAllRowsSelectedHandler()}
             checked={table.getIsAllRowsSelected()}
           />
@@ -30,7 +30,7 @@ const columns = [
       <div className="text-center">
         <input
           type="checkbox"
-          className="h-4 w-4 rounded border-gray-400 text-primary-600 focus:ring-primary-600"
+          className="h-4 w-4 rounded border-gray-400 text-denim-600 focus:ring-denim-600"
           onChange={row.getToggleSelectedHandler()}
           checked={row.getIsSelected()}
         />
@@ -63,7 +63,7 @@ const columns = [
     cell: ({ row }) => (
       <Link
             to={"/customers/" + row.original.id}
-            className="mr-3 font-medium text-primary-600 hover:text-primary-900"
+            className="mr-3 font-medium text-denim-600 hover:text-denim-900"
           >
             View
           </Link>

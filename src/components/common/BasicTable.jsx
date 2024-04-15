@@ -58,7 +58,7 @@ const Footer = ({ footer }) => {
         {footer.action && (
           <Link
             to={footer.action.href}
-            className="text-sm text-primary-500 hover:text-primary-700"
+            className="text-sm text-denim-500 hover:text-denim-700"
           >
             {footer.action.label}
           </Link>

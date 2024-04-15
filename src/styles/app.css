@@ -31,11 +31,11 @@
 } */
 
 .react-tagsinput-tag{
-    @apply inline-flex items-center px-2.5 py-0.5 mr-1 rounded-md text-sm font-medium bg-blue-100 text-blue-800;
+    @apply inline-flex items-center px-2.5 py-0.5 mr-1 rounded-sm text-sm font-medium bg-blue-100 text-blue-800;
 }
 
 .react-tagsinput--focused{
-    @apply ring-2 ring-inset ring-primary-600;
+    @apply ring-1 ring-inset ring-denim-400;
 }
 
 .react-tagsinput-input{

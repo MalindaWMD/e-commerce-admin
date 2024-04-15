@@ -74,7 +74,7 @@ const recentOrdersTableData = {
               return (
                 <Link
                   to="#orders"
-                  className="text-primary-600 hover:text-primary-900"
+                  className="text-denim-600 hover:text-denim-900"
                 >
                   Edit
                 </Link>
@@ -238,7 +238,7 @@ export default function Home() {
         >
           <Link
             to="/orders"
-            className="text-sm font-medium text-primary-500 hover:text-primary-700"
+            className="text-sm font-medium text-denim-500 hover:text-denim-700"
           >
             View all
           </Link>

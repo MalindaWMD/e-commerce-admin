@@ -20,11 +20,11 @@ export default function TrackingInformation({order}) {
         <input
           type="text"
           placeholder="Add another tracking number"
-          className="focus:ring-primary-600 block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:mr-3 sm:text-sm sm:leading-6"
+          className="focus:ring-denim-600 block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:mr-3 sm:text-sm sm:leading-6"
         />
         <button
           type="button"
-          className="rounded-md bg-primary-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+          className="rounded-md bg-denim-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-denim-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-600"
         >
           Update
         </button>

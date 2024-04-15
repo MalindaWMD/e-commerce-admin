@@ -28,7 +28,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="hidden col-span-12 sm:col-span-6"></div>
@@ -45,7 +45,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
@@ -60,7 +60,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="col-span-12">
@@ -75,7 +75,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             >
               <option value=""></option>
               {Object.keys(timezones).map((key) => {
@@ -99,7 +99,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             >
               <option value="metric">Metric system</option>
               <option value="imperial">Imperial system</option>
@@ -117,7 +117,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             >
               <option value="metric">Kilogram (kg)</option>
               <option value="imperial">Gram (g)</option>
@@ -145,7 +145,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="hidden col-span-12 sm:col-span-4"></div>
@@ -162,7 +162,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             >
               <option value=""></option>
               {Object.keys(countries).map((key) => {
@@ -188,7 +188,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="hidden col-span-12 sm:col-span-4"></div>
@@ -205,7 +205,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
@@ -220,7 +220,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             />
           </div>
         </div>
@@ -245,7 +245,7 @@ export default function StoreDetails() {
               name="first-name"
               id="first-name"
               autoComplete="given-name"
-              className="focus:border-primary-500 text-sm  focus:ring-primary-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
+              className="focus:border-denim-500 text-sm  focus:ring-denim-500 mt-2 block w-full rounded-md border border-gray-300 px-1.5 py-1.5 shadow-sm sm:text-sm"
             >
               <option value=""></option>
               {Object.keys(currencies).map((key) => {
@@ -263,7 +263,7 @@ export default function StoreDetails() {
       <div className="sm:absolute sm:bottom-0 w-full bg-gray-100 px-4 py-3 text-right">
         <button
           type="button"
-          className="inline-flex justify-center rounded-md bg-primary-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+          className="inline-flex justify-center rounded-md bg-denim-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-denim-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-denim-500"
         >
           Save
         </button>
