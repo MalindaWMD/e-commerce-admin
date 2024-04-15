@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import { abbr } from "../utils/number";
 
 export default function DashboardCard({ card }) {
   return (
-    <div key={card.name} className="overflow-hidden rounded-lg bg-white shadow">
+    <div key={card.name} className="overflow-hidden rounded-sm bg-white shadow-md">
       <div className="p-5">
         <div className="flex items-center">
           <div className="flex-shrink-0">
-            <card.icon className="h-6 w-6 text-gray-400" aria-hidden="true" />
+            <card.icon className="h-6 w-6 text-gray-500" aria-hidden="true" />
           </div>
           <div className="ml-5 w-0 flex-1">
             <dl>
@@ -14,15 +15,17 @@ export default function DashboardCard({ card }) {
                 {card.name}
               </dt>
               <dd>
-                <div className="text-lg font-medium text-gray-900">
-                  {card.amount}
+                <div className="text-2xl font-medium text-night">
+                  {card.prefix || null}
+                  {abbr(card.amount)}
+                  {card.suffix || null}
                 </div>
               </dd>
             </dl>
           </div>
         </div>
       </div>
-      <div className="bg-gray-50 px-5 py-3">
+      { card.action && <div className="bg-gray-50 px-5 py-3">
         <div className="text-sm">
           <Link
             to={card.action}
@@ -31,7 +34,7 @@ export default function DashboardCard({ card }) {
             View all
           </Link>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

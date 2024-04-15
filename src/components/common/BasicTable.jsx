@@ -9,6 +9,7 @@ const HeaderColumn = ({ header, actionCol = false }) => {
       </th>
     );
   }
+
   return (
     <th
       scope="col"
@@ -47,17 +48,17 @@ const Footer = ({ footer }) => {
 
   return (
     <nav
-      className="flex items-center justify-between px-4 py-4 border-t border-gray-200 bg-gray-100 sm:px-6"
+      className="flex items-center justify-between px-4 py-4 border-t border-gray-200 bg-white sm:px-6"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">
-        {footer.label && <p className="text-sm text-gray-700">{footer.label}</p>}
+        {footer.label && <p className="text-xs text-gray-700">{footer.label}</p>}
       </div>
       <div className="flex justify-between flex-1 sm:justify-end">
         {footer.action && (
           <Link
             to={footer.action.href}
-            className="text-sm font-medium text-primary-500 hover:text-primary-700"
+            className="text-sm text-primary-500 hover:text-primary-700"
           >
             {footer.action.label}
           </Link>
@@ -77,7 +78,7 @@ export default function BasicTable({ data }) {
   const headers = data.headers;
 
   return (
-    <div className="overflow-hidden shadow-md sm:rounded-lg">
+    <div className="overflow-hidden shadow-md rounded-sm">
       <table className="min-w-full divide-y divide-gray-300">
         <thead className="bg-gray-50">
           <tr>

@@ -47,14 +47,14 @@ const Navigation = () => {
       to={item.path}
       className={classNames(
         isCurrentUrl(item.path)
-          ? "bg-cyan-800 text-white"
-          : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
-        "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
+          ? "bg-smoke bg-opacity-10"
+          : "hover:bg-smoke hover:bg-opacity-5",
+        "text-smoke group flex items-center rounded-md px-2 py-2 text-sm font-medium"
       )}
       aria-current={item.current ? "page" : undefined}
     >
       <item.icon
-        className="mr-4 h-5 w-5 flex-shrink-0 text-cyan-200"
+        className="mr-4 h-5 w-5 flex-shrink-0 text-smoke"
         aria-hidden="true"
       />
       {item.display_name}
@@ -89,7 +89,7 @@ export default function Sidebar({ open, setOpen }) {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pb-4 pt-5">
+              <Dialog.Panel className="relative flex w-full max-w-xs flex-1 flex-col bg-night pb-4 pt-5">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -163,7 +163,7 @@ export default function Sidebar({ open, setOpen }) {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex flex-grow flex-col overflow-y-auto bg-gray-800 pb-4 pt-5">
+        <div className="flex flex-grow flex-col overflow-y-auto bg-night pb-4 pt-5">
           <div className="flex flex-shrink-0 items-center px-4">
             <img
               className="h-8 w-auto"
@@ -172,7 +172,7 @@ export default function Sidebar({ open, setOpen }) {
             />
           </div>
           <nav
-            className="mt-5 flex flex-1 flex-col divide-y divide-gray-700 overflow-y-auto"
+            className="mt-5 flex flex-1 flex-col overflow-y-auto"
             aria-label="Sidebar"
           >
             <div className="space-y-1 px-2">
@@ -188,11 +188,11 @@ export default function Sidebar({ open, setOpen }) {
                       isCurrentUrl(item.href)
                         ? "bg-cyan-800 text-white"
                         : "text-cyan-100",
-                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white",
+                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-smoke hover:bg-opacity-5",
                     )}
                   >
                     <item.icon
-                      className="mr-4 h-6 w-6 text-cyan-200"
+                      className="mr-4 h-6 w-6 text-smoke"
                       aria-hidden="true"
                     />
                     {item.name}
@@ -211,8 +211,8 @@ export default function Sidebar({ open, setOpen }) {
                     className={classNames(
                       isCurrentUrl(item.href)
                         ? "bg-cyan-800 text-white"
-                        : "text-cyan-100",
-                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-cyan-100 hover:bg-cyan-600 hover:text-white",
+                        : "text-smoke",
+                      "group flex items-center rounded-md px-2 py-2 text-sm font-medium text-smoke hover:bg-cyan-600 hover:text-white",
                     )}
                   >
                     <item.icon

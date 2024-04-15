@@ -23,14 +23,6 @@ const suggestions = [
   { id: 11, name: "Analytics", url: "/analytics" },
 ];
 
-const recent = suggestions.slice(0, 3);
-
-const quickActions = [
-  { name: "Products...", icon: ArchiveBoxIcon, url: "/products" },
-  { name: "Orders...", icon: InboxStackIcon, url: "/orders" },
-  { name: "Customers...", icon: UserIcon, url: "/customers" },
-];
-
 export default function CommandPallete({ open = false, setOpen }) {
   const [query, setQuery] = useState("");
 
@@ -74,27 +66,17 @@ export default function CommandPallete({ open = false, setOpen }) {
             <Dialog.Panel className="mx-auto max-w-2xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
               <div>
                 <div className="relative">
-                  <MagnifyingGlassIcon
-                    className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
                   <input
-                    className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                    placeholder="Search..."
+                    className="h-12 w-full border-0 bg-transparent px-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                    placeholder="Search anything..."
                     onChange={(event) => setQuery(event.target.value)}
                   />
                 </div>
 
                 {(query === "" || filteredSuggestions.length > 0) && (
                   <div className="max-h-80 scroll-py-2 divide-y divide-gray-100 overflow-y-auto">
-                    <li className="p-2">
-                      {query === "" && (
-                        <h2 className="mb-2 mt-4 px-3 text-xs font-semibold text-gray-500">
-                          Common searches
-                        </h2>
-                      )}
                       <ul className="text-sm text-gray-700">
-                        {(query === "" ? recent : filteredSuggestions).map(
+                        {(query === "" ? [] : filteredSuggestions).map(
                           (suggestion) => (
                             <Link
                               to={suggestion.url}
@@ -115,30 +97,6 @@ export default function CommandPallete({ open = false, setOpen }) {
                           ),
                         )}
                       </ul>
-                    </li>
-                    {query === "" && (
-                      <li className="p-2">
-                        <h2 className="sr-only">Quick actions</h2>
-                        <ul className="text-sm text-gray-700">
-                          {quickActions.map((action, idx) => (
-                            <Link
-                              key={"action-" + idx}
-                              to={action.url}
-                              className="hover:bg-primary-600 group flex cursor-pointer select-none items-center rounded-md px-3 py-2 hover:text-white"
-                            >
-                              <action.icon
-                                className="h-6 w-6 flex-none text-gray-400 group-hover:text-white"
-                                aria-hidden="true"
-                              />
-
-                              <span className="ml-3 flex-auto truncate">
-                                {action.name}
-                              </span>
-                            </Link>
-                          ))}
-                        </ul>
-                      </li>
-                    )}
                   </div>
                 )}
 

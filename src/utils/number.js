@@ -1,11 +1,10 @@
 const currencySymbol = '$';
 
-export const abbr = (n, m=1) => {
-  let x = ("" + n).length;
-  let p = Math.pow;
-  let d = p(10, m);
-  x -= x % 3;
-  return Math.round((n * d) / p(10, x)) / d + " kMGTPE"[x / 3];
+export const abbr = (n) => {
+  return Intl.NumberFormat('en-US', {
+    notation: "compact",
+    maximumFractionDigits: 1
+  }).format(n);
 };
 
 
