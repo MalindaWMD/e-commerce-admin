@@ -4,30 +4,25 @@ import BarChart from "../components/charts/BarChart";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/layout/PageHeader";
 import BasicTable from "../components/common/BasicTable";
+import DashboardCard from "../components/DashboardCard";
 
 const stats = [
   {
     name: "Total sales",
-    stat: "12200.00",
-    previousStat: "10500.00",
-    change: "12%",
-    changeType: "increase",
-    type: "currency",
+    amount: "12200.00",
+    previousAmount: "10500.00",
+    prefix: '$',
   },
   {
     name: "Avg. order value",
-    stat: "60",
-    previousStat: "55",
-    change: "2.02%",
-    changeType: "increase",
-    type: "currency",
+    amount: "60",
+    previousAmount: "55",
+    prefix: '$',
   },
   {
     name: "Total orders",
-    stat: "197",
-    previousStat: "200",
-    change: "4.05%",
-    changeType: "decrease",
+    amount: "197",
+    previousAmount: "200",
   },
 ];
 
@@ -83,7 +78,7 @@ const TotalSalesChart = () => {
   };
 
   return (
-    <div className="rounded-md bg-white p-4 shadow-md">
+    <div className="rounded-sm bg-white p-4 shadow-md">
       <p className="mb-4 text-base font-normal text-gray-900">Total sales</p>
       <LineChart data={data} yPrefix="$" abbreviate={true} steps={500}/>
     </div>
@@ -113,7 +108,7 @@ const ConversionRateChart = () => {
   };
 
   return (
-    <div className="rounded-md bg-white p-4 shadow-md">
+    <div className="rounded-sm bg-white p-4 shadow-md">
       <p className="mb-4 text-base font-normal text-gray-900">Conversion rate</p>
       <LineChart data={data} ySufix="%"/>
     </div>
@@ -143,7 +138,7 @@ const WebsiteTrafficChart = () => {
   };
 
   return (
-    <div className="rounded-md bg-white p-4 shadow-md">
+    <div className="rounded-sm bg-white p-4 shadow-md">
       <p className="mb-4 text-base font-normal text-gray-900">Website traffic(Sessions)</p>
       <LineChart data={data} steps={100}/>
     </div>
@@ -161,7 +156,7 @@ const TrafficSourcesChart = () => {
     ],
   };
   return (
-    <div className="rounded-md bg-white p-4 shadow-md">
+    <div className="rounded-sm bg-white p-4 shadow-md">
       <p className="mb-4 text-base font-normal text-gray-900">Traffic sources(Sessions)</p>
       <BarChart data={data}/>
     </div>
